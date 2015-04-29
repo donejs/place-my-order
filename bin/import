@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+require('babel/register');
+
+var app = require('../lib/app').app;
+var restaurants = require('./restaurants.json');
+var service = app.service('api/restaurants');
+var count = 0;
+
+restaurants.forEach(function(restaurant) {
+  service.create(restaurant, {}, function(err, created) {
+    console.log('Created', created);
+    count++;
+    if(count === restaurant.length) {
+      process.exit();
+    }
+  });
+});

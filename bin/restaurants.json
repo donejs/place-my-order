@@ -1,0 +1,19 @@
+[{
+  "name": "Spago",
+  "address": {
+    "street": "3108 Winchester Ct.",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60045"
+  },
+  "image": "images/1-thumbnail.jpg"
+}, {
+  "name": "El Bulli",
+  "address": {
+    "street": "33 Fairview Street Chicago",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60045"
+  },
+  "image": "images/2-thumbnail.jpg"
+}]

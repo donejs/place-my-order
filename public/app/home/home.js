@@ -1,7 +1,7 @@
 import Component from 'can/component/component';
-import template from './header.stache!';
+import template from './home.stache!';
 
 export default Component.extend({
-  tag: 'app-header',
+  tag: 'app-home',
   template
 });

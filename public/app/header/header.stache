@@ -1,11 +1,17 @@
 <header>
   <nav>
-    <h1>PlaceMyOrder.com</h1>
+    <h1>PlaceMyOrder.com {{page}}</h1>
 
     <ul>
-      <li class="active"><a href="index.html">Home</a></li>
-      <li><a href="restaurants.html">Restaurants</a></li>
-      <li><a href="orders.html">Order History</a></li>
+      <li class="{{#eq page 'home'}}active{{/eq}}">
+        <a href="/home">Home</a>
+      </li>
+      <li class="{{#eq page 'restaurants'}}active{{/eq}}">
+        <a href="/restaurants">Restaurants</a>
+      </li>
+      <li class="{{#eq page 'orders'}}active{{/eq}}">
+        <a href="/order-history">Order history</a>
+      </li>
     </ul>
   </nav>
 </header>

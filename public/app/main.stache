@@ -1,10 +1,12 @@
 <can-import from="app/header/header" />
-<app-header></app-header>
+<app-header page="{page}"></app-header>
 
-<can-import from="app/header/header" />
-<div class="homepage">
-  <img src="images/homepage-hero.jpg" width="250" height="380" />
-  <h1>Ordering food has never been easier</h1>
-  <p>We make it easier than ever to order gourmet food from your favorite local restaurants.</p>
-  <p><a class="btn" href="#" role="button">Choose a Restaurant</a></p>
-</div>
+{{#eq page "home"}}
+  <can-import from="app/home/home" />
+  <app-home></app-home>
+{{/eq}}
+
+{{#eq page "restaurants"}}
+  <can-import from="app/restaurant/list/list" />
+  <app-restaurant-list></app-restaurant-list>
+{{/eq}}
