@@ -1,0 +1,78 @@
+<div class="order-form">
+  <h3>Order Form</h3>
+
+
+  <form>
+    <!-- tabs -->
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#">Lunch Menu</a></li>
+      <li><a href="#">Dinner Menu</a></li>
+    </ul>
+    <!-- tabs -->
+
+    <div class="tab-pane">
+      <p class="text-error">Please choose an item</p>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <label>
+            <input type="checkbox" can-value="selected"> Spinach Fennel Watercress Ravioli <span class="badge">$35.99</span>
+          </label>
+        </li>
+        <li class="list-group-item">
+          <label>
+            <input type="checkbox" can-value="selected"> Herring in Lavender Dill Reduction <span class="badge">$45.99</span>
+          </label>
+        </li>
+        <li class="list-group-item">
+          <label>
+            <input type="checkbox" can-value="selected"> Garlic Fries <span class="badge">$15.99</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+
+    <!--
+    <div class="tab-pane">
+      <p>Please choose an item</p>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <label>
+              <input type="checkbox" can-value="selected"> Crab Pancakes with Sorrel Syrup <span class="badge">$35.99</span>
+          </label>
+        </li>
+        <li class="list-group-item">
+          <label>
+              <input type="checkbox" can-value="selected"> Chicken with Tomato Carrot Chutney Sauce <span class="badge">$45.99</span>
+          </label>
+        </li>
+        <li class="list-group-item">
+          <label>
+              <input type="checkbox" can-value="selected"> Onion Fries <span class="badge">$15.99</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+    -->
+
+    <div class="form-group">
+      <label class="control-label">Name:</label>
+      <input type="text" class="form-control">
+      <p>Please enter your name.</p>
+    </div>
+    <div class="form-group has-error">
+      <label class="control-label">Address:</label>
+      <input type="text" class="form-control">
+      <p class="help-text">Please enter your address.</p>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Phone:</label>
+      <input type="text" class="form-control">
+      <p>Please enter your phone number.</p>
+    </div>
+    <div class="submit">
+      <h4>Total: $45.82</h4>
+      <button type="submit" class="btn">Place My Order!</button>
+    </div>
+  </form>
+
+</div>

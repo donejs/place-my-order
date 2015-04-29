@@ -1,0 +1,19 @@
+{
+  "name": "place-my-order-frontend",
+  "version": "0.1.0",
+  "description": "The frontend for the restaurant order application",
+  "main": "app/main",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bitovi",
+  "license": "MIT",
+  "dependencies": {
+    "can": "^2.3.0-pre.0",
+    "jquery": "^2.1.4",
+    "steal": "^0.10.1"
+  },
+  "system": {
+    "transpiler": "babel"
+  }
+}

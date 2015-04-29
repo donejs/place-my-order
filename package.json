@@ -1,0 +1,31 @@
+{
+  "name": "place-my-order",
+  "version": "0.1.0",
+  "description": "A retraurant order application",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node lib/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitovi/place-my-order.git"
+  },
+  "keywords": [
+    "stealjs",
+    "canjs",
+    "feathersjs"
+  ],
+  "author": "Bitovi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bitovi/place-my-order/issues"
+  },
+  "homepage": "https://github.com/bitovi/place-my-order",
+  "dependencies": {
+    "babel": "^5.1.13",
+    "body-parser": "^1.12.3",
+    "feathers": "^1.0.2",
+    "feathers-mongodb": "^0.3.2"
+  }
+}

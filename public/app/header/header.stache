@@ -1,0 +1,11 @@
+<header>
+  <nav>
+    <h1>PlaceMyOrder.com</h1>
+
+    <ul>
+      <li class="active"><a href="index.html">Home</a></li>
+      <li><a href="restaurants.html">Restaurants</a></li>
+      <li><a href="orders.html">Order History</a></li>
+    </ul>
+  </nav>
+</header>

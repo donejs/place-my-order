@@ -1,0 +1,59 @@
+<div class="order-history">
+  <h2>Order History</h2>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Order</th>
+      <th>Total</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Tom Greever</td>
+      <td>8728 N Spring Garden Lane</td>
+      <td>630-551-8787</td>
+      <td>
+        <ul>
+          <li>Spinach Fennel Watercress Ravioli</li>
+        </ul>
+      </td>
+      <td>$23.99</td>
+      <td><a href="#">Delete</a></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Justin Meyer</td>
+      <td>99 Cherry Dr.</td>
+      <td>773-555-1234</td>
+      <td>
+        <ul>
+          <li>Spinach Fennel Watercress Ravioli</li>
+          <li>Garlic Fries</li>
+        </ul>
+      </td>
+      <td>$123.99</td>
+      <td><a href="#">Delete</a></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Brian Moschel</td>
+      <td>223 Liebengood Road</td>
+      <td>555-645-8736</td>
+      <td>
+        <ul>
+          <li>Crab Pancakes with Sorrel Syrup</li>
+        </ul>
+      </td>
+      <td>$43.99</td>
+      <td><a href="#">Delete</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
