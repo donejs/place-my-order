@@ -2,14 +2,15 @@
   <div class="loading"></div>
 {{else}}
   {{#restaurant.value}}
-    <div class="restaurant-header" style="background-image: url(/images/1-banner.jpg);">
+    <div class="restaurant-header" style="background-image: url(/{{images.banner}});">
       <div class="background">
         <h2>{{name}}</h2>
 
+        {{#address}}
         <div class="address">
-          3108 Winchester Ct.<br />
-          Chicago, IL 60045
+          {{street}}<br />{{city}}, {{state}} {{zip}}
         </div>
+        {{/address}}
 
         <div class="hours-price">
           $$$<br />
@@ -24,8 +25,12 @@
     <div class="restaurant-content">
       <h3>The best food this side of the Mississippi</h3>
 
-      <p class="description"><img src="images/1-owner.jpg" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum purus magna, nec pulvinar lacus gravida gravida. Quisque posuere a sapien vel aliquet. Vivamus feugiat sagittis eros, eget elementum mi malesuada ut. Aliquam dapibus diam vehicula dui rutrum condimentum. Donec in nibh fermentum, aliquet neque sed, gravida augue. Nunc convallis pretium felis quis elementum. Etiam vitae nunc magna. Mauris elementum purus id dolor euismod, sit amet aliquam augue consequat. Sed sagittis condimentum pulvinar. Nullam mattis ligula augue. Aliquam vitae lectus nec enim posuere ultricies sed viverra ligula. Sed nec lacus tortor.</p>
-      <p class="order-link"><a class="btn" href="#">Order from Spago</a></p>
+      <p class="description"><img src="/{{images.owner}}" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum purus magna, nec pulvinar lacus gravida gravida. Quisque posuere a sapien vel aliquet. Vivamus feugiat sagittis eros, eget elementum mi malesuada ut. Aliquam dapibus diam vehicula dui rutrum condimentum. Donec in nibh fermentum, aliquet neque sed, gravida augue. Nunc convallis pretium felis quis elementum. Etiam vitae nunc magna. Mauris elementum purus id dolor euismod, sit amet aliquam augue consequat. Sed sagittis condimentum pulvinar. Nullam mattis ligula augue. Aliquam vitae lectus nec enim posuere ultricies sed viverra ligula. Sed nec lacus tortor.</p>
+      <p class="order-link">
+        <a class="btn" href="/restaurants/{{slug}}/order">
+          Order from {{name}}
+        </a>
+      </p>
     </div>
   {{/restaurant.value}}
 {{/if}}

@@ -11,9 +11,9 @@ export default Component.extend({
     define: {
       restaurant: {
         get(old) {
-          let id = this.attr('restaurantId');
-          if(!old && id) {
-            return Restaurant.findOne({ id });
+          let _id = this.attr('slug');
+          if(!old && _id) {
+            return Restaurant.findOne({ _id });
           }
 
           return old;

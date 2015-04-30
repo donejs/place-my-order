@@ -1,21 +1,55 @@
 [{
   "name": "Spago",
   "slug": "spago",
+  "images": {
+    "thumbnail": "images/1-thumbnail.jpg",
+    "owner": "images/1-owner.jpg",
+    "banner": "images/1-banner.jpg"
+  },
   "address": {
     "street": "3108 Winchester Ct.",
     "city": "Chicago",
     "state": "IL",
     "zip": "60045"
   },
-  "image": "images/1-thumbnail.jpg"
+  "menu": {
+    "lunch": [{
+      "name": "Spinach Fennel Watercress Ravioli",
+      "price": 35.99
+    }, {
+      "name": "Garlic Fries",
+      "price": 15.99
+    }],
+    "dinner": [{
+      "name": "Herring in Lavender Dill Reduction",
+      "price": 45.99
+    }]
+  }
 }, {
   "name": "El Bulli",
   "slug": "el-bulli",
+  "images": {
+    "thumbnail": "images/2-thumbnail.jpg",
+    "owner": "images/2-owner.jpg",
+    "banner": "images/2-banner.jpg"
+  },
   "address": {
     "street": "33 Fairview Street Chicago",
     "city": "Chicago",
     "state": "IL",
     "zip": "60045"
   },
-  "image": "images/2-thumbnail.jpg"
+  "menu": {
+    "lunch": [{
+      "name": "Spinach Fennel Watercress Ravioli",
+      "price": 35.99
+    }, {
+      "name": "Garlic Fries",
+      "price": 15.99
+    }],
+    "dinner": [{
+      "name": "Herring in Lavender Dill Reduction",
+      "price": 45.99
+    }]
+  }
 }]

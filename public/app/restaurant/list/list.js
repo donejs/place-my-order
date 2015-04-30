@@ -5,7 +5,7 @@ import Restaurant from 'app/models/restaurant';
 export default Component.extend({
   tag: 'app-restaurant-list',
   template,
-  scope: {
+  viewModel: {
     restaurants: new Restaurant.List({})
   }
 });

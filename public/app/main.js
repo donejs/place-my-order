@@ -9,11 +9,15 @@ import 'less/styles.less!';
 
 const AppState = Map.extend({});
 let state = new AppState();
-let render = () => $('#main').html(main(state));
+let render = () => {
+  $('#main').html(main(state));
+  console.clear();
+};
 
 $(() => {
   route(':page', { page: 'home' });
-  route(':page/:id', { id: null });
+  route(':page/:slug', { slug: null });
+  route(':page/:slug/:action', { slug: null, action: null });
   route.map(state);
 
   render();

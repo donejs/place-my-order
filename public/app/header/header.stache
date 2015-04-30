@@ -9,7 +9,7 @@
       <li class="{{#eq page 'restaurants'}}active{{/eq}}">
         <a href="/restaurants">Restaurants</a>
       </li>
-      <li class="{{#eq page 'orders'}}active{{/eq}}">
+      <li class="{{#eq page 'order-history'}}active{{/eq}}">
         <a href="/order-history">Order history</a>
       </li>
     </ul>
