@@ -7,6 +7,11 @@
 {{/eq}}
 
 {{#eq page "restaurants"}}
-  <can-import from="app/restaurant/list/list" />
-  <app-restaurant-list></app-restaurant-list>
+  {{#if id}}
+    <can-import from="app/restaurant/details/details" />
+    <app-restaurant-details restaurant-id="{id}"></app-restaurant-details>
+  {{else}}
+    <can-import from="app/restaurant/list/list" />
+    <app-restaurant-list></app-restaurant-list>
+  {{/if}}
 {{/eq}}

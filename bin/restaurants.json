@@ -1,5 +1,6 @@
 [{
   "name": "Spago",
+  "slug": "spago",
   "address": {
     "street": "3108 Winchester Ct.",
     "city": "Chicago",
@@ -9,6 +10,7 @@
   "image": "images/1-thumbnail.jpg"
 }, {
   "name": "El Bulli",
+  "slug": "el-bulli",
   "address": {
     "street": "33 Fairview Street Chicago",
     "city": "Chicago",

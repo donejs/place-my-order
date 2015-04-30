@@ -1,5 +1,6 @@
 import Model from 'can/model/model';
 
 export default Model.extend({
-  findAll: 'GET /api/restaurants'
+  id: '_id',
+  resource: '/api/restaurants'
 }, {});

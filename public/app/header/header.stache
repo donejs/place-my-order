@@ -1,6 +1,6 @@
 <header>
   <nav>
-    <h1>PlaceMyOrder.com {{page}}</h1>
+    <h1>PlaceMyOrder.com</h1>
 
     <ul>
       <li class="{{#eq page 'home'}}active{{/eq}}">

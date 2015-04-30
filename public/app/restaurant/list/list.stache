@@ -5,17 +5,9 @@
   <div class="restaurant">
     <img src="{{image}}" width="100" height="100">
     <h3>{{name}}</h3>
-    <div class="address">{{address}}</div>
-  </div>
-  {{/each}}
-
-  <div class="restaurant">
-    <img src="images/1-thumbnail.jpg" width="100" height="100" />
-    <h3>Spago</h3>
-
     <div class="address">
-      3108 Winchester Ct.<br />
-      Chicago, IL 60045
+      {{address.street}}<br>
+      {{address.zip}} {{address.city}} {{address.state}}
     </div>
 
     <div class="hours-price">
@@ -24,27 +16,8 @@
       <span class="open-now">Open Now</span>
     </div>
 
-    <button class="btn">Place My Order</button>
+    <a class="btn" href="restaurants/{{_id}}">Place My Order</a>
     <br />
-  </div><!-- one restaurant -->
-
-  <div class="restaurant">
-    <img src="images/2-thumbnail.jpg" width="100" height="100" />
-    <h3>El Bulli</h3>
-
-    <div class="address">
-      33 Fairview Street<br />
-      Chicago, IL 60045
-    </div>
-
-    <div class="hours-price">
-      $$$$$<br />
-      Hours: M-F 10am-11pm
-      <span class="closed-now">Closed</span>
-    </div>
-
-    <button class="btn">Place My Order</button>
-    <br />
-  </div><!-- one restaurant -->
-
-</div><!-- all restaurants -->
+  </div>
+  {{/each}}
+</div>

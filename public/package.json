@@ -4,7 +4,8 @@
   "description": "The frontend for the restaurant order application",
   "main": "app/main",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "live-reload": "steal-tools live-reload"
   },
   "author": "Bitovi",
   "license": "MIT",
@@ -14,6 +15,12 @@
     "steal": "^0.10.1"
   },
   "system": {
-    "transpiler": "babel"
+    "transpiler": "babel",
+    "configDependencies": [
+      "live-reload"
+    ]
+  },
+  "devDependencies": {
+    "steal-tools": "^0.10.1"
   }
 }
