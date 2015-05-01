@@ -15,9 +15,17 @@
     "steal": "^0.10.1"
   },
   "system": {
+    "main": "app/main.stache!autorender",
     "transpiler": "babel",
     "configDependencies": [
       "live-reload"
+    ],
+    "bundle": [
+      "app/home/home",
+      "app/order/order",
+      "app/restaurant/details/details",
+      "app/restaurant/list/list",
+      "app/order/history/history"
     ]
   },
   "devDependencies": {
