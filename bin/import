@@ -2,7 +2,7 @@
 require('babel/register');
 
 var app = require('../lib/app').app;
-var restaurants = require('./restaurants.json');
+var restaurants = require('../public/fixtures/restaurants.json');
 var service = app.service('api/restaurants');
 var count = 0;
 

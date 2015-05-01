@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "node lib/index.js",
-    "supervise": "supervisor -i public/ lib/",
+    "install": "cd public/ && npm install",
+    "supervisor": "supervisor -i public/ lib/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

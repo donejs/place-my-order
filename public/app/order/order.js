@@ -9,6 +9,9 @@ export const ViewModel = Map.extend({
     order: {
       Value: Order
     },
+    saveStatus: {
+      value: {}
+    },
     restaurant: {
       get(old) {
         let _id = this.attr('slug');

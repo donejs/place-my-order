@@ -1,7 +1,6 @@
 <div class="order-history">
   <h2>Order History</h2>
 
-  {{orders.isPending}}
   <table class="table table-striped">
     <thead>
     <tr>
