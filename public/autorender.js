@@ -9,7 +9,6 @@ define(["@loader", "module", "can/view/stache/system"], function(loader, module,
     setup();
   }
 
-
   function setup(){
     var main = loader.main;
     loader.import(main).then(function(r){

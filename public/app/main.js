@@ -7,10 +7,6 @@ import 'less/styles.less!';
 
 const AppState = Map.extend({});
 let state = new AppState();
-let render = () => {
-  $('#main').html(main(state));
-  console.clear();
-};
 
 $(() => {
   route(':page', { page: 'home' });
