@@ -9,6 +9,7 @@ Install and start [MongoDB](https://www.mongodb.org/) with the default settings.
 Start MongoDB by doing:
 
 > sudo mkdir -p /data/db
+
 > sudo mongod --fork --logpath /var/log/mongodb.log
 
 Clone [the repository](https://github.com/bitovi/place-my-order) and in the folder run
