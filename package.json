@@ -28,7 +28,8 @@
     "babel": "^5.1.13",
     "body-parser": "^1.12.3",
     "feathers": "^1.0.2",
-    "feathers-mongodb": "^0.3.2"
+    "feathers-mongodb": "^0.3.2",
+    "steal": "git://github.com/stealjs/steal#pmo"
   },
   "devDependencies": {
     "supervisor": "^0.6.0"
