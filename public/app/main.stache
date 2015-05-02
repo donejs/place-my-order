@@ -1,29 +1,45 @@
+<can-import from="app/main" />
 <can-import from="app/header/header" />
 <app-header page="{page}"></app-header>
 
 {{#eq page "home"}}
-  <can-import from="app/home/home" />
-  <app-home></app-home>
+  <can-import from="app/home/home">
+    {{#eq state "resolved"}}
+      <app-home></app-home>
+    {{/eq}}
+  </can-import>
 {{/eq}}
 
 {{#eq page "restaurants"}}
   {{#if slug}}
     {{#eq action 'order'}}
-      <can-import from="app/order/order" />
-      <app-order slug="{slug}"></app-order>
+      <can-import from="app/order/order">
+        {{#eq state "resolved"}}
+          <app-order slug="{slug}"></app-order>
+        {{/eq}}
+      </can-import>
     {{/eq}}
 
     {{^if action}}
-      <can-import from="app/restaurant/details/details" />
-      <app-restaurant-details slug="{slug}"></app-restaurant-details>
+      <can-import from="app/restaurant/details/details">
+        {{#eq state "resolved"}}
+          <app-restaurant-details slug="{slug}"></app-restaurant-details>
+        {{/eq}}
+      </can-import>
     {{/if}}
   {{else}}
-    <can-import from="app/restaurant/list/list" />
-    <app-restaurant-list></app-restaurant-list>
+    <can-import from="app/restaurant/list/list">
+      {{#eq state "resolved"}}
+        <app-restaurant-list></app-restaurant-list>
+      {{/eq}}
+    </can-import>
   {{/if}}
 {{/eq}}
 
 {{#eq page "order-history"}}
-  <can-import from="app/order/history/history" />
-  <app-order-history></app-order-history>
+  <can-import from="app/order/history/history">
+    {{#eq state "resolved"}}
+      <app-order-history></app-order-history>
+    {{/eq}}
+  </can-import>
 {{/eq}}

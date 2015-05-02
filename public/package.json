@@ -10,14 +10,22 @@
   "author": "Bitovi",
   "license": "MIT",
   "dependencies": {
-    "can": "^2.3.0-pre.0",
+    "can": "git://github.com/bitovi/canjs#place-my-order2",
     "jquery": "^2.1.4",
     "steal": "^0.10.1"
   },
   "system": {
+    "main": "app/main.stache!autorender",
     "transpiler": "babel",
     "configDependencies": [
       "live-reload"
+    ],
+    "bundle": [
+      "app/home/home",
+      "app/order/order",
+      "app/restaurant/details/details",
+      "app/restaurant/list/list",
+      "app/order/history/history"
     ]
   },
   "devDependencies": {
