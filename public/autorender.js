@@ -6,16 +6,15 @@ define(["@loader", "module", "can/view/stache/system"], function(loader, module,
     {}.toString.call(process) === "[object process]";
 
   if(!isNode) {
-    setup();
+    steal.done().then(setup);
   }
 
   function setup(){
-    var main = loader.main;
-    loader.import(main).then(function(r){
+    loader.import(loader.main).then(function(r){
       renderer = r;
 
       render();
-      liveReload(loader, main);
+      liveReload();
     });
   }
 
@@ -43,7 +42,7 @@ define(["@loader", "module", "can/view/stache/system"], function(loader, module,
     can.appendChild(can.$("body")[0], frag);
   }
 
-  function liveReload(loader, main){
+  function liveReload(){
     if(!loader.has("live-reload")) {
       return;
     }
@@ -51,7 +50,7 @@ define(["@loader", "module", "can/view/stache/system"], function(loader, module,
     loader.import("live-reload", { name: module.id }).then(function(reload){
       reload(render);
 
-      reload(main, function(r){
+      reload(loader.main, function(r){
         renderer = r;
       });
     });
