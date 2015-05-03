@@ -1,0 +1,10 @@
+<html>
+  <head>
+    <title>Place My Order</title>
+    {{styles}}
+  </head>
+  <body>
+    {{content}}
+    <script src="node_modules/steal/steal.js"></script>
+  </body>
+</html>
