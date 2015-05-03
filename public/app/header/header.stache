@@ -1,16 +1,18 @@
+<can-import from="can/view/href/href"/>
+
 <header>
   <nav>
     <h1>PlaceMyOrder.com</h1>
 
     <ul>
       <li class="{{#eq page 'home'}}active{{/eq}}">
-        <a href="/home">Home</a>
+        <a can-href='{page="home"}'>Home</a>
       </li>
       <li class="{{#eq page 'restaurants'}}active{{/eq}}">
-        <a href="/restaurants">Restaurants</a>
+        <a can-href='{page="restaurants"}'>Restaurants</a>
       </li>
       <li class="{{#eq page 'order-history'}}active{{/eq}}">
-        <a href="/order-history">Order history</a>
+        <a can-href='{page="order-history"}'>Order history</a>
       </li>
     </ul>
   </nav>
