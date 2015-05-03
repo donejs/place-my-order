@@ -15,7 +15,7 @@
     "steal": "^0.10.1"
   },
   "system": {
-    "main": "app/main.stache!autorender",
+    "main": "app/main.stache!can/view/autorender/system",
     "transpiler": "babel",
     "configDependencies": [
       "live-reload",
