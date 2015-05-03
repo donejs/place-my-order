@@ -1,4 +1,4 @@
-<can-import from="app/main" />
+<can-import from="app/routes" />
 <can-import from="app/header/header" />
 <app-header page="{page}"></app-header>
 
