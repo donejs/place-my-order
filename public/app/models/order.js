@@ -1,14 +1,13 @@
 import 'can/map/define/define';
-import Model from 'can/model/model';
-import List from 'can/list/list';
+import can from 'can';
+import superMap from 'can-connect/super-map';
+import connect  from 'can-connect/can-connect';
+import socket from './socket';
 
-export default Model.extend({
-  id: '_id',
-  resource: '/api/orders'
-}, {
+var Order = can.Map.extend({
   define: {
     items: {
-      Value: List
+      Value: can.List
     },
     total: {
       get() {
@@ -19,3 +18,26 @@ export default Model.extend({
     }
   }
 });
+var OrderList = can.List.extend({
+	Map: Order
+},{});
+
+var orderConnection = superMap({
+	resource: "/api/orders",
+	idProp: '_id',
+	Map: Order,
+	List: OrderList,
+	name: "orders"
+});
+
+if(orderConnection.cacheConnection) {
+	//orderConnection.cacheConnection.reset();
+}
+
+if(socket) {
+  socket.on('api/orders created', order => orderConnection.createInstance(order));
+  socket.on('api/orders updated', order => orderConnection.updateInstance(order));
+  socket.on('api/orders removed', order => orderConnection.destroyInstance(order));
+}
+
+export default Order;
