@@ -1,4 +1,7 @@
 <can-import from="app/routes" />
+<can-import from="less/styles.less!" />
+<can-import from="app/appstate" as="viewModel" />
+
 <can-import from="app/header/header" />
 <app-header page="{page}"></app-header>
 
