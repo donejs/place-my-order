@@ -16,7 +16,7 @@ var orderConnection = superMap({
 });
 
 if(orderConnection.cacheConnection) {
-	orderConnection.cacheConnection.reset();
+	//orderConnection.cacheConnection.reset();
 }
 
 
