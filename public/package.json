@@ -11,13 +11,17 @@
   "license": "MIT",
   "dependencies": {
     "can": "git://github.com/bitovi/canjs#place-my-order2",
+    "can-connect": "git://github.com/canjs/can-connect#place-my-order2",
     "jquery": "^1.11.3",
-    "steal": "^0.10.1",
-    "can-connect": "git://github.com/canjs/can-connect#place-my-order2"
+    "socket.io-client": "^1.3.5",
+    "steal": "^0.10.1"
   },
   "system": {
     "main": "app/main.stache!can/view/autorender/system",
     "transpiler": "babel",
+    "paths": {
+      "socketio": "node_modules/socket.io-client/socket.io.js"
+    },
     "configDependencies": [
       "live-reload",
       "system-config"
