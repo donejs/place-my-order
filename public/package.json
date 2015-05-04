@@ -12,7 +12,8 @@
   "dependencies": {
     "can": "git://github.com/bitovi/canjs#place-my-order2",
     "jquery": "^1.11.3",
-    "steal": "^0.10.1"
+    "steal": "^0.10.1",
+    "can-connect": "git://github.com/canjs/can-connect#place-my-order2"
   },
   "system": {
     "main": "app/main.stache!can/view/autorender/system",
