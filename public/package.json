@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "steal-qunit": "0.0.4",
     "steal-tools": "^0.10.1"
   }
 }

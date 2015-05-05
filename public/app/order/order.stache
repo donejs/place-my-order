@@ -1,3 +1,4 @@
+<can-import from="bit-tabs"/>
 <div class="order-form">
   {{#if restaurant.isPending}}
     <div class="loading"></div>
@@ -5,29 +6,34 @@
     {{#restaurant.value}}
     <h3>Order from {{name}}</h3>
 
-
-
     <form can-submit="placeOrder">
-      <!-- tabs -->
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#">Lunch Menu</a></li>
-        <li><a href="#">Dinner Menu</a></li>
-      </ul>
-      <!-- tabs -->
-
-      <div class="tab-pane">
+      <bit-tabs tabs-class="nav nav-tabs">
         <p class="text-error">Please choose an item</p>
-        <ul class="list-group">
-          {{#each menu.lunch}}
-          <li class="list-group-item">
-            <label>
-              <input type="checkbox" can-click="{select this @element.0.checked}">
-              {{name}} <span class="badge">${{price}}</span>
-            </label>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
+        <bit-panel title="Lunch menu">
+          <ul class="list-group">
+            {{#each menu.lunch}}
+            <li class="list-group-item">
+              <label>
+                <input type="checkbox" can-click="{select this @element.0.checked}">
+                {{name}} <span class="badge">${{price}}</span>
+              </label>
+            </li>
+            {{/each}}
+          </ul>
+        </bit-panel>
+        <bit-panel title="Dinner menu">
+          <ul class="list-group">
+            {{#each menu.dinner}}
+            <li class="list-group-item">
+              <label>
+                <input type="checkbox" can-click="{select this @element.0.checked}">
+                {{name}} <span class="badge">${{price}}</span>
+              </label>
+            </li>
+            {{/each}}
+          </ul>
+        </bit-panel>
+      </bit-tabs>
 
       <div class="form-group">
         <label class="control-label">Name:</label>
