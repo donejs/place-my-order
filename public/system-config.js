@@ -2,7 +2,7 @@
 
 var MySystem = require('@loader');
 
-if(MySystem.env === "development" && typeof window === "undefined") {
+if(MySystem.env === "development" && typeof window === "undefined" && !MySystem.buildMode) {
 	exports.systemConfig = {
     map: {
       'socketio': '@empty'

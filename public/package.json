@@ -19,6 +19,11 @@
   "system": {
     "main": "app/main.stache!can/view/autorender/system",
     "transpiler": "babel",
+    "meta": {
+      "socketio": {
+        "format": "global"
+      }
+    },
     "paths": {
       "socketio": "node_modules/socket.io-client/socket.io.js"
     },
