@@ -35,9 +35,9 @@ if(orderConnection.cacheConnection) {
 }
 
 if(socket) {
-  socket.on('api/orders created', order => orderConnection.createInstance(order));
-  socket.on('api/orders updated', order => orderConnection.updateInstance(order));
-  socket.on('api/orders removed', order => orderConnection.destroyInstance(order));
+  socket.on('orders created', order => orderConnection.createInstance(order));
+  socket.on('orders updated', order => orderConnection.updateInstance(order));
+  socket.on('orders removed', order => orderConnection.destroyInstance(order));
 }
 
 export default Order;
