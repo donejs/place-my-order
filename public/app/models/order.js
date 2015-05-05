@@ -18,21 +18,18 @@ var Order = can.Map.extend({
     }
   }
 });
-var OrderList = can.List.extend({
-	Map: Order
-},{});
 
-var orderConnection = superMap({
+Order.List = can.List.extend({
+	Map: Order
+}, {});
+
+let orderConnection = superMap({
 	resource: "/api/orders",
 	idProp: '_id',
 	Map: Order,
-	List: OrderList,
+	List: Order.List,
 	name: "orders"
 });
-
-if(orderConnection.cacheConnection) {
-	//orderConnection.cacheConnection.reset();
-}
 
 if(socket) {
   socket.on('orders created', order => orderConnection.createInstance(order));

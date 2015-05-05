@@ -11,9 +11,6 @@ export const ViewModel = Map.extend({
         return this.attr("@root").pageData("orders", {}, Order.findAll({}));
       }
     }
-  },
-  deleteOrder(order) {
-    order.destroy();
   }
 });
 

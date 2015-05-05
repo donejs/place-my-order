@@ -16,12 +16,12 @@ export const ViewModel = Map.extend({
       get(old) {
         let _id = this.attr('slug');
         if(!old && _id) {
-          return this.attr("@root").pageData("orders", { _id },
-            Restaurant.findOne({ _id }).then(restaurant => {
-              this.attr('order.restaurant', restaurant.attr('_id'));
-              return restaurant;
-            })
-          );
+          let dfd = Restaurant.findOne({ _id }).then(restaurant => {
+            this.attr('order.restaurant', restaurant.attr('_id'));
+            return restaurant;
+          });
+
+          return this.attr("@root").pageData("orders", { _id }, dfd);
         }
 
         return old;

@@ -33,7 +33,7 @@
           </ul>
         </td>
         <td>${{total}}</td>
-        <td><a href="#" can-click="deleteOrder">Delete</a></td>
+        <td><a href="javascript://" can-click="{this.destroy}">Delete</a></td>
       </tr>
       {{/each}}
     {{/if}}
