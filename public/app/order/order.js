@@ -1,10 +1,10 @@
 import Component from 'can/component/component';
 import template from './order.stache!';
-import Map from 'can/map/map';
+import BaseViewModel from 'app/viewmodel';
 import Restaurant from 'app/models/restaurant';
 import Order from 'app/models/order';
 
-export const ViewModel = Map.extend({
+export const ViewModel = BaseViewModel.extend({
   define: {
     order: {
       Value: Order
@@ -21,7 +21,9 @@ export const ViewModel = Map.extend({
             return restaurant;
           });
 
-          return this.attr("@root").pageData("orders", { _id }, dfd);
+          this.pageData('restaurant', { _id }, dfd);
+
+          return dfd;
         }
 
         return old;
