@@ -8,7 +8,7 @@ export const ViewModel = Map.extend({
   define: {
     orders: {
       get() {
-        return Order.findAll({});
+        return this.attr("@root").pageData("orders", {}, Order.findAll({}));
       }
     }
   },

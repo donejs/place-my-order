@@ -9,8 +9,14 @@ export default Component.extend({
   viewModel: {
   	define: {
   		restaurants: {
-  			value: function(){
-	  			return new Restaurant.List({})
+        Value: Restaurant.List,
+        get: function(list){
+          let restaurants = Restaurant.findAll({});
+          this.attr("@root").pageData("restaurant", {}, restaurants);
+
+          list.replace(restaurants);
+
+          return list;
 	  		}
   		}
   	}

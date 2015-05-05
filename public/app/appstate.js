@@ -1,5 +1,5 @@
-import Map from "can/map/map";
+import AppMap from "can/map/app/";
 
-const AppState = Map.extend({});
+const AppState = AppMap.extend({});
 
 export default AppState;

@@ -13,7 +13,9 @@ export default Component.extend({
         get(old) {
           let _id = this.attr('slug');
           if(!old && _id) {
-            return Restaurant.findOne({ _id });
+            let params = { _id };
+            let restaurant = Restaurant.findOne(params);
+            return this.attr("@root").pageData("restaurant", params, restaurant);
           }
 
           return old;
