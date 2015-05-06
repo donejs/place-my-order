@@ -40,7 +40,7 @@
 {{/eq}}
 
 {{#eq page "order-history"}}
-  <can-import from="app/order/history/history">
+  <can-import from="app/order/history/history.component!">
     {{#eq state "resolved"}}
       <app-order-history></app-order-history>
     {{/eq}}
