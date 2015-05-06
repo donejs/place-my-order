@@ -2,16 +2,19 @@
 require('babel/register');
 
 var appPromise = require('../lib/app');
-var restaurants = require('../public/app/models/fixtures/restaurants.json');
+var maker = require('../public/app/models/fixtures/restaurant-maker');
 
 appPromise.then(function(app) {
-  var service = app.service('api/restaurants');
+  var service = app.api.service('restaurants');
+  var restaurants = maker();
   var count = 0;
+
   restaurants.forEach(function(restaurant) {
-    service.create(restaurant, {}, function(err, created) {
-      console.log('Created', created);
+    service.create(restaurant, {}, function(error, restaurant) {
+      console.log('Created restaurant ' +
+        restaurant.name + '(' + restaurant._id + ')');
       count++;
-      if(count === restaurant.length) {
+      if(count === restaurants.length) {
         process.exit();
       }
     });
