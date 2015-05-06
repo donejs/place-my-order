@@ -5,26 +5,25 @@
     <thead>
     <tr>
       <th>#</th>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Phone</th>
+      <th>Name / Address / Phone</th>
       <th>Order</th>
       <th>Total</th>
-      <th></th>
+      <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     {{#if orders.isPending}}
     <tr>
-      <td colspan="7"><div class="loading"></div></td>
+      <td colspan="5"><div class="loading"></div></td>
     </tr>
     {{else}}
       {{#each orders.value}}
       <tr>
         <th scope="row">1</th>
-        <td>{{name}}</td>
-        <td>{{address}}</td>
-        <td>{{phone}}</td>
+        <td>{{name}}
+          <br />{{address}}
+          <br />{{phone}}
+        </td>
         <td>
           <ul>
             {{#each items}}
@@ -33,7 +32,10 @@
           </ul>
         </td>
         <td>${{total}}</td>
-        <td><a href="javascript://" can-click="{this.destroy}">Delete</a></td>
+        <td>
+          <span class="badge">New Order!</span>
+          <p class="action">Mark as: <a href="#">Preparing</a></p>
+        </td>
       </tr>
       {{/each}}
     {{/if}}

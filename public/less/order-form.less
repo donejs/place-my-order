@@ -7,6 +7,12 @@
       .help-block;
       display: none;
     }
+    p.info {
+      display: block;
+      &.text-success {
+        color: @state-success-text;
+      }
+    }
     .has-error p, .text-error {
       color: @state-danger-text;
       display: block;
