@@ -8,7 +8,11 @@
 
     <form can-submit="placeOrder">
       <bit-tabs tabs-class="nav nav-tabs">
-        <p class="text-error">Please choose an item</p>
+        <p class="info {{^if order.items.length}}text-error{{else}}text-success{{/if}}">
+          {{^if order.items.length}}Please choose an item{{else}}
+          {{order.items.length}} selected
+          {{/if}}
+        </p>
         <bit-panel title="Lunch menu">
           <ul class="list-group">
             {{#each menu.lunch}}

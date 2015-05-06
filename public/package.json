@@ -26,6 +26,9 @@
         "format": "global"
       }
     },
+    "map": {
+      "bit-tabs@0.0.4#tabs.less!$less": "@empty"
+    },
     "paths": {
       "socketio": "node_modules/socket.io-client/socket.io.js"
     },
