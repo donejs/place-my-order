@@ -8,7 +8,7 @@
     {{/if}}
   </head>
   <body>
-    {{content}}
+    {{{content}}}
     <script {{inlineCache}}></script>
 
     {{#if isProd}}

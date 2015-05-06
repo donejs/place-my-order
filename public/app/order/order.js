@@ -1,27 +1,29 @@
 import Component from 'can/component/component';
 import template from './order.stache!';
-import Map from 'can/map/map';
+import BaseViewModel from 'app/viewmodel';
 import Restaurant from 'app/models/restaurant';
 import Order from 'app/models/order';
 
-export const ViewModel = Map.extend({
+export const ViewModel = BaseViewModel.extend({
   define: {
     order: {
       Value: Order
     },
     saveStatus: {
-      value: {}
+      Value: Object
     },
     restaurant: {
       get(old) {
         let _id = this.attr('slug');
         if(!old && _id) {
-          return this.attr("@root").pageData("orders", { _id },
-            Restaurant.findOne({ _id }).then(restaurant => {
-              this.attr('order.restaurant', restaurant.attr('_id'));
-              return restaurant;
-            })
-          );
+          let dfd = Restaurant.findOne({ _id }).then(restaurant => {
+            this.attr('order.restaurant', restaurant.attr('_id'));
+            return restaurant;
+          });
+
+          this.pageData('restaurant', { _id }, dfd);
+
+          return dfd;
         }
 
         return old;

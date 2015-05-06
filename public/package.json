@@ -11,7 +11,9 @@
   "license": "MIT",
   "dependencies": {
     "can": "git://github.com/bitovi/canjs#place-my-order2",
+    "bit-tabs": "git://github.com/bitovi-components/bit-tabs#place-my-order2",
     "can-connect": "git://github.com/canjs/can-connect#place-my-order2",
+    "event-emitter": "^0.3.3",
     "jquery": "^1.11.3",
     "socket.io-client": "^1.3.5",
     "steal": "^0.10.1"
@@ -40,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "steal-qunit": "0.0.4",
     "steal-tools": "^0.10.1"
   }
 }

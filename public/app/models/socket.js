@@ -1,9 +1,11 @@
 import io from 'socketio';
+// import EventEmitter from 'event-emitter';
 
 let socket;
-
 if(io) {
   socket = io.connect();
 }
 
 export default socket;
+// We either connect to SocketIO or return a dummy event emitter
+// export default io ? io.connect() : new EventEmitter();
