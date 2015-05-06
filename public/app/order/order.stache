@@ -18,7 +18,7 @@
             {{#each menu.lunch}}
             <li class="list-group-item">
               <label>
-                <input type="checkbox" can-click="{select this @element.0.checked}">
+                <input type="checkbox" can-click="{toggle}">
                 {{name}} <span class="badge">${{price}}</span>
               </label>
             </li>
@@ -30,7 +30,7 @@
             {{#each menu.dinner}}
             <li class="list-group-item">
               <label>
-                <input type="checkbox" can-click="{select this @element.0.checked}">
+                <input type="checkbox" can-click="{toggle}">
                 {{name}} <span class="badge">${{price}}</span>
               </label>
             </li>
