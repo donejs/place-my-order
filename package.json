@@ -30,7 +30,11 @@
     "feathers": "^1.0.2",
     "feathers-mongodb": "^0.3.2",
     "najax": "^0.1.5",
-    "steal": "git://github.com/stealjs/steal#pmo"
+    "steal": "git://github.com/stealjs/steal#pmo",
+    "steal-tools": "git://github.com/stealjs/steal-tools#pmo",
+    "grunt": "^0.4.4",
+    "grunt-cli": "^0.1.13"
+
   },
   "devDependencies": {
     "supervisor": "^0.6.0",
