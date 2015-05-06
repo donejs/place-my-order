@@ -11,9 +11,6 @@ const cities = {
 
 export const ViewModel = BaseViewModel.extend({
   define: {
-    city: {
-      value: null
-    },
     state: {
       value: null,
       set(value) {
@@ -21,6 +18,16 @@ export const ViewModel = BaseViewModel.extend({
         this.attr('city', null);
         return value;
       }
+    },
+    states: {
+      value: {
+        MI: 'Michigan',
+        IL: 'Illinois',
+        WI: 'Wisonsin'
+      }
+    },
+    city: {
+      value: null
     },
     cities: {
       get() {

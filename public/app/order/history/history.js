@@ -10,6 +10,10 @@ export const ViewModel = BaseViewModel.extend({
         return this.pageData('orders', {}, Order.findAll({}));
       }
     }
+  },
+  markAs(order, status) {
+    order.attr('status', status);
+    order.save();
   }
 });
 

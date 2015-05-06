@@ -5,9 +5,9 @@
       <label>State</label>
       <select class="form-control" can-value="state">
         <option value="">All</option>
-        <option value="IL">Illinois</option>
-        <option value="MI">Michigan</option>
-        <option value="WI">Wisconsin</option>
+        {{#each states}}
+        <option value="{{@key}}">{{.}}</option>
+        {{/each}}
       </select>
     </div>
     {{#if state}}

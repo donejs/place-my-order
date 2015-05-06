@@ -6,6 +6,9 @@ import socket from './socket';
 
 var Order = can.Map.extend({
   define: {
+    status: {
+      value: 'new'
+    },
     items: {
       Value: can.List
     },

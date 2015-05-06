@@ -1,7 +1,7 @@
 <div class="order-history">
   <h2>Order History</h2>
 
-  <table class="table table-striped">
+  <table class="table">
     <thead>
     <tr>
       <th>#</th>
@@ -18,7 +18,7 @@
     </tr>
     {{else}}
       {{#each orders.value}}
-      <tr>
+      <tr class="{{status}}">
         <th scope="row">1</th>
         <td>{{name}}
           <br />{{address}}
@@ -33,8 +33,41 @@
         </td>
         <td>${{total}}</td>
         <td>
+          {{#eq status 'new'}}
           <span class="badge">New Order!</span>
-          <p class="action">Mark as: <a href="#">Preparing</a></p>
+          <p class="action">
+            Mark as:
+            <a href="javascript://" can-click="{markAs this 'preparing'}">
+              Preparing
+            </a>
+          </p>
+          {{/eq}}
+          {{#eq status 'preparing'}}
+          <span class="badge">Preparing</span>
+          <p class="action">
+            Mark as:
+            <a href="javascript://"  can-click="{markAs this 'delivery'}">
+              Out for delivery
+            </a>
+          </p>
+          {{/eq}}
+          {{#eq status 'delivery'}}
+          <span class="badge">Out for delivery</span>
+          <p class="action">
+            Mark as:
+            <a href="javascript://"  can-click="{markAs this 'delivered'}">
+              Delivered
+            </a>
+          </p>
+          {{/eq}}
+          {{#eq status 'delivered'}}
+          <span class="badge">Delivered</span>
+          <p class="action">
+            <a href="javascript://"  can-click="{this.destroy}">
+              Delete
+            </a>
+          </p>
+          {{/eq}}
         </td>
       </tr>
       {{/each}}
