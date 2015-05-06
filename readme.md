@@ -33,3 +33,19 @@ For development to start the server and have it reload automatically when its fi
 For Steals live reload:
 
 > cd public/ && npm run live-reload
+
+### Production
+
+To use production first build:
+
+> grunt build
+
+Then switch your `NODE_ENV` to production:
+
+> export NODE_ENV=production
+
+This will be on a different port and shown in the command line.
+
+To go back to development unset:
+
+> unset NODE_ENV
