@@ -12,7 +12,6 @@ test('Default order is initialized', () => {
 
 test('Adding and removing menu items to the order', () => {
   let vm = new ViewModel({
-    slug: 'spago',
     restaurant: {
       "menu": {
         "lunch": [{

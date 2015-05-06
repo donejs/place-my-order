@@ -7,7 +7,7 @@
     "start": "node lib/index.js",
     "install": "cd public/ && npm install",
     "supervisor": "supervisor -i public/ lib/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "testee test.html --browsers firefox --root public/ --reporter Spec"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "steal": "git://github.com/stealjs/steal#pmo"
   },
   "devDependencies": {
-    "supervisor": "^0.6.0"
+    "supervisor": "^0.6.0",
+    "testee": "^0.2.0"
   }
 }

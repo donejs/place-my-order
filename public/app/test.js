@@ -1,2 +1,3 @@
-import './models/order_test';
-import './order/order_test';
+import 'app/models/fixtures/';
+import 'app/models/order_test';
+import 'app/order/order_test';
