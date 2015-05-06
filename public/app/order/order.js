@@ -10,7 +10,7 @@ export const ViewModel = BaseViewModel.extend({
       Value: Order
     },
     saveStatus: {
-      value: {}
+      Value: Object
     },
     restaurant: {
       get(old) {
