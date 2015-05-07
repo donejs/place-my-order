@@ -2,18 +2,22 @@
   <template>
     <div class="form-group{{#if nameError}} has-error{{/if}}">
       <label class="control-label">Name:</label>
-      <input name="name" type="text" class="form-control" can-value="{order.name}">
+      <input name="name" type="text" class="form-control" can-keyup="{order.attr 'name' @element.val}">
       <p>Please enter your name.</p>
     </div>
       <div class="form-group{{#if addressError}} has-error{{/if}}">
       <label class="control-label">Address:</label>
-      <input name="address" type="text" class="form-control" can-value="{order.address}">
+      <input name="address" type="text" class="form-control" can-keyup="{order.attr 'address' @element.val}">
       <p class="help-text">Please enter your address.</p>
     </div>
       <div class="form-group{{#if phoneError}} has-error{{/if}}">
       <label class="control-label">Phone:</label>
-      <input name="phone" type="text" class="form-control" can-value="{order.phone}">
-      <p>Please enter a valid phone number.</p>
+      <input name="phone" type="text" class="form-control" can-keyup="{order.attr 'phone' @element.val}">
+      {{#if is911}}
+        <p>That's not your real number :-(</p>
+      {{else}}
+        <p>Please enter a phone number in the format 555-555-5555</p>
+      {{/if}}
     </div>
   </template>
   <view-model>
@@ -21,7 +25,7 @@
     import "can/map/define/";
     import Order from "app/models/order";
 
-    const phoneExp = /^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/;
+    const phoneExp = /^(\d{3}-\d{3}-\d{4})|911$/;
 
     export default Map.extend({
       define: {
@@ -43,7 +47,13 @@
         },
         phoneError: {
           get: function(){
-            return this.attr("showErrors.phone") && !phoneExp.test(this.attr("order.phone"));
+            return this.attr("showErrors.phone") &&
+              (!phoneExp.test(this.attr("order.phone")) || this.attr("is911"));
+          }
+        },
+        is911: {
+          get: function(){
+            return this.attr("order.phone") === "911";
           }
         }
       }
@@ -51,10 +61,6 @@
   </view-model>
   <events>
     export default {
-      "input click": function(el){
-        // Dismiss errors when a user clicks on the form field.
-        this.viewModel.attr("showErrors").attr(el.attr("name"), false);
-      },
       "input blur": function(el){
         // Allow errors to be shown after the user has left the form field.
         this.viewModel.attr("showErrors").attr(el.attr("name"), true);
