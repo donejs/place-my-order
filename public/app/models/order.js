@@ -26,7 +26,13 @@ var Order = can.Map.extend({
 
 Order.List = can.List.extend({
 	Map: Order
-}, {});
+}, {
+	totals: function(){
+		return this.map(function(order){
+			return order.attr("total");
+		});
+	}
+});
 
 let orderConnection = superMap({
 	resource: "/api/orders",
