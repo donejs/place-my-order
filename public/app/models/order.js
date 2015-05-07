@@ -2,6 +2,8 @@ import 'can/map/define/define';
 import can from 'can';
 import superMap from 'can-connect/super-map';
 import connect  from 'can-connect/can-connect';
+import tag from 'can-connect/tag';
+import set from 'can-set';
 import socket from './socket';
 
 var Order = can.Map.extend({
@@ -32,6 +34,7 @@ let orderConnection = superMap({
 	Map: Order,
 	List: Order.List,
 	name: "orders"
+	, compare: set.comparators.enum("status", ["new","preparing","delivery","delivered"])
 });
 
 if(socket) {
@@ -39,5 +42,7 @@ if(socket) {
   socket.on('orders updated', order => orderConnection.updateInstance(order));
   socket.on('orders removed', order => orderConnection.destroyInstance(order));
 }
+
+tag('order-model', orderConnection);
 
 export default Order;
