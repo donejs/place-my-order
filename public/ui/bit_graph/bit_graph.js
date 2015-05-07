@@ -58,6 +58,7 @@ export var BitSeriesVM = can.Map.extend({
             }
         }
     },
+    color: "steelblue",
     data: null,
     graphHeight: null,
     graphWidth: null
@@ -117,11 +118,11 @@ can.Component.extend({
 export var BitGraphVM = can.Map.extend({
     define: {
         margins: {
-            value: [80, 80, 80, 80],
+            value: [0, 0, 0, 80],
             type: "*"
         },
         width: {
-            value: 600,
+            value: 1000,
             get: function(val) {
                 var margins = this.attr('margins');
                 return val - margins[1] - margins[3];
@@ -139,7 +140,7 @@ export var BitGraphVM = can.Map.extend({
                 var margins = this.attr('margins');
                 return "translate(" + margins[3] + "," + margins[0] + ")"
             }
-        },
+        }
         graphContainerElement: {
             type: "*"
         },
@@ -159,7 +160,7 @@ export var BitGraphVM = can.Map.extend({
                 // TODO this method should just capture changes to any element on the graph
                 // TODO append all elements to a document fragment instead and update in the change event
 
-                // bind to the serialized chagnes 
+                // bind to the serialized changes
                 this.attr('seriesSerialized');
 
                 this.clearGraphLines(() => {
@@ -167,7 +168,7 @@ export var BitGraphVM = can.Map.extend({
                     var lineContainerElement = this.attr('lineContainerElement');
                     can.each(this.attr('series'), function(series) {
                         if(series.attr('line')) {
-                            lineContainerElement.append("svg:path").attr("d", series.attr('line'));
+                            lineContainerElement.append("svg:path").attr("d", series.attr('line')).style("stroke", series.attr("color"));
                         }
                     });
                 });
@@ -196,6 +197,33 @@ export var BitGraphVM = can.Map.extend({
             }).remove();
         }
     },
+    refreshAxes: function() {
+        var axisContainerElement = this.attr('axisContainerElement');
+        if(axisContainerElement) {
+            // X scale will fit all values from data[] within pixels 0-w
+            var x = d3.scale.linear().domain([0, 10]).range([0, this.attr('width')]);
+            // Y scale will fit all values from data[] within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
+            var y = d3.scale.linear().domain([0, 5]).range([this.attr('height'), 0]);
+
+            // create xAxis
+            var xAxis = d3.svg.axis().scale(x).tickSize(-this.attr('height')).tickSubdivide(true).tickFormat("");
+            // Add the x-axis.
+            axisContainerElement.append("svg:g")
+                  .attr("class", "x axis")
+                  .attr("width", this.attr('width'))
+                  .attr("transform", "translate(0," + this.attr('height') + ")")
+                  .call(xAxis);
+
+            // create left yAxis
+            var yAxisLeft = d3.svg.axis().scale(y).ticks(4).tickFormat("").orient("left");
+            // Add the y-axis to the left
+            axisContainerElement.append("svg:g")
+                  .attr("class", "y axis")
+                  .attr("height", this.attr('height'))
+                  .attr("transform", "translate(-25,0)")
+                  .call(yAxisLeft);
+        }
+    },
     renderBaseGraph: function(graphBaseElement) {
         var margins = this.attr('margins');
         
@@ -206,36 +234,11 @@ export var BitGraphVM = can.Map.extend({
             .append("svg:g")
               .attr("transform", this.attr('transform'));
         this.attr('graphContainerElement', graphContainerElement);
-        this.attr('lineContainerElement', graphContainerElement.append("svg:g").attr("class", "lines"));
         this.attr('axisContainerElement', graphContainerElement.append("svg:g").attr("class", "axis"));
+        this.attr('lineContainerElement', graphContainerElement.append("svg:g").attr("class", "lines"));
 
-        // for now I think we can render the axis here?
-        this.renderAxis();
-    },
-    renderAxis: function() {
-        // TODO fix these axis!
-        var axisContainerElement = this.attr('axisContainerElement');
-
-        // // X scale will fit all values from data[] within pixels 0-w
-        // var x = d3.scale.linear().domain([0, this.attr('longestSeriesLength')]).range([0, this.attr('width')]);
-        // // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
-        // var y = d3.scale.linear().domain([0, this.attr('highestSeriesValue')]).range([this.attr('height'), 0]);
-
-        // // create yAxis
-        // var xAxis = d3.svg.axis().scale(x).tickSize(-this.attr('height')).tickSubdivide(true);
-        // // Add the x-axis.
-        // axisContainerElement.append("svg:g")
-        //       .attr("class", "x axis")
-        //       .attr("transform", "translate(0," + this.attr('height') + ")")
-        //       .call(xAxis);
-
-        // // create left yAxis
-        // var yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left");
-        // // Add the y-axis to the left
-        // axisContainerElement.append("svg:g")
-        //       .attr("class", "y axis")
-        //       .attr("transform", "translate(-25,0)")
-        //       .call(yAxisLeft);
+        // TODO remove this eventually and make axes dependent on line data?
+        this.refreshAxes();
     },
     addSeries: function(series) {
         can.batch.start();
@@ -254,21 +257,11 @@ export var BitGraphVM = can.Map.extend({
 //     data: [1,2,3]
 // });
 // var bs2 = new BitSeriesVM({
-//     data: [100,200,300]
+//     data: [100,200,300,400]
 // });
 
 // console.log('initial');
 // var vm = new BitGraphVM({});
-
-// vm.bind('series', function(ev, n, o) {
-//     console.log('series changed from ', o, ' to ', n);
-// });
-// vm.bind('graphLines', function(ev, n, o) {
-//     console.log('graphLines changed from ', o, ' to ', n);
-// });
-// vm.bind('allTheGraphThings', function(ev, n, o) {
-//     console.log('allTheGraphThings changed from ', o, ' to ', n);
-// });
 
 // vm.addSeries(bs1);
 // vm.addSeries(bs2);
@@ -279,8 +272,8 @@ export var BitGraphVM = can.Map.extend({
 // can.batch.stop();
 
 // can.batch.start();
-// console.log('pushing 5');
-// bs1.attr('data').push(5);
+// console.log('pushing 500');
+// bs2.attr('data').push(500);
 // can.batch.stop();
 
 can.Component.extend({
