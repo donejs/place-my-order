@@ -6,29 +6,31 @@ import d3 from "d3";
 
 export var BitSeriesVM = can.Map.extend({
     define: {
-        seriesLength: {
-            get: function() {
-                return this.attr('data') && this.attr('data').attr('length') || 0;
-            }
-        },
         serializedData: {
             get: function() {
                 return this.attr('data') && this.attr('data').serialize() || null;
             },
         },
+        seriesLength: {
+            get: function() {
+                return this.attr('data') && this.attr('data').attr('length') || 0;
+            }
+        },
         lowestValue: {
             get: function() {
-                return this.attr('serializedData') && d3.min(this.attr('serializedData')) || null;
+                var lowestValue = this.attr('serializedData') && d3.min(this.attr('serializedData'));
+                return (lowestValue || lowestValue === 0) ? lowestValue : null;
             }
         },
         highestValue: {
             get: function() {
-                return this.attr('serializedData') && d3.max(this.attr('serializedData')) || null;
+                var highestNumber = this.attr('serializedData') && d3.max(this.attr('serializedData'));
+                return (highestNumber || highestNumber === 0) ? highestNumber : null;
             }
         },
         line: {
             get: function() {
-                if(this.attr('seriesLength')) {
+                if(this.attr('seriesLength') && this.attr('lowestValue') !== null && this.attr('highestValue') !== null) {
                     // X scale will fit all values from data[] within pixels 0-w
                     var x = d3.scale.linear().domain([0, this.attr('seriesLength')]).range([0, this.attr('graphWidth')]);
                     // Y scale will fit all values from data[] within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
@@ -56,17 +58,30 @@ export var BitSeriesVM = can.Map.extend({
                     return null;
                 }
             }
+        },
+        data: {
+            get: function(value) {
+                return this.convertListItemsToNumbers(value);
+            }
         }
     },
     color: "steelblue",
     data: null,
     graphHeight: null,
-    graphWidth: null
+    graphWidth: null,
+    convertListItemsToNumbers: function(listItems) {
+        if(listItems) {
+                listItems.each(function(data, index) {
+                listItems[index] = Number.parseFloat(data);
+            });
+        }
+        return listItems;
+    }
 });
 
 // console.log('initial');
 // var vm = new BitSeriesVM({
-//     data: [1,2,3]
+//     data: ["23.00", "84.98", "48.99", "138.46"]
 // });
 
 // vm.bind('data', function(e, n, o) {
@@ -94,8 +109,8 @@ export var BitSeriesVM = can.Map.extend({
 // can.batch.stop();
 
 // can.batch.start();
-// console.log('pushing 5');
-// vm.attr('data').push(5);
+// console.log('pushing 150');
+// vm.attr('data').push(150);
 // can.batch.stop();
 
 can.Component.extend({

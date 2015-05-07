@@ -13,20 +13,10 @@ import $ from "jquery";
 import can from "can";
 
 var seriesData = new can.List([
-  1,
-  2,
-  3,
-  4,
-  5,
-  3,
-  1,
-  3,
-  5
+  1, 2, 3, 4, 5, 3, 1, 3, 5
 ]);
 var anotherSeries = new can.List([
-  300,
-  500,
-  700
+  "23.00", "84.98", "48.99", "138.46"
 ]);
 
 var vm = $("#demo").viewModel();
@@ -36,6 +26,7 @@ vm.attr({
   data2: anotherSeries
 });
 
+anotherSeries.push(0);
 window.setInterval(() => {
   var val = Math.floor(Math.random() * 1000) + 1;
   can.batch.start();
