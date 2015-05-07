@@ -1,5 +1,5 @@
 <div class="order-history">
-  <h2>Order History</h2>
+  <h2 class="page-header">Order History</h2>
 
   <table class="table">
     <thead>
@@ -62,12 +62,12 @@
           {{/eq}}
           {{#eq status 'delivered'}}
           <span class="badge">Delivered</span>
+          {{/eq}}
           <p class="action">
-            <a href="javascript://"  can-click="{this.destroy}">
+            <a href="javascript://"  can-click="{destroy}">
               Delete
             </a>
           </p>
-          {{/eq}}
         </td>
       </tr>
       {{/each}}

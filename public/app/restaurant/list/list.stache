@@ -4,43 +4,49 @@
     <div class="form-group">
       <label>State</label>
       <select class="form-control" can-value="state">
-        <option value="">All</option>
+        {{^if state}}
+        <option value="">Choose a state</option>
+        {{/if}}
         {{#each states}}
         <option value="{{@key}}">{{.}}</option>
         {{/each}}
       </select>
     </div>
-    {{#if state}}
     <div class="form-group">
       <label>City</label>
-      <select class="form-control" can-value="city">
-        <option value="">All</option>
+      <select class="form-control" can-value="city" {{^if state}}disabled{{/if}}>
+        <option value="">Choose a city</option>
         {{#each cities}}
         <option>{{.}}</option>
         {{/each}}
       </select>
     </div>
-    {{/if}}
   </form>
 
-  {{#each restaurants}}
-  <div class="restaurant">
-    <img src="/{{images.thumbnail}}" width="100" height="100">
-    <h3>{{name}}</h3>
-    {{#address}}
-    <div class="address">
-      {{street}}<br />{{city}}, {{state}} {{zip}}
-    </div>
-    {{/address}}
+  {{#if restaurants.isPending}}
+  <div class="restaurant loading"></div>
+  {{/if}}
 
-    <div class="hours-price">
-      $$$<br />
-      Hours: M-F 10am-11pm
-      <span class="open-now">Open Now</span>
-    </div>
+  {{#if restaurants.isResolved}}
+    {{#each restaurants.value}}
+    <div class="restaurant">
+      <img src="/{{images.thumbnail}}" width="100" height="100">
+      <h3>{{name}}</h3>
+      {{#address}}
+      <div class="address">
+        {{street}}<br />{{city}}, {{state}} {{zip}}
+      </div>
+      {{/address}}
 
-    <a class="btn" href="restaurants/{{slug}}">Place My Order</a>
-    <br />
-  </div>
-  {{/each}}
+      <div class="hours-price">
+        $$$<br />
+        Hours: M-F 10am-11pm
+        <span class="open-now">Open Now</span>
+      </div>
+
+      <a class="btn" href="restaurants/{{slug}}">Place My Order</a>
+      <br />
+    </div>
+    {{/each}}
+  {{/if}}
 </div>

@@ -40,21 +40,21 @@ export const ViewModel = BaseViewModel.extend({
     },
     restaurants: {
       Value: Restaurant.List,
-      get: function(list){
+      get: function(){
         let params = {};
         let state = this.attr('state');
         let city = this.attr('city');
 
-        if(state) { params['address.state'] = state; }
-        if(city) { params['address.city'] = city; }
+        if(state && city) {
+          params = {
+            'address.state': state,
+            'address.city': city
+          };
 
-        let restaurants = Restaurant.findAll(params);
+          return this.pageData("restaurants", params, Restaurant.findAll(params));
+        }
 
-        this.pageData("restaurant", params, restaurants);
-
-        list.replace(restaurants);
-
-        return list;
+        return null;
       }
     }
   }
