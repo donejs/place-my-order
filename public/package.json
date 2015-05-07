@@ -41,7 +41,7 @@
       "app/order/order",
       "app/restaurant/details/details",
       "app/restaurant/list/list",
-      "app/order/history/history.component!can/component/system"
+      "app/order/history/history"
     ]
   },
   "devDependencies": {
