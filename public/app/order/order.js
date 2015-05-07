@@ -13,7 +13,9 @@ export const ViewModel = BaseViewModel.extend({
      * be used to request the actual restaurant.
      */
     slug: {
-      type: 'string'
+      type: function(val){
+        return val ? val+"" : val;
+      }
     },
     /**
      * @property {app/models/order} order
