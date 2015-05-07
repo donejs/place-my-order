@@ -137,7 +137,13 @@ export var BitGraphVM = can.Map.extend({
             }
         },
         graphContainerElement: {
-            type: "*",
+            type: "*"
+        },
+        lineContainerElement: {
+            type: "*"
+        },
+        axisContainerElement: {
+            type: "*"
         },
         seriesSerialized: {
             get: function() {
@@ -152,36 +158,11 @@ export var BitGraphVM = can.Map.extend({
                 // bind to the serialized chagnes 
                 this.attr('seriesSerialized');
 
-                var graphContainerElement = this.attr('graphContainerElement');
-                
-                this.clearGraph(() => {
-                    // TODO fix these axis!
-                    // TODO group axis in their own container so they don't have to be cleared
-                    // // X scale will fit all values from data[] within pixels 0-w
-                    // var x = d3.scale.linear().domain([0, this.attr('longestSeriesLength')]).range([0, this.attr('width')]);
-                    // // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
-                    // var y = d3.scale.linear().domain([0, this.attr('highestSeriesValue')]).range([this.attr('height'), 0]);
-
-                    // // create yAxis
-                    // var xAxis = d3.svg.axis().scale(x).tickSize(-this.attr('height')).tickSubdivide(true);
-                    // // Add the x-axis.
-                    // graph.append("svg:g")
-                    //       .attr("class", "x axis")
-                    //       .attr("transform", "translate(0," + this.attr('height') + ")")
-                    //       .call(xAxis);
-
-                    // // create left yAxis
-                    // var yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left");
-                    // // Add the y-axis to the left
-                    // graph.append("svg:g")
-                    //       .attr("class", "y axis")
-                    //       .attr("transform", "translate(-25,0)")
-                    //       .call(yAxisLeft);
-
-                    // Add the line by appending an svg:path element with the data line we created above
-                    // do this AFTER the axes above so that the line is above the tick-lines
+                this.clearGraphLines(() => {
+                    // Add the line by appending an svg:path element with the data line
+                    var lineContainerElement = this.attr('lineContainerElement');
                     can.each(this.attr('series'), function(series) {
-                        graphContainerElement.append("svg:path").attr("d", series.attr('line'));    
+                        lineContainerElement.append("svg:path").attr("d", series.attr('line'));    
                     });
                 });
             }
@@ -189,13 +170,13 @@ export var BitGraphVM = can.Map.extend({
     },
     series: [],
     title: "",
-    clearGraph: function(cb) {
+    clearGraphLines: function(cb) {
         // no clean way to remove all elements and receive a callback, so we have to make our own
         // http://stackoverflow.com/questions/23118779/d3-callback-function-after-remove
         var counter = 0,
-            graphContainerElement = this.attr('graphContainerElement');
-        if(graphContainerElement) {
-            graphContainerElement.selectAll('*').call(function(selection) {
+            lineContainerElement = this.attr('lineContainerElement');
+        if(lineContainerElement) {
+            lineContainerElement.selectAll('*').call(function(selection) {
                 counter = selection.size();
                 // if counter is zero, the each won't ever execute, so fire the callback here also
                 if(counter === 0) {
@@ -210,13 +191,45 @@ export var BitGraphVM = can.Map.extend({
         }
     },
     renderBaseGraph: function(graphBaseElement) {
-        var margins = this.attr('margins'),
-            graphContainerElement = graphBaseElement.append("svg:svg")
+        var margins = this.attr('margins');
+        
+        // create the container elements
+        var graphContainerElement = graphBaseElement.append("svg:svg")
               .attr("width", this.attr('width') + margins[1] + margins[3])
               .attr("height", this.attr('height') + margins[0] + margins[2])
             .append("svg:g")
               .attr("transform", this.attr('transform'));
         this.attr('graphContainerElement', graphContainerElement);
+        this.attr('lineContainerElement', graphContainerElement.append("svg:g").attr("class", "lines"));
+        this.attr('axisContainerElement', graphContainerElement.append("svg:g").attr("class", "axis"));
+
+        // for now I think we can render the axis here?
+        this.renderAxis();
+    },
+    renderAxis: function() {
+        // TODO fix these axis!
+        var axisContainerElement = this.attr('axisContainerElement');
+
+        // // X scale will fit all values from data[] within pixels 0-w
+        // var x = d3.scale.linear().domain([0, this.attr('longestSeriesLength')]).range([0, this.attr('width')]);
+        // // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
+        // var y = d3.scale.linear().domain([0, this.attr('highestSeriesValue')]).range([this.attr('height'), 0]);
+
+        // // create yAxis
+        // var xAxis = d3.svg.axis().scale(x).tickSize(-this.attr('height')).tickSubdivide(true);
+        // // Add the x-axis.
+        // axisContainerElement.append("svg:g")
+        //       .attr("class", "x axis")
+        //       .attr("transform", "translate(0," + this.attr('height') + ")")
+        //       .call(xAxis);
+
+        // // create left yAxis
+        // var yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left");
+        // // Add the y-axis to the left
+        // axisContainerElement.append("svg:g")
+        //       .attr("class", "y axis")
+        //       .attr("transform", "translate(-25,0)")
+        //       .call(yAxisLeft);
     },
     addSeries: function(series) {
         can.batch.start();
