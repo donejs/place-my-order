@@ -22,9 +22,9 @@ test('Adding and removing menu items to the order', () => {
   });
   let item = vm.attr('restaurant.menu.lunch.0');
 
-  vm.select(item, true);
+  vm.toggle(item);
   equal(vm.attr('order.items.0'), item, 'Item added to order');
-  vm.select(item, false);
+  vm.toggle(item);
   equal(vm.attr('order.items.length'), 0, 'Item removed from order')
 });
 
