@@ -63,7 +63,7 @@
           {{#eq status 'delivered'}}
           <span class="badge">Delivered</span>
           <p class="action">
-            <a href="javascript://"  can-click="{this.destroy}">
+            <a href="javascript://"  can-click="{destroy}">
               Delete
             </a>
           </p>
