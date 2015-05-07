@@ -8,49 +8,53 @@ export var BitSeriesVM = can.Map.extend({
     define: {
         seriesLength: {
             get: function() {
-                return this.attr('data').attr('length');
+                return this.attr('data') && this.attr('data').attr('length') || 0;
             }
         },
         serializedData: {
             get: function() {
-                return this.attr('data').serialize();
+                return this.attr('data') && this.attr('data').serialize() || null;
             },
         },
         lowestValue: {
             get: function() {
-                return d3.min(this.attr('serializedData'));
+                return this.attr('serializedData') && d3.min(this.attr('serializedData')) || null;
             }
         },
         highestValue: {
             get: function() {
-                return d3.max(this.attr('serializedData'));
+                return this.attr('serializedData') && d3.max(this.attr('serializedData')) || null;
             }
         },
         line: {
             get: function() {
-                // X scale will fit all values from data[] within pixels 0-w
-                var x = d3.scale.linear().domain([0, this.attr('seriesLength')]).range([0, this.attr('graphWidth')]);
-                // Y scale will fit all values from data[] within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
-                var y = d3.scale.linear().domain([this.attr('lowestValue'), this.attr('highestValue')]).range([this.attr('graphHeight'), 0]);
+                if(this.attr('seriesLength')) {
+                    // X scale will fit all values from data[] within pixels 0-w
+                    var x = d3.scale.linear().domain([0, this.attr('seriesLength')]).range([0, this.attr('graphWidth')]);
+                    // Y scale will fit all values from data[] within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
+                    var y = d3.scale.linear().domain([this.attr('lowestValue'), this.attr('highestValue')]).range([this.attr('graphHeight'), 0]);
 
-                // create a line function that can convert this.attr('data')[] into x and y points
-                var line = d3.svg.line()
-                    // assign the X function to plot our line as we wish
-                    .x(function(d,i) { 
-                        // verbose logging to show what's actually being done
-                        // console.log('Plotting X value for data point: ' + d + ' using index: ' + i + ' to be at: ' + x(i) + ' using our xScale.');
-                        // return the X coordinate where we want to plot this datapoint
-                        return x(i); 
-                    })
-                    .y(function(d) { 
-                        // verbose logging to show what's actually being done
-                        // console.log('Plotting Y value for data point: ' + d + ' to be at: ' + y(d) + " using our yScale.");
-                        // return the Y coordinate where we want to plot this datapoint
-                        return y(d); 
-                    });
+                    // create a line function that can convert this.attr('data')[] into x and y points
+                    var line = d3.svg.line()
+                        // assign the X function to plot our line as we wish
+                        .x(function(d,i) {
+                            // verbose logging to show what's actually being done
+                            // console.log('Plotting X value for data point: ' + d + ' using index: ' + i + ' to be at: ' + x(i) + ' using our xScale.');
+                            // return the X coordinate where we want to plot this datapoint
+                            return x(i);
+                        })
+                        .y(function(d) {
+                            // verbose logging to show what's actually being done
+                            // console.log('Plotting Y value for data point: ' + d + ' to be at: ' + y(d) + " using our yScale.");
+                            // return the Y coordinate where we want to plot this datapoint
+                            return y(d);
+                        });
 
-                // TODO return the attribute instead?
-                return line(this.attr('data'));
+                    // TODO return the attribute instead?
+                    return line(this.attr('data'));
+                } else {
+                    return null;
+                }
             }
         }
     },
@@ -162,7 +166,9 @@ export var BitGraphVM = can.Map.extend({
                     // Add the line by appending an svg:path element with the data line
                     var lineContainerElement = this.attr('lineContainerElement');
                     can.each(this.attr('series'), function(series) {
-                        lineContainerElement.append("svg:path").attr("d", series.attr('line'));    
+                        if(series.attr('line')) {
+                            lineContainerElement.append("svg:path").attr("d", series.attr('line'));
+                        }
                     });
                 });
             }
