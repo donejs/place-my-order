@@ -140,7 +140,7 @@ export var BitGraphVM = can.Map.extend({
                 var margins = this.attr('margins');
                 return "translate(" + margins[3] + "," + margins[0] + ")"
             }
-        }
+        },
         graphContainerElement: {
             type: "*"
         },
