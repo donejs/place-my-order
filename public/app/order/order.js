@@ -1,10 +1,11 @@
 import Component from 'can/component/component';
+import Map from 'can/map/';
+import 'can/map/define/';
 import template from './order.stache!';
-import BaseViewModel from 'app/viewmodel';
 import Restaurant from 'app/models/restaurant';
 import Order from 'app/models/order';
 
-export const ViewModel = BaseViewModel.extend({
+export const ViewModel = Map.extend({
   define: {
     /**
      * @property {String} slug
@@ -56,7 +57,7 @@ export const ViewModel = BaseViewModel.extend({
             return restaurant;
           });
 
-          this.pageData('restaurant', { _id }, dfd);
+          this.attr('@root').pageData('restaurant', { _id }, dfd);
 
           return dfd;
         }

@@ -1,14 +1,16 @@
 import Component from 'can/component/component';
 import Order from 'app/models/order';
-import BaseViewModel from 'app/viewmodel';
+import Map from 'can/map/';
+import 'can/map/define/';
+
 import template from './history.stache!';
 import ordersTemplate from './list.stache!';
 
-export const ViewModel = BaseViewModel.extend({
+export const ViewModel = Map.extend({
   define: {
     orders: {
       get() {
-        return this.pageData('orders', {}, Order.findAll({}));
+        return this.attr('@root').pageData('orders', {}, Order.findAll({}));
       }
     }
   },
