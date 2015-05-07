@@ -1,6 +1,5 @@
 <!-- Template to load -->
 <script type="text/stache" id="demo" can-autorender>
-<can-import from="ui/bit_graph/bit_graph.less!"/>
 <can-import from="ui/bit_graph/bit_graph"/>
 <bit-graph title="{title}">
   <bit-series data="{data1}" />
@@ -25,16 +24,26 @@ var seriesData = new can.List([
   5
 ]);
 var anotherSeries = new can.List([
-  3,
-  5,
-  7
+  300,
+  500,
+  700
 ]);
 
-$("#demo").viewModel().attr({
+var vm = $("#demo").viewModel();
+vm.attr({
   title: "Demo Graph",
   data1: seriesData,
   data2: anotherSeries
 });
+
+window.setInterval(() => {
+  var val = Math.floor(Math.random() * 1000) + 1;
+  can.batch.start();
+    console.log('pushing', val);
+    anotherSeries.push(val);
+  can.batch.stop();
+}, 8000);
+
 </script>
 <script>
   window.DEMO_HTML = document.getElementById("demo").innerHTML.replace('<can-import from="ui/bit_graph/bit_graph"/>', '');
