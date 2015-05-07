@@ -1,4 +1,6 @@
 import 'steal-qunit';
+import 'app/models/fixtures/';
+import AppState from '../appstate';
 import Order from 'app/models/order';
 import { ViewModel } from './order';
 
@@ -29,7 +31,7 @@ test('Adding and removing menu items to the order', () => {
 });
 
 asyncTest('Setting slug gets a restaurant and it is added to order', () => {
-  let vm = new ViewModel({ slug: 'spago' });
+  let vm = new ViewModel({ slug: 'spago', '@root': new AppState() });
   let deferred = vm.attr('restaurant');
 
   deferred.then(restaurant => {

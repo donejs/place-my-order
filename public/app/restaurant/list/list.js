@@ -1,7 +1,9 @@
 import Component from 'can/component/component';
+import Map from 'can/map/';
+import 'can/map/define/';
+
 import template from './list.stache!';
 import Restaurant from 'app/models/restaurant';
-import BaseViewModel from 'app/viewmodel';
 
 const cities = {
   MI: ['Detroit', 'Ann Arbor'],
@@ -9,7 +11,7 @@ const cities = {
   WI: ['Milwaukee', 'Green Bay']
 };
 
-export const ViewModel = BaseViewModel.extend({
+export const ViewModel = Map.extend({
   define: {
     state: {
       value: null,
@@ -51,7 +53,7 @@ export const ViewModel = BaseViewModel.extend({
             'address.city': city
           };
 
-          return this.pageData("restaurants", params, Restaurant.findAll(params));
+          return this.attr('@root').pageData("restaurants", params, Restaurant.findAll(params));
         }
 
         return null;
