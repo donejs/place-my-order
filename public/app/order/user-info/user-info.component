@@ -2,17 +2,17 @@
   <template>
     <div class="form-group{{#if nameError}} has-error{{/if}}">
       <label class="control-label">Name:</label>
-      <input name="name" type="text" class="form-control" can-keyup="{setValue 'name' @element.val}">
+      <input name="name" type="text" class="form-control" can-keyup="{order.attr 'name' @element.val}">
       <p>Please enter your name.</p>
     </div>
       <div class="form-group{{#if addressError}} has-error{{/if}}">
       <label class="control-label">Address:</label>
-      <input name="address" type="text" class="form-control" can-keyup="{setValue 'address' @element.val}">
+      <input name="address" type="text" class="form-control" can-keyup="{order.attr 'address' @element.val}">
       <p class="help-text">Please enter your address.</p>
     </div>
       <div class="form-group{{#if phoneError}} has-error{{/if}}">
       <label class="control-label">Phone:</label>
-      <input name="phone" type="text" class="form-control" can-keyup="{setValue 'phone' @element.val}">
+      <input name="phone" type="text" class="form-control" can-keyup="{order.attr 'phone' @element.val}">
       {{#if is911}}
         <p>That's not your real number :-(</p>
       {{else}}
@@ -56,9 +56,6 @@
             return this.attr("order.phone") === "911";
           }
         }
-      },
-      setValue: function(field, val){
-        this.attr("order").attr(field, val);
       }
     });
   </view-model>
