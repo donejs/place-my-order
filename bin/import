@@ -6,17 +6,22 @@ var maker = require('../public/app/models/fixtures/restaurant-maker');
 
 appPromise.then(function(app) {
   var service = app.api.service('restaurants');
+  var orders = app.api.service('orders');
   var restaurants = maker();
   var count = 0;
 
-  restaurants.forEach(function(restaurant) {
-    service.create(restaurant, {}, function(error, restaurant) {
-      console.log('Created restaurant ' +
-        restaurant.name + '(' + restaurant._id + ')');
-      count++;
-      if(count === restaurants.length) {
-        process.exit();
-      }
+  service.collection.drop(function() {
+    orders.collection.drop(function() {
+      restaurants.forEach(function(restaurant) {
+        service.create(restaurant, {}, function(error, restaurant) {
+          console.log('Created restaurant ' +
+          restaurant.name + '(' + restaurant._id + ')');
+          count++;
+          if(count === restaurants.length) {
+            process.exit();
+          }
+        });
+      });
     });
   });
 });
