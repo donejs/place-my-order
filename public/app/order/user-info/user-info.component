@@ -1,0 +1,64 @@
+<can-component tag="user-info">
+  <template>
+    <div class="form-group{{#if nameError}} has-error{{/if}}">
+      <label class="control-label">Name:</label>
+      <input name="name" type="text" class="form-control" can-value="{order.name}">
+      <p>Please enter your name.</p>
+    </div>
+      <div class="form-group{{#if addressError}} has-error{{/if}}">
+      <label class="control-label">Address:</label>
+      <input name="address" type="text" class="form-control" can-value="{order.address}">
+      <p class="help-text">Please enter your address.</p>
+    </div>
+      <div class="form-group{{#if phoneError}} has-error{{/if}}">
+      <label class="control-label">Phone:</label>
+      <input name="phone" type="text" class="form-control" can-value="{order.phone}">
+      <p>Please enter a valid phone number.</p>
+    </div>
+  </template>
+  <view-model>
+    import Map from "can/map/";
+    import "can/map/define/";
+    import Order from "app/models/order";
+
+    const phoneExp = /^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/;
+
+    export default Map.extend({
+      define: {
+        order: {
+          Type: Order
+        },
+        showErrors: {
+          Value: Map
+        },
+        nameError: {
+          get: function(){
+            return this.attr("showErrors.name") && !this.attr("order.name");
+          }
+        },
+        addressError: {
+          get: function(){
+            return this.attr("showErrors.address") && !this.attr("order.address");
+          }
+        },
+        phoneError: {
+          get: function(){
+            return this.attr("showErrors.phone") && !phoneExp.test(this.attr("order.phone"));
+          }
+        }
+      }
+    });
+  </view-model>
+  <events>
+    export default {
+      "input click": function(el){
+        // Dismiss errors when a user clicks on the form field.
+        this.viewModel.attr("showErrors").attr(el.attr("name"), false);
+      },
+      "input blur": function(el){
+        // Allow errors to be shown after the user has left the form field.
+        this.viewModel.attr("showErrors").attr(el.attr("name"), true);
+      }
+    };
+  </events>
+</can-component>
