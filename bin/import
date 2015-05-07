@@ -5,15 +5,17 @@ var appPromise = require('../lib/app');
 var maker = require('../public/app/models/fixtures/restaurant-maker');
 
 appPromise.then(function(app) {
-  var service = app.api.service('restaurants');
-  var orders = app.api.service('orders');
+  var restaurantService = app.api.service('restaurants');
+  var orderService = app.api.service('orders');
   var restaurants = maker();
   var count = 0;
 
-  service.collection.drop(function() {
-    orders.collection.drop(function() {
+  restaurantService.collection.drop(function() {
+    console.log('Dropped restaurants collection');
+    orderService.collection.drop(function() {
+      console.log('Dropped orders collection');
       restaurants.forEach(function(restaurant) {
-        service.create(restaurant, {}, function(error, restaurant) {
+        restaurantService.create(restaurant, {}, function(error, restaurant) {
           console.log('Created restaurant ' +
           restaurant.name + '(' + restaurant._id + ')');
           count++;

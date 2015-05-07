@@ -53,7 +53,7 @@ export const ViewModel = Map.extend({
         let _id = this.attr('slug');
         if(!old && _id) {
           let dfd = Restaurant.findOne({ _id }).then(restaurant => {
-            this.attr('order.restaurant', restaurant.attr('_id'));
+            this.attr('order.slug', restaurant.attr('slug'));
             return restaurant;
           });
 
