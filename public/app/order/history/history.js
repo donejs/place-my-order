@@ -1,7 +1,8 @@
 import Component from 'can/component/component';
-import template from './history.stache!';
 import Order from 'app/models/order';
 import BaseViewModel from 'app/viewmodel';
+import template from './history.stache!';
+import ordersTemplate from './list.stache!';
 
 export const ViewModel = BaseViewModel.extend({
   define: {
@@ -14,7 +15,8 @@ export const ViewModel = BaseViewModel.extend({
   markAs(order, status) {
     order.attr('status', status);
     order.save();
-  }
+  },
+  ordersTemplate
 });
 
 export default Component.extend({
