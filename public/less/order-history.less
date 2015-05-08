@@ -1,4 +1,6 @@
 .order-history {
+  .wrapper;
+
   h4 {
     display: block;
     clear: both;
@@ -12,6 +14,11 @@
     float: left;
     width: 100%;
     border-bottom: 1px solid @gray-lighter;
+
+    &.empty {
+      padding: @padding-base-horizontal;
+      color: @gray-light;
+    }
 
     &.new {
       background-color: #d9edf7;

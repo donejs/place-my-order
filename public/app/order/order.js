@@ -68,12 +68,13 @@ export const ViewModel = Map.extend({
   /**
    * Adds or removed an item from the order.
    *
-   * @param {Object} item
+   * @param {Object} item The menu item to use
+   * @param {Boolean} add Whether to add or remove the item
    */
-  toggle(item) {
+  toggle(item, add) {
     let items = this.attr('order.items');
     let index = items.indexOf(item);
-    if(index === -1) {
+    if(add && index === -1) {
       items.push(item);
     } else {
       items.splice(index, 1);
