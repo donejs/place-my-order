@@ -11,7 +11,7 @@ export const ViewModel = Map.extend({
   define: {
     states: {
       get() {
-        return State.findAll()
+        return State.findAll({});
       }
     },
     state: {

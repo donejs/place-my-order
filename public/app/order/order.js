@@ -14,9 +14,7 @@ export const ViewModel = Map.extend({
      * be used to request the actual restaurant.
      */
     slug: {
-      type: function(val){
-        return val ? val+"" : val;
-      }
+      type: 'string'
     },
     /**
      * @property {app/models/order} order

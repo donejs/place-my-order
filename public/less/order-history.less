@@ -1,11 +1,49 @@
 .order-history {
-  .table;
-  .table-striped;
-  .wrapper;
-
-  table {
-    font-size: 14px;
+  h4 {
+    display: block;
+    clear: both;
+    padding: @padding-base-horizontal;
+    margin: 0;
+    border-bottom: 1px solid @gray-lighter;
   }
+
+  .order {
+    clear: both;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid @gray-lighter;
+
+    &.new {
+      background-color: #d9edf7;
+    }
+
+    &.header {
+      font-weight: bold;
+    }
+
+    div, address {
+      float: left;
+      padding: @padding-base-horizontal;
+    }
+
+    address {
+      width: 25%;
+      display: block;
+    }
+
+    .items {
+      width: 40%;
+    }
+
+    .total {
+      width: 10%;
+    }
+
+    .actions {
+      width: 25%;
+    }
+  }
+
   .badge {
     margin-bottom: 5px;
   }
