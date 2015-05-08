@@ -85,8 +85,51 @@ function makeMenu() {
   return result;
 }
 
-export default function() {
+function makeRestaurant(name, city, state) {
+  return {
+    name,
+    slug: name.toLowerCase().replace(/\s/g, '-'),
+    images: makeImages(),
+    menu: makeMenu(),
+    address: {
+      street: random(addresses),
+      city,
+      state,
+      zip: random(zips)
+    }
+  }
+}
+
+function makeOrder(restaurantIndex) {
+  return {
+    "restaurantIndex": restaurantIndex,
+    "status": "delivered",
+    "items": makeMenu().dinner,
+    "name": "Justin Meyer",
+    "address": random(addresses)
+  }
+}
+
+function makeFixedRestaurants() {
   let restaurants = [];
+  restaurants.push(makeRestaurant('Cheese Curd City', 'Green Bay', 'WI'));
+  restaurants.push(makeRestaurant('Poutine Palace', 'Green Bay', 'WI'));
+  return restaurants;
+}
+
+function makeFixedOrders() {
+  // generate five previous orders for our fixed restaurants
+  let orders = [];
+  for(var i = 0; i < 5; i++) {
+    orders.push(makeOrder(0));
+    orders.push(makeOrder(1));
+  }
+  return orders;
+}
+
+export default function() {
+  let restaurants = makeFixedRestaurants();
+  let orders = makeFixedOrders();
   let names = [];
 
   for(let state of Object.keys(cities)) {
@@ -96,20 +139,12 @@ export default function() {
         name = makeName();
       }
       names.push(name);
-      restaurants.push({
-        name,
-        slug: name.toLowerCase().replace(/\s/g, '-'),
-        images: makeImages(),
-        menu: makeMenu(),
-        address: {
-          street: random(addresses),
-          city,
-          state,
-          zip: random(zips)
-        }
-      });
+      restaurants.push(makeRestaurant(name, city, state));
     }
   }
 
-  return restaurants;
+  return {
+    'restaurants': restaurants,
+    'orders': orders
+  };
 }
