@@ -5,25 +5,11 @@ import 'can/map/define/';
 
 import template from './history.stache!';
 import ordersTemplate from './list.stache!';
+import actionButton from './action-button.stache!';
 import './history.less!';
-
-export const ViewModel = Map.extend({
-  define: {
-    orders: {
-      get() {
-        return this.attr('@root').pageData('orders', {}, Order.findAll({}));
-      }
-    }
-  },
-  markAs(order, status) {
-    order.attr('status', status);
-    order.save();
-  },
-  ordersTemplate
-});
 
 export default Component.extend({
   tag: 'app-order-history',
-  viewModel: ViewModel,
+  viewModel: { ordersTemplate, actionButton },
   template
 });

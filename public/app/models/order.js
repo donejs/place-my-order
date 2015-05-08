@@ -20,13 +20,18 @@ var Order = can.Map.extend({
         return total.toFixed(2);
       }
     }
+  },
+
+  markAs(status) {
+    this.attr('status', status);
+    this.save();
   }
 });
 
 Order.List = can.List.extend({
 	Map: Order
 }, {
-	totals: function(){
+	totals(){
 		return this.map(function(order){
 			return order.attr("total");
 		});

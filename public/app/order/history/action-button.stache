@@ -1,0 +1,35 @@
+{{#eq status 'new'}}
+<span class="badge">New Order!</span>
+<p class="action">
+  Mark as:
+  <a href="javascript://" can-click="{markAs 'preparing'}">
+    Preparing
+  </a>
+</p>
+{{/eq}}
+{{#eq status 'preparing'}}
+<span class="badge">Preparing</span>
+<p class="action">
+  Mark as:
+  <a href="javascript://"  can-click="{markAs 'delivery'}">
+    Out for delivery
+  </a>
+</p>
+{{/eq}}
+{{#eq status 'delivery'}}
+<span class="badge">Out for delivery</span>
+<p class="action">
+  Mark as:
+  <a href="javascript://"  can-click="{markAs 'delivered'}">
+    Delivered
+  </a>
+</p>
+{{/eq}}
+{{#eq status 'delivered'}}
+<span class="badge">Delivered</span>
+{{/eq}}
+<p class="action">
+  <a href="javascript://"  can-click="{destroy}">
+    Delete
+  </a>
+</p>
