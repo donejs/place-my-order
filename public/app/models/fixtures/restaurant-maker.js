@@ -38,16 +38,16 @@ const items = [{
     "price": 21.99
   }, {
     "name": "Truffle Noodles",
-    "price": 14.50
+    "price": 14.99
   }, {
     "name": "Charred Octopus",
     "price": 25.99
   }, {
     "name": "Gunthorp Chicken",
-    "price": 21.50
+    "price": 21.99
   }, {
     "name": "Roasted Salmon",
-    "price": 23.00
+    "price": 23.99
   }];
 
 function random(arr) {
