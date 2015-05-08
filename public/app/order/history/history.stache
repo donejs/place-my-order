@@ -15,15 +15,12 @@
         <address>
           {{name}} <br />{{address}} <br />{{phone}}
         </address>
-        <div class="items">
-          <ul>
-            {{#each items}}<li>{{name}}</li>{{/each}}
-          </ul>
-        </div>
-        <div class="total">${{total}}</div>
-        <div class="actions">{{> actionButton}}</div>
+        {{> orderItems}}
       </div>
       {{/each}}
+      {{^if value.length}}
+        <div class="order empty">No new orders</div>
+      {{/if}}
     {{/if}}
   </order-model>
   <order-model findAll="{status='preparing'}">
@@ -36,15 +33,12 @@
           <address>
             {{name}} <br />{{address}} <br />{{phone}}
           </address>
-          <div class="items">
-            <ul>
-              {{#each items}}<li>{{name}}</li>{{/each}}
-            </ul>
-          </div>
-          <div class="total">${{total}}</div>
-          <div class="action">{{> actionButton}}</div>
+          {{> orderItems}}
         </div>
       {{/each}}
+      {{^if value.length}}
+        <div class="order empty">No orders preparing</div>
+      {{/if}}
     {{/if}}
   </order-model>
   <order-model findAll="{status='delivery'}">
@@ -57,15 +51,12 @@
           <address>
             {{name}} <br />{{address}} <br />{{phone}}
           </address>
-          <div class="items">
-            <ul>
-              {{#each items}}<li>{{name}}</li>{{/each}}
-            </ul>
-          </div>
-          <div class="total">${{total}}</div>
-          <div class="action">{{> actionButton}}</div>
+          {{> orderItems}}
         </div>
       {{/each}}
+      {{^if value.length}}
+        <div class="order empty">No orders in delivery</div>
+      {{/if}}
     {{/if}}
   </order-model>
   <order-model findAll="{status='delivered'}">
@@ -78,15 +69,12 @@
           <address>
             {{name}} <br />{{address}} <br />{{phone}}
           </address>
-          <div class="items">
-            <ul>
-              {{#each items}}<li>{{name}}</li>{{/each}}
-            </ul>
-          </div>
-          <div class="total">${{total}}</div>
-          <div class="action">{{> actionButton}}</div>
+          {{> orderItems}}
         </div>
       {{/each}}
+      {{^if value.length}}
+        <div class="order empty">No delivered orders</div>
+      {{/if}}
     {{/if}}
   </order-model>
 </div>
