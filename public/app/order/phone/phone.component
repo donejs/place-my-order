@@ -1,0 +1,28 @@
+<can-component tag="phone-validator">
+  <style>
+    .has-error p { font-weight: bolder; color: #a94442; }
+  </style>
+  <template>
+    <div class="form-group{{#if error}} has-error{{/if}}">
+      <label class="control-label">Phone:</label>
+      <input name="phone" type="text" class="form-control" can-keyup="{order.attr 'phone' @element.val}">
+      {{#if error}}
+        {{#eq order.phone '911'}}
+          <p>That's not your real number :-(</p>
+        {{else}}
+          <p>Please enter a phone number in the format 555-555-5555</p>
+        {{/eq}}
+      {{/if}}
+    </div>
+  </template>
+  <script type="view-model">
+    import Map from "can/map/";
+
+    export default Map.extend({
+      error: function(){
+        var phone = this.attr("order.phone");
+        return phone && (!/^(\d|-)*$/.test(phone) || phone === "911");
+      }
+    });
+  </script>
+</can-component>

@@ -1,5 +1,5 @@
 <can-import from="bit-tabs"/>
-<can-import from="app/order/user-info/user-info.component!"/>
+<can-import from="app/order/phone/phone.component!"/>
 
 <div class="order-form">
   {{#if restaurant.isPending}}
@@ -41,7 +41,17 @@
         </bit-panel>
       </bit-tabs>
 
-      <user-info order="{order}"></user-info>
+      <div class="form-group">
+        <label class="control-label">Name:</label>
+        <input name="name" type="text" class="form-control" can-keyup="{order.attr 'name' @element.val}">
+        <p>Please enter your name.</p>
+      </div>
+        <div class="form-group">
+        <label class="control-label">Address:</label>
+        <input name="address" type="text" class="form-control" can-keyup="{order.attr 'address' @element.val}">
+        <p class="help-text">Please enter your address.</p>
+      </div>
+      <phone-validator order="{order}"></phone-validator>
       <div class="submit">
         <h4>Total: ${{order.total}}</h4>
         {{#if saveStatus.isResolved}}
