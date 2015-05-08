@@ -1,9 +1,9 @@
 const firstName = ['Brunch', 'Pig', 'Cow', 'Crab', 'Lettuce', 'Bagel'];
 const secondName = ['Place', 'Barn', 'Bar', 'Restaurant', 'Shack'];
 const cities = {
-  Michigan: ['Detroit', 'Detroit', 'Ann Arbor'],
-  Illinois: ['Chicago', 'Chicago', 'Chicago', 'Peoria'],
-  Wisconsin: ['Milwaukee', 'Green Bay']
+  MI: ['Detroit', 'Detroit', 'Ann Arbor'],
+  IL: ['Chicago', 'Chicago', 'Chicago', 'Peoria'],
+  WI: ['Milwaukee', 'Green Bay']
 };
 const addresses = ['3108 Winchester Ct.', '230 W Kinzie Street', '1601-1625 N Campbell Ave', '2451 W Washburne Ave', '285 W Adams Ave'];
 const zips = ['60045', '60602', '60632', '48211', '48229', '53205', '53295'];

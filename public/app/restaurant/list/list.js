@@ -2,13 +2,17 @@ import Component from 'can/component/component';
 import Map from 'can/map/';
 import 'can/map/define/';
 
-import template from './list.stache!';
+import City from 'app/models/city';
+import State from 'app/models/state';
 import Restaurant from 'app/models/restaurant';
+import template from './list.stache!';
 
 export const ViewModel = Map.extend({
   define: {
-    cityMap: {
-      value: can.ajax('/api/cities')
+    states: {
+      get() {
+        return State.findAll()
+      }
     },
     state: {
       value: null,
@@ -18,18 +22,17 @@ export const ViewModel = Map.extend({
         return value;
       }
     },
-    city: {
-      value: null
-    },
     cities: {
-      get(old, async) {
+      get() {
         let state = this.attr('state');
         if(state) {
-          this.attr('cityMap').then(map => async(map[state]));
-        } else {
-          async([]);
+          return City.findAll({ state });
         }
+        return null;
       }
+    },
+    city: {
+      value: null
     },
     restaurants: {
       Value: Restaurant.List,
@@ -39,12 +42,12 @@ export const ViewModel = Map.extend({
         let city = this.attr('city');
 
         if(state && city) {
-          let dfd =  Restaurant.findAll(params);
-
           params = {
             'address.state': state,
             'address.city': city
           };
+
+          let dfd =  Restaurant.findAll(params);
 
           return this.attr('@root').pageData("restaurants", params, dfd);
         }

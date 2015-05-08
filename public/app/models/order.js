@@ -1,7 +1,6 @@
 import 'can/map/define/define';
 import can from 'can';
 import superMap from 'can-connect/super-map';
-import connect  from 'can-connect/can-connect';
 import tag from 'can-connect/tag';
 import set from 'can-set';
 import socket from './socket';
