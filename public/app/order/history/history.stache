@@ -1,19 +1,92 @@
 <div class="order-history">
+  <div class="order header">
+    <address>Name / Address / Phone</address>
+    <div class="items">Order</div>
+    <div class="total">Total</div>
+    <div class="actions">Action</div>
+  </div>
   <order-model findAll="{status='new'}">
-    <a class="btn analytics-link" href="orders/analytics">Analytics</a>
-    <h2 class="page-header">New Orders</h2>
-    {{> ordersTemplate}}
+    <h4>New Orders</h4>
+    {{#if isPending}}
+      <div class="loading"></div>
+    {{else}}
+      {{#each value}}
+      <div class="order new">
+        <address>
+          {{name}} <br />{{address}} <br />{{phone}}
+        </address>
+        <div class="items">
+          <ul>
+            {{#each items}}<li>{{name}}</li>{{/each}}
+          </ul>
+        </div>
+        <div class="total">${{total}}</div>
+        <div class="actions">{{> actionButton}}</div>
+      </div>
+      {{/each}}
+    {{/if}}
   </order-model>
   <order-model findAll="{status='preparing'}">
-    <h2 class="page-header">Preparing</h2>
-    {{> ordersTemplate}}
+    <h4>Preparing</h4>
+    {{#if isPending}}
+      <div class="loading"></div>
+    {{else}}
+      {{#each value}}
+        <div class="order preparing">
+          <address>
+            {{name}} <br />{{address}} <br />{{phone}}
+          </address>
+          <div class="items">
+            <ul>
+              {{#each items}}<li>{{name}}</li>{{/each}}
+            </ul>
+          </div>
+          <div class="total">${{total}}</div>
+          <div class="action">{{> actionButton}}</div>
+        </div>
+      {{/each}}
+    {{/if}}
   </order-model>
   <order-model findAll="{status='delivery'}">
-    <h2 class="page-header">Delivery</h2>
-    {{> ordersTemplate}}
+    <h4>In delivery</h4>
+    {{#if isPending}}
+      <div class="loading"></div>
+    {{else}}
+      {{#each value}}
+        <div class="order">
+          <address>
+            {{name}} <br />{{address}} <br />{{phone}}
+          </address>
+          <div class="items">
+            <ul>
+              {{#each items}}<li>{{name}}</li>{{/each}}
+            </ul>
+          </div>
+          <div class="total">${{total}}</div>
+          <div class="action">{{> actionButton}}</div>
+        </div>
+      {{/each}}
+    {{/if}}
   </order-model>
   <order-model findAll="{status='delivered'}">
-    <h2 class="page-header">Delivered</h2>
-    {{> ordersTemplate}}
+    <h4>Delivered</h4>
+    {{#if isPending}}
+     <div class="loading"></div>
+    {{else}}
+      {{#each value}}
+        <div class="order delivered">
+          <address>
+            {{name}} <br />{{address}} <br />{{phone}}
+          </address>
+          <div class="items">
+            <ul>
+              {{#each items}}<li>{{name}}</li>{{/each}}
+            </ul>
+          </div>
+          <div class="total">${{total}}</div>
+          <div class="action">{{> actionButton}}</div>
+        </div>
+      {{/each}}
+    {{/if}}
   </order-model>
 </div>
