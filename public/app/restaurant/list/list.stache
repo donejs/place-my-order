@@ -3,13 +3,17 @@
   <form class="form">
     <div class="form-group">
       <label>State</label>
-      <select class="form-control" can-value="state">
-        {{^if state}}
-        <option value="">Choose a state</option>
+      <select class="form-control" can-value="state" {{#if cityMap.isPending}}disabled{{/if}}>
+        {{#if cityMap.isPending}}
+        <option>Loading...</option>
+        {{else}}
+          {{^if state}}
+          <option value="">Choose a state</option>
+          {{/if}}
+          {{#each cityMap.value}}
+          <option value="{{@key}}">{{@key}}</option>
+          {{/each}}
         {{/if}}
-        {{#each states}}
-        <option value="{{@key}}">{{.}}</option>
-        {{/each}}
       </select>
     </div>
     <div class="form-group">
