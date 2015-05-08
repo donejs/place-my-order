@@ -10,8 +10,8 @@
       <li class="{{#eq page 'restaurants'}}active{{/eq}}">
         <a can-href='{page="restaurants"}'>Restaurants</a>
       </li>
-      <li class="{{#eq page 'order-history'}}active{{/eq}}">
-        <a can-href='{page="order-history"}'>Order history</a>
+      <li class="{{#eq page 'orders'}}active{{/eq}}">
+        <a can-href='{page="orders"}'>Order History</a>
       </li>
     </ul>
   </nav>

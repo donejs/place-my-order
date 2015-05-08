@@ -191,7 +191,6 @@ export var BitGraphVM = can.Map.extend({
         }
     },
     series: [],
-    title: "",
     clearGraphLines: function(cb) {
         // no clean way to remove all elements and receive a callback, so we have to make our own
         // http://stackoverflow.com/questions/23118779/d3-callback-function-after-remove
@@ -216,7 +215,7 @@ export var BitGraphVM = can.Map.extend({
         var axisContainerElement = this.attr('axisContainerElement');
         if(axisContainerElement) {
             // X scale will fit all values from data[] within pixels 0-w
-            var x = d3.scale.linear().domain([0, 10]).range([0, this.attr('width')]);
+            var x = d3.scale.linear().domain([0, 5]).range([0, this.attr('width')]);
             // Y scale will fit all values from data[] within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
             var y = d3.scale.linear().domain([0, 5]).range([this.attr('height'), 0]);
 

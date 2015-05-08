@@ -1,0 +1,9 @@
+<div class="order-analytics">
+	<h2 class="page-header">Amount Spent Per Order</h2>
+
+	<order-model findAll="{}" [orderdata]="{value}"/>      
+
+	<bit-graph width="768">
+		<bit-series data="{../orderdata.totals}" />
+	</bit-graph>
+</div>

@@ -1,5 +1,6 @@
 <div class="order-history">
   <order-model findAll="{status='new'}">
+    <a class="btn analytics-link" href="orders/analytics">Analylitcs</a>
     <h2 class="page-header">New Orders</h2>
     {{> ordersTemplate}}
   </order-model>
