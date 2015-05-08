@@ -1,7 +1,12 @@
 .order-form {
   .wrapper;
   width: @screen-xs;
-  
+
+  bit-panel {
+    display: block;
+    margin-top: 20px;
+  }
+
   form {
     p {
       .help-block;
@@ -9,6 +14,9 @@
     }
     p.info {
       display: block;
+      float: right;
+      margin-top: -30px;
+
       &.text-success {
         color: @state-success-text;
       }
