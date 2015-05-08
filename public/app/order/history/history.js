@@ -5,6 +5,7 @@ import 'can/map/define/';
 
 import template from './history.stache!';
 import ordersTemplate from './list.stache!';
+import './history.less!';
 
 export const ViewModel = Map.extend({
   define: {
