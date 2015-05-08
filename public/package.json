@@ -16,7 +16,7 @@
     "event-emitter": "^0.3.3",
     "jquery": "^1.11.3",
     "socket.io-client": "^1.3.5",
-    "steal": "^0.10.1",
+    "steal": "^0.10.4",
     "d3": "3.5.5"
   },
   "system": {
@@ -47,6 +47,6 @@
   },
   "devDependencies": {
     "steal-qunit": "0.0.4",
-    "steal-tools": "^0.10.1"
+    "steal-tools": "^0.10.4"
   }
 }

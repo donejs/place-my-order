@@ -33,10 +33,10 @@
     "grunt": "^0.4.4",
     "grunt-cli": "^0.1.13",
     "najax": "^0.1.5",
-    "steal": "git://github.com/stealjs/steal#pmo",
-    "steal-tools": "git://github.com/stealjs/steal-tools#pmo"
+    "steal": "^0.10.4"
   },
   "devDependencies": {
+    "steal-tools": "^0.10.4",
     "supervisor": "^0.6.0",
     "testee": "^0.2.0"
   }
