@@ -5,14 +5,11 @@ import 'can/map/define/';
 import template from './list.stache!';
 import Restaurant from 'app/models/restaurant';
 
-const cities = {
-  MI: ['Detroit', 'Ann Arbor'],
-  IL: ['Chicago', 'Peoria'],
-  WI: ['Milwaukee', 'Green Bay']
-};
-
 export const ViewModel = Map.extend({
   define: {
+    cityMap: {
+      value: can.ajax('/api/cities')
+    },
     state: {
       value: null,
       set(value) {
@@ -21,23 +18,17 @@ export const ViewModel = Map.extend({
         return value;
       }
     },
-    states: {
-      value: {
-        MI: 'Michigan',
-        IL: 'Illinois',
-        WI: 'Wisonsin'
-      }
-    },
     city: {
       value: null
     },
     cities: {
-      get() {
+      get(old, async) {
         let state = this.attr('state');
         if(state) {
-          return cities[state];
+          this.attr('cityMap').then(map => async(map[state]));
+        } else {
+          async([]);
         }
-        return [];
       }
     },
     restaurants: {
@@ -48,12 +39,14 @@ export const ViewModel = Map.extend({
         let city = this.attr('city');
 
         if(state && city) {
+          let dfd =  Restaurant.findAll(params);
+
           params = {
             'address.state': state,
             'address.city': city
           };
 
-          return this.attr('@root').pageData("restaurants", params, Restaurant.findAll(params));
+          return this.attr('@root').pageData("restaurants", params, dfd);
         }
 
         return null;
