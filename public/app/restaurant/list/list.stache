@@ -5,7 +5,7 @@
       <label>State</label>
       <select class="form-control" can-value="state" {{#if states.isPending}}disabled{{/if}}>
         {{#if states.isPending}}
-          <option>Loading...</option>
+          <option value="">Loading...</option>
         {{else}}
           {{^if state}}
           <option value="">Choose a state</option>
@@ -20,7 +20,7 @@
       <label>City</label>
       <select class="form-control" can-value="city" {{^if state}}disabled{{/if}}>
         {{#if cities.isPending}}
-          <option>Loading...</option>
+          <option value="">Loading...</option>
         {{else}}
           {{^if city}}
           <option value="">Choose a city</option>
