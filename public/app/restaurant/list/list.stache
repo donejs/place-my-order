@@ -3,7 +3,7 @@
   <form class="form">
     <div class="form-group">
       <label>State</label>
-      <select class="form-control" can-value="state" {{#if cityMap.isPending}}disabled{{/if}}>
+      <select class="form-control" can-value="state" {{#if states.isPending}}disabled{{/if}}>
         {{#if states.isPending}}
           <option>Loading...</option>
         {{else}}
