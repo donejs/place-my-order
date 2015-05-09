@@ -40,19 +40,9 @@
 {{/eq}}
 
 {{#eq page "orders"}}
-  {{#if slug}}
-    {{#eq slug "analytics"}}
-      <can-import from="app/order/analytics/analytics">
-        {{#eq state "resolved"}}
-          <app-order-analytics></app-order-analytics>
-        {{/eq}}
-      </can-import>
+  <can-import from="app/order/history/history">
+    {{#eq state "resolved"}}
+      <app-order-history></app-order-history>
     {{/eq}}
-  {{else}}
-    <can-import from="app/order/history/history">
-      {{#eq state "resolved"}}
-        <app-order-history></app-order-history>
-      {{/eq}}
-    </can-import>
-  {{/if}}
+  </can-import>
 {{/eq}}

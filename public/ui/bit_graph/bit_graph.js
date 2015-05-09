@@ -436,13 +436,15 @@ can.Component.extend({
             var graphBaseElement = d3.select(document.getElementById('graph'))
             this.scope.renderBaseGraph(graphBaseElement);
         },
-        "{scope} xScale": function() {
-            this.scope.refreshAxes();
-        },
-        "{scope} yScale": function() {
-            this.scope.refreshAxes();
-        },
+        // "{scope} xScale": function() {
+        //     this.scope.refreshAxes();
+        // },
+        // "{scope} yScale": function() {
+        //     this.scope.refreshAxes();
+        // },
         "{scope} seriesSerialized": function() {
+            // TODO figure out how these can just listen and auto refresh
+            this.scope.refreshAxes();
             this.scope.refreshGraph();
         }
     }
