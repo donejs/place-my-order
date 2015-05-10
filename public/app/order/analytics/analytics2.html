@@ -8,11 +8,14 @@
     <order-model 
       findAll="{slug='cheese-curd-city'}" 
       [cheesecurdcity]="{value}"/>
-    <order-model findAll="{slug='poutine-palace'}" [poutinepalace]="{value}"/>
+      
+    <order-model 
+      findAll="{slug='poutine-palace'}" 
+      [poutinepalace]="{value}"/>
+
     <bit-graph>
       <bit-series data="{../cheesecurdcity.totals}" />
       <bit-series data="{../poutinepalace.totals}" color="#0F0" />
-      <bit-series data="{anotherSeries}" color="#F00" />
     </bit-graph>
   </div>
 </script>
