@@ -2,13 +2,16 @@
   <can-import from="less/styles.less!" />
   <can-import from="ui/bit_graph/bit_graph"/>
   <can-import from="app/models/order" />  
+
   <div class="order-analytics">
     <h2 class="page-header">Amount Spent Per Order</h2>
-    <order-model findAll="{slug='cheese-curd-city'}" [cheesecurdcity]="{value}"/>
-    <!--<order-model findAll="{slug='poutine-palace'}" [poutinepalace]="{value}"/>-->
+    <order-model 
+      findAll="{slug='cheese-curd-city'}" 
+      [cheesecurdcity]="{value}"/>
+    <order-model findAll="{slug='poutine-palace'}" [poutinepalace]="{value}"/>
     <bit-graph>
       <bit-series data="{../cheesecurdcity.totals}" />
-      <!--<bit-series data="{../poutinepalace.totals}" color="#0F0" />-->
+      <bit-series data="{../poutinepalace.totals}" color="#0F0" />
       <bit-series data="{anotherSeries}" color="#F00" />
     </bit-graph>
   </div>
