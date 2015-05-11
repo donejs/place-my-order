@@ -156,7 +156,7 @@ export var BitGraphVM = can.Map.extend({
             type: "*"
         },
         width: {
-            value: 1000,
+            value: 880,
             get: function(val) {
                 var margins = this.attr('margins');
                 return val - margins[1] - margins[3];
