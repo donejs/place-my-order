@@ -301,7 +301,8 @@ export var BitGraphVM = can.Map.extend({
             var axisContainerElement = this.attr('axisContainerElement');
 
             // create xAxis
-            var xAxis = d3.svg.axis().scale(this.attr('xScale')).tickSize(-this.attr('height')).tickSubdivide(true).tickFormat("");
+            var xTicks = Math.min(10, this.attr('longestSeriesLength'));
+            var xAxis = d3.svg.axis().scale(this.attr('xScale')).tickSize(-this.attr('height')).ticks(xTicks).tickFormat("");
 
             // create left yAxis
             var yAxisLeft = d3.svg.axis().scale(this.attr('yScale')).ticks(4).orient("left");
