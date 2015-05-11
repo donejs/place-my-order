@@ -33,7 +33,7 @@ export var BitSeriesVM = can.Map.extend({
                 if(this.attr('graph') && this.attr('seriesLength') && this.attr('lowestValue') !== null && this.attr('highestValue') !== null) {
                     if(this.attr('graph').attr('normalize')) {
                         // X scale will fit all values from data[] within pixels 0-w
-                        var x = d3.scale.linear().domain([0, this.attr('seriesLength')]).range([0, this.attr('graph').attr('width')]);
+                        var x = d3.scale.linear().domain([0, this.attr('seriesLength')-1]).range([0, this.attr('graph').attr('width')]);
                         // Y scale will fit all values from data[] within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
                         var y = d3.scale.linear().domain([this.attr('lowestValue'), this.attr('highestValue')]).range([this.attr('graph').attr('height'), 0]);
                     } else {
@@ -48,13 +48,13 @@ export var BitSeriesVM = can.Map.extend({
                             // verbose logging to show what's actually being done
                             // console.log('Plotting X value for data point: ' + d + ' using index: ' + i + ' to be at: ' + x(i) + ' using our xScale.');
                             // return the X coordinate where we want to plot this datapoint
-                            return x(i);
+                            return x(i).toPrecision(8);
                         })
                         .y(function(d) {
                             // verbose logging to show what's actually being done
                             // console.log('Plotting Y value for data point: ' + d + ' to be at: ' + y(d) + " using our yScale.");
                             // return the Y coordinate where we want to plot this datapoint
-                            return y(d);
+                            return y(d).toPrecision(8);
                         });
 
                     // TODO return the attribute instead?
@@ -76,63 +76,17 @@ export var BitSeriesVM = can.Map.extend({
     convertListItemsToNumbers: function(listItems) {
         if(listItems) {
                 listItems.each(function(data, index) {
-                listItems[index] = Number.parseFloat(data);
+                var floatValue = Number.parseFloat(data);
+                if(!Number.isNaN(floatValue)) {
+                    listItems[index] = floatValue;
+                } else {
+                    listItems.splice(index, 1);
+                }
             });
         }
         return listItems;
     }
 });
-
-// var graphFixture = can.Map.extend({
-//     width: 100,
-//     height: 100,
-//     normalize: false,
-//     xScale: null,
-//     yScale: null
-// });
-
-// console.log('initial');
-// var vm = new BitSeriesVM({
-//     data: ["23.00", "84.98", "48.99", "38.46"],
-//     graph: new graphFixture({
-//         xScale: d3.scale.linear().domain([0, 4]).range([0, 100]),
-//         yScale: d3.scale.linear().domain([0, 100]).range([100, 0])
-//     })
-// });
-
-// vm.bind('data', function(e, n, o) {
-//     console.log('data changed from ', o, ' to ', n);
-// });
-// vm.bind('serializedData', function(ev, n, o) {
-//     console.log('serializedData changed from ', o, ' to ', n);
-// });
-// vm.bind('seriesLength', function(ev, n, o) {
-//     console.log('seriesLength changed from ', o, ' to ', n);
-// });
-// vm.bind('lowestValue', function(ev, n, o) {
-//     console.log('lowestValue changed from ', o, ' to ', n);
-// });
-// vm.bind('highestValue', function(ev, n, o) {
-//     console.log('highestValue changed from ', o, ' to ', n);
-// });
-// vm.bind('line', function(ev, n, o) {
-//     console.log('line changed from ', o, ' to ', n);
-// });
-
-// can.batch.start();
-// console.log('pushing 0');
-// vm.attr('data').push(0);
-// can.batch.stop();
-
-// can.batch.start();
-// console.log('pushing 150');
-// vm.attr('data').push(150);
-// can.batch.stop();
-
-// can.batch.start();
-// vm.attr('graph').attr('xScale', d3.scale.linear().domain([0, 6]).range([0, 100]));
-// vm.attr('graph').attr('yScale', d3.scale.linear().domain([0, 150]).range([100, 0]));
-// can.batch.stop();
 
 can.Component.extend({
     tag: "bit-series",
@@ -156,7 +110,7 @@ export var BitGraphVM = can.Map.extend({
             type: "*"
         },
         width: {
-            value: 880,
+            value: 768,
             get: function(val) {
                 var margins = this.attr('margins');
                 return val - margins[1] - margins[3];
@@ -238,7 +192,7 @@ export var BitGraphVM = can.Map.extend({
                 var domainEndValue = (this.attr('normalize')) ? 5 : this.attr('longestSeriesLength');
 
                 // X scale will fit all values from data[] within pixels 0-w
-                return d3.scale.linear().domain([0, domainEndValue]).range([0, this.attr('width')]);
+                return d3.scale.linear().domain([0, domainEndValue-1]).range([0, this.attr('width')]);
             }  
         },
         yScale: {
@@ -301,8 +255,7 @@ export var BitGraphVM = can.Map.extend({
             var axisContainerElement = this.attr('axisContainerElement');
 
             // create xAxis
-            var xTicks = Math.min(10, this.attr('longestSeriesLength'));
-            var xAxis = d3.svg.axis().scale(this.attr('xScale')).tickSize(-this.attr('height')).ticks(xTicks).tickFormat("");
+            var xAxis = d3.svg.axis().scale(this.attr('xScale')).tickSize(-this.attr('height')).tickSubdivide(true).tickFormat("");
 
             // create left yAxis
             var yAxisLeft = d3.svg.axis().scale(this.attr('yScale')).ticks(4).orient("left");
@@ -356,76 +309,6 @@ export var BitGraphVM = can.Map.extend({
         can.batch.stop();
     }
 });
-
-// console.log('initial');
-// var vm = new BitGraphVM({
-//     normalize: false,
-//     width: 100,
-//     height: 100
-// });
-
-// var bs1 = new BitSeriesVM({
-//     data: ["23.00", "84.98", "48.99", "38.46"],
-//     graph: vm
-// });
-// // var bs2 = new BitSeriesVM({
-// //     data: [100,200,300,400],
-// //     graph: vm
-// // });
-// // var bs3 = new BitSeriesVM({
-// //     data: [1,4,6],
-// //     graph: vm
-// // });
-
-// vm.bind('series', function(e, n, o) {
-//     console.log('series changed from ', o, ' to ', n);
-// });
-// vm.bind('seriesSerialized', function(ev, n, o) {
-//     console.log('seriesSerialized changed from ', o, ' to ', n);
-// });
-// vm.bind('longestSeriesLength', function(ev, n, o) {
-//     console.log('longestSeriesLength changed from ', o, ' to ', n);
-// });
-// vm.bind('lowestSeriesValue', function(ev, n, o) {
-//     console.log('lowestSeriesValue changed from ', o, ' to ', n);
-// });
-// vm.bind('highestSeriesValue', function(ev, n, o) {
-//     console.log('highestSeriesValue changed from ', o, ' to ', n);
-// });
-// vm.bind('xScale', function(ev, n, o) {
-//     console.log('xScale changed');
-// });
-// vm.bind('yScale', function(ev, n, o) {
-//     console.log('yScale changed');
-// });
-
-// bs1.bind('line', function(ev, n, o) {
-//     console.log('bs1 line changed from ', o, ' to ', n);
-// });
-
-// // bs3.bind('line', function(ev, n, o) {
-// //     console.log('bs3 line changed from ', o, ' to ', n);
-// // });
-
-// vm.addSeries(bs1);
-// // vm.addSeries(bs2);
-// // vm.addSeries(bs3);
-
-// // can.batch.start();
-// // console.log('pushing 0');
-// // bs1.attr('data').push(0);
-// // can.batch.stop();
-
-// // // can.batch.start();
-// // // console.log('pushing 500');
-// // // bs2.attr('data').push(500);
-// // // can.batch.stop();
-
-// // can.batch.start();
-// // console.log('pushing 7 and 8');
-// // bs3.attr('data').push(7);
-// // bs3.attr('data').push(8);
-// // can.batch.stop();
 
 can.Component.extend({
     tag: "bit-graph",
