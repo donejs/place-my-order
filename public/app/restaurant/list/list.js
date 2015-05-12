@@ -1,4 +1,4 @@
-import Component from 'can/component/component';
+import Component from 'can/component/';
 import Map from 'can/map/';
 import 'can/map/define/';
 
@@ -15,42 +15,28 @@ export const ViewModel = Map.extend({
       }
     },
     state: {
-      value: null,
-      set(value) {
+      set() {
         // Remove the city when the state changes
         this.attr('city', null);
-        return value;
       }
     },
     cities: {
       get() {
         var state = this.attr('state');
-        if(state) {
-          return City.findAll({ state });
-        }
-        return null;
+        return state ? City.findAll({ state }) : null;
       }
     },
-    city: {
-      value: null
-    },
     restaurants: {
-      Value: Restaurant.List,
       get: function(){
         var params = {},
           state = this.attr('state'),
           city = this.attr('city');
 
-        if(state && city) {
-          params = {
+        return state && city ?
+          Restaurant.findAll({
             'address.state': state,
             'address.city': city
-          };
-
-          return Restaurant.findAll(params);
-        }
-
-        return null;
+          }) : null;
       }
     }
   }
