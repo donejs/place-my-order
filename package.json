@@ -40,5 +40,8 @@
     "steal-tools": "^0.10.4",
     "supervisor": "^0.6.0",
     "testee": "^0.2.0"
+  },
+  "engines": {
+    "node": "0.10.36"
   }
 }
