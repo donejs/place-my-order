@@ -5,7 +5,7 @@
   <template>
     <div class="form-group{{#if error}} has-error{{/if}}">
       <label class="control-label">Phone:</label>
-      <input name="phone" type="text" class="form-control" can-keyup="{order.attr 'phone' @element.val}">
+      <input name="phone" type="text" class="form-control" can-keyup="{setPhoneValue @element.val}">
       {{#if error}}
         {{#eq order.phone '911'}}
           <p>That's not your real number :-(</p>
@@ -20,8 +20,11 @@
 
     export default Map.extend({
       error: function(){
-        var phone = this.attr("order.phone");
+        let phone = this.attr("order").attr("phone");
         return phone && (!/^(\d|-)*$/.test(phone) || phone === "911");
+      },
+      setPhoneValue: function(val){
+        this.attr('order').attr('phone', val);
       }
     });
   </script>
