@@ -1,5 +1,5 @@
 {{#eq state "resolved"}}
   <content></content>
 {{else}}
-  Loading!
+  <div class="loading"></div>
 {{/eq}}
