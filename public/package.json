@@ -10,6 +10,8 @@
   "author": "Bitovi",
   "license": "MIT",
   "dependencies": {
+    "funcunit": "^3.0.0",
+    "steal-qunit": "0.0.4",
     "can": "git://github.com/bitovi/canjs#place-my-order2",
     "bit-tabs": "git://github.com/bitovi-components/bit-tabs#place-my-order2",
     "can-connect": "git://github.com/canjs/can-connect#place-my-order2",
@@ -46,8 +48,6 @@
     ]
   },
   "devDependencies": {
-    "funcunit": "^3.0.0",
-    "steal-qunit": "0.0.4",
     "steal-tools": "^0.10.4"
   }
 }
