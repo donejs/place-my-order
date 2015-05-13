@@ -2,49 +2,10 @@
 require('babel/register');
 
 var appPromise = require('../lib/app');
-var maker = require('../public/app/models/fixtures/restaurant-maker');
+var importer = require('../lib/importer');
 
 appPromise.then(function(app) {
-  var restaurantService = app.api.service('restaurants');
-  var orderService = app.api.service('orders');
-  var restaurants = maker().restaurants;
-  var orders = maker().orders;
-  var itemsToInsert = restaurants.length + orders.length;
-  var count = 0;
-  var restaurantCount = 0;
-
-  restaurantService.collection.drop(function() {
-    console.log('Dropped restaurants collection');
-    orderService.collection.drop(function() {
-      console.log('Dropped orders collection');
-      restaurants.forEach(function(restaurant) {
-        restaurantService.create(restaurant, {}, function(error, restaurant) {
-          console.log('Created restaurant ' +
-          restaurant.name + '(' + restaurant._id + ')');
-
-          orders.forEach(function(order) {
-            if(order.restaurantIndex === count) {
-
-              delete order.restaurantIndex;
-              order['slug'] = restaurant.slug;
-              orderService.create(order, {}, function(error, order) {
-                console.log('Created order', order._id, 'from', restaurant.name);
-
-                count++;
-                if(count === itemsToInsert) {
-                  process.exit();
-                }
-              });
-            }
-          });
-
-          count++;
-          restaurantCount++;
-          if(count === itemsToInsert) {
-            process.exit();
-          }
-        });
-      });
-    });
+  importer(app.api, function() {
+    process.exit();
   });
 });
