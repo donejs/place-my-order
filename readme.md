@@ -1,5 +1,7 @@
 # placemyorder.com
 
+[ ![Codeship Status for bitovi/place-my-order](https://codeship.com/projects/25f512b0-dbde-0132-3a71-428a02316898/status?branch=master)](https://codeship.com/projects/79797)
+
 A restaurant menu ordering application. Built in ES6 with CanJS + StealJS.
 
 ## Installation
