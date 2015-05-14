@@ -15,6 +15,7 @@ export const ViewModel = Map.extend({
       }
     },
     state: {
+      value: null,
       set() {
         // Remove the city when the state changes
         this.attr('city', null);
@@ -25,6 +26,9 @@ export const ViewModel = Map.extend({
         var state = this.attr('state');
         return state ? City.findAll({ state }) : null;
       }
+    },
+    city: {
+      value: null
     },
     restaurants: {
       get: function(){
