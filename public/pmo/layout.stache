@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Place My Order</title>
+    {{#if isProd}}
+    <link type="text/css" rel="stylesheet" href="/dist/bundles/pmo/main.css">
+    {{else}}
+    {{styles}}
+    {{/if}}
+  </head>
+  <body>
+    {{{content}}}
+    <script {{inlineCache}}></script>
+
+    {{#if isProd}}
+    <script>
+      steal = {
+        instantiated: {
+          "bundles/pmo/main.css!$css": null
+        }
+      };
+    </script>
+    <script src="/node_modules/steal/steal.production.js" main="pmo/main.stache!can/view/autorender/system"></script>
+    {{else}}
+    <script src="/node_modules/steal/steal.js"></script>
+    {{/if}}
+  </body>
+</html>
