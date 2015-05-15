@@ -2,7 +2,7 @@
   "name": "place-my-order-frontend",
   "version": "0.1.0",
   "description": "The frontend for the restaurant order application",
-  "main": "app/main",
+  "main": "pmo/main",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "live-reload": "steal-tools live-reload"
@@ -22,7 +22,7 @@
     "d3": "3.5.5"
   },
   "system": {
-    "main": "app/main.stache!can/view/autorender/system",
+    "main": "pmo/main.stache!can/view/autorender/system",
     "transpiler": "babel",
     "meta": {
       "socketio": {
