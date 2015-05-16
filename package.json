@@ -35,10 +35,10 @@
     "grunt-cli": "^0.1.13",
     "madison": "0.0.7",
     "najax": "^0.1.5",
-    "steal": "^0.10.4"
+    "done-server-side-render": "^0.0.11"
   },
   "devDependencies": {
-    "steal-tools": "^0.10.4",
+    "steal-tools": "git://github.com/stealjs/steal-tools#5ca1ccf4e0fc65d075ea8e47533f2673f4555590",
     "supervisor": "^0.6.0",
     "testee": "^0.2.0"
   },

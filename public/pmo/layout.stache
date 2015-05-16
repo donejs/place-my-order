@@ -1,27 +1,56 @@
 <html>
   <head>
     <title>Place My Order</title>
-    {{#if isProd}}
-    <link type="text/css" rel="stylesheet" href="/dist/bundles/pmo/main.css">
-    {{else}}
-    {{styles}}
-    {{/if}}
+
+    {{asset "css"}}
   </head>
   <body>
-    {{{content}}}
-    <script {{inlineCache}}></script>
+    <can-import from="pmo/routes" />
+    <can-import from="less/styles.less!" />
+    <can-import from="pmo/appstate" as="viewModel" />
 
-    {{#if isProd}}
-    <script>
-      steal = {
-        instantiated: {
-          "bundles/pmo/main.css!$css": null
-        }
-      };
-    </script>
-    <script src="/node_modules/steal/steal.production.js" main="pmo/main.stache!can/view/autorender/system"></script>
+    <can-import from="pmo/header/" />
+    <can-import from="pmo/loading/" />
+    <pmo-header page="{page}"></pmo-header>
+
+    {{#eq page "home"}}
+      <can-import from="pmo/home/home" can-tag="pmo-loading">
+        <pmo-home></pmo-home>
+      </can-import>
+    {{/eq}}
+
+    {{#eq page "restaurants"}}
+      {{#if slug}}
+        {{#eq action 'order'}}
+          <can-import from="pmo/order/order" can-tag="pmo-loading">
+            <pmo-order slug="{slug}"></pmo-order>
+          </can-import>
+        {{/eq}}
+
+        {{^if action}}
+          <can-import from="pmo/restaurant/details/details" can-tag="pmo-loading">
+            <pmo-restaurant-details slug="{slug}"></pmo-restaurant-details>
+          </can-import>
+        {{/if}}
+      {{else}}
+        <can-import from="pmo/restaurant/list/list" can-tag="pmo-loading">
+          <pmo-restaurant-list></pmo-restaurant-list>
+        </can-import>
+      {{/if}}
+    {{/eq}}
+
+    {{#eq page "orders"}}
+      <can-import from="pmo/order/history/history" can-tag="pmo-loading">
+        <pmo-order-history></pmo-order-history>
+      </can-import>
+    {{/eq}}
+
+    {{asset "inline-cache"}}
+
+    {{#isProduction}}
+    <script src="/node_modules/steal/steal.production.js" main="pmo/layout.stache!done-autorender"></script>
     {{else}}
     <script src="/node_modules/steal/steal.js"></script>
-    {{/if}}
+    {{/isProduction}}
   </body>
 </html>
