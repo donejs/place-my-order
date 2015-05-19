@@ -40,11 +40,11 @@
       "system-config"
     ],
     "bundle": [
-      "app/home/home",
-      "app/order/order",
-      "app/restaurant/details/details",
-      "app/restaurant/list/list",
-      "app/order/history/history"
+      "pmo/home/home",
+      "pmo/order/order",
+      "pmo/restaurant/details/details",
+      "pmo/restaurant/list/list",
+      "pmo/order/history/history"
     ]
   },
   "devDependencies": {
