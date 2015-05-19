@@ -5,7 +5,13 @@ var appPromise = require('../lib/app');
 var importer = require('../lib/importer');
 
 appPromise.then(function(app) {
-  importer(app.api, function() {
+  var service = app.api.service('restaurants');
+
+  service.on('imported', function() {
     process.exit();
+  });
+
+  service.store.dropDatabase(function() {
+    console.log('Importer dropped database');
   });
 });
