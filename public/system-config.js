@@ -2,7 +2,10 @@
 
 var MySystem = require('@loader');
 
-if(MySystem.env === "development" && typeof window === "undefined" && !MySystem.buildMode) {
+var isNode = typeof process === "object" &&
+  {}.toString.call(process) === "[object process]";
+
+if(isNode) {
 	exports.systemConfig = {
     map: {
       'socketio': '@empty'
@@ -15,6 +18,10 @@ if(MySystem.env === "development" && typeof window === "undefined" && !MySystem.
 			}
 		}
 	};
+} else {
+  exports.systemConfig = {
+    map: {
+      'can/util/vdom/vdom': '@empty'
+    }
+  };
 }
-
-

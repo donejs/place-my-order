@@ -12,7 +12,7 @@ module.exports = function(grunt){
           },
           buildOptions: {
             bundlesPath: __dirname + "/public/dist/bundles",
-            minify: true
+            minify: false
           }
         }
       }

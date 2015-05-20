@@ -2,7 +2,7 @@ import io from 'socketio';
 // import EventEmitter from 'event-emitter';
 
 let socket;
-if(io) {
+if(io && io.connect) {
   socket = io.connect();
 }
 
