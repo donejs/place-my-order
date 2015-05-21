@@ -1,0 +1,19 @@
+{
+  "name": "place-my-order-page",
+  "version": "1.0.0",
+  "description": "The place-my-order Documentation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitovi/place-my-order.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bitovi/place-my-order/issues"
+  },
+  "homepage": "https://github.com/bitovi/place-my-order"
+}
