@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>
+<html class="no-js ie lt-ie9 lt-ie8 lt-ie7" lang="en">
+<![endif]-->
+<!--[if IE 7]>
+<html class="no-js ie lt-ie9 lt-ie8" lang="en">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js ie lt-ie9" lang="en">
+<![endif]-->
+<!--[if IE 9]>
+<html class="no-js ie ie9" lang="en">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>place-my-order.com - place-my-order.com </title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<link rel="stylesheet" type="text/css" href="./static/bundles/static.css">
+	
+	<!--[if lt IE 9]>
+   <script type="text/javascript" src="static/html5shiv.js"></script>
+    <!--<![endif]-->
+</head>
+
+<body class="docs">
+	<header>
+		<nav class="container">
+
+			<div class="logo-menu">
+				<a class="brand" href="./index.html">place-my-order.com</a>
+			</div>
+
+			<div class="pull-right">
+				<div class="bitovi-menu">
+					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
+					<ul class="dropdown-menu">
+						<li><a href="http://bitovi.com">Bitovi.com</a></li>
+						<li><a href="http://bitovi.com/blog/">Blog</a></li>
+						<li><a href="http://bitovi.com/consulting/">Consulting</a></li>
+						<li><a href="http://bitovi.com/training/">Training</a></li>
+						<li><a href="http://bitovi.com/open-source/">Open Source</a></li>
+						<li><a href="http://bitovi.com/people/">People</a></li>
+						<li><a href="http://bitovi.com/contact/">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+<div class="container api">
+
+	
+	<nav class="sidebar">
+		
+		<ul class="api cascading primary-grouping"> 
+	
+		
+		
+			
+			<li class="search-container active">
+			<a class="sidebar-title" href="index.html" data-search="place-my-order.com">
+				place-my-order.com
+			</a>
+			
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="api.html" data-search="REST API">
+						REST API
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="models.html" data-search="Models">
+						Models
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="pmo-order.html" data-search="pmo/order">
+						pmo/order
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+		</li>
+			
+		
+	
+</ul>
+	</nav>
+	
+	
+	
+	<article class="content docs">
+	
+	
+		
+		<section class="title">
+			<div class="heading">
+<h1>place-my-order.com</h1>
+	<ul class="tags">
+		<li>page</li>
+	</ul>
+	
+	
+</div>
+
+<div class="sub-heading">
+	
+	
+		<span class="module">index</span>
+	
+	
+	
+	<span class="inherits">&nbsp;</span>
+</div>
+
+<ul class="links">
+	
+	
+	
+	
+</ul>
+<br />
+		</section>
+		
+		
+		
+		<section class="contents">
+		</section>
+		
+		
+		
+
+		
+		<section class="description">
+			<!--
+-->
+
+		</section>
+		
+
+		
+			
+		
+		
+		
+		
+
+		
+		<section class="comment">
+			<p>A restaurant menu ordering application. Built in ES6 with CanJS + StealJS.</p>
+<p><a href="https://codeship.com/projects/79797"> <img src="https://codeship.com/projects/25f512b0-dbde-0132-3a71-428a02316898/status?branch=master" alt="Codeship Status for bitovi/place-my-order" /></a></p>
+<h2>Installation</h2>
+<p>Install and start <a href="https://www.mongodb.org/">MongoDB</a> with the default settings. <a href="http://mongohub.todayclose.com/">MongoHub</a> is a helpful client to view and query databases.</p>
+<p>Start MongoDB by doing:</p>
+<blockquote>
+<p>sudo mkdir -p /data/db</p>
+</blockquote>
+<blockquote>
+<p>sudo mongod --fork --logpath /var/log/mongodb.log</p>
+</blockquote>
+<p>Clone <a href="https://github.com/bitovi/place-my-order">the repository</a> and in the folder run</p>
+<blockquote>
+<p>npm install</p>
+</blockquote>
+<p>The initial restaurant list (with the data located in <code>public/fixtures/restaurants.json</code>) can be loaded by running</p>
+<blockquote>
+<p>bin/import</p>
+</blockquote>
+<p>To start the application run:</p>
+<blockquote>
+<p>npm start</p>
+</blockquote>
+<p>And navigate to <a href="http://localhost:3030/">http://localhost:3030/</a></p>
+<p>For development to start the server and have it reload automatically when its files change:</p>
+<blockquote>
+<p>npm run supervisor</p>
+</blockquote>
+<p>For Steals live reload:</p>
+<blockquote>
+<p>cd public/ &amp;&amp; npm run live-reload</p>
+</blockquote>
+<h2>Production</h2>
+<p>To use production first build:</p>
+<blockquote>
+<p>grunt build</p>
+</blockquote>
+<p>Then switch your <code>NODE_ENV</code> to production:</p>
+<blockquote>
+<p>export NODE_ENV=production</p>
+</blockquote>
+<p>To go back to development unset:</p>
+<blockquote>
+<p>unset NODE_ENV</p>
+</blockquote>
+
+		</section>
+		
+		
+
+		
+
+		
+	
+	
+	</article>
+	
+	
+
+</div>
+
+
+
+
+
+	
+	<footer>
+		<nav class="container">
+			<a class="brand javascriptmvc" href="index.html"></a>
+		</nav>
+	</footer>
+	
+	
+	<script type="text/javascript">
+		var docObject = {"type":"page","name":"index","src":"readme.md","description":"<!--\n-->","title":"place-my-order.com","dest":"/Users/daffl/Jupiter/examples/place-my-order/docs","glob":{"pattern":"**/*.{js,md}","ignore":["**/node_modules/**/*"],"cwd":"/Users/daffl/Jupiter/examples/place-my-order"},"generators":["html"],"docConfigDest":"../documentjs.json","project":{}};
+	</script>
+	
+	
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				data-config="./static/config.js"
+				src="./static/steal.production.js"
+	    		bundles-path="bundles"></script>
+	
+</body>
+
+</html>
