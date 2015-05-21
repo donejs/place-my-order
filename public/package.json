@@ -11,17 +11,18 @@
   "license": "MIT",
   "dependencies": {
     "bit-tabs": "git://github.com/bitovi-components/bit-tabs#place-my-order2",
+    "can": "git://github.com/bitovi/canjs#place-my-order2",
+    "can-connect": "git://github.com/canjs/can-connect#place-my-order2",
     "d3": "3.5.5",
+    "done-autorender": "^0.0.4",
+    "done-css": "^0.0.6",
     "event-emitter": "^0.3.3",
+    "funcunit": "^3.0.0",
+    "jquery": "^1.11.3",
     "socket.io-client": "^1.3.5",
     "steal": "^0.10.4",
     "steal-qunit": "0.0.4",
-    "funcunit": "^3.0.0",
-    "can": "git://github.com/bitovi/canjs#place-my-order2",
-    "can-connect": "git://github.com/canjs/can-connect#place-my-order2",
-    "done-autorender": "^0.0.4",
-    "done-css": "^0.0.6",
-    "jquery": "^1.11.3"
+    "system-component": "0.0.1"
   },
   "system": {
     "main": "pmo/layout.stache!done-autorender",
