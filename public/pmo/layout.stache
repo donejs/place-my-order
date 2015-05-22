@@ -7,7 +7,7 @@
   <body>
     <can-import from="pmo/routes" />
     <can-import from="less/styles.less!" />
-    <can-import from="pmo/appstate" as="viewModel" />
+    <can-import from="pmo/appstate" [.]="{value}" />
 
     <can-import from="pmo/header/" />
     <can-import from="pmo/loading/" />
