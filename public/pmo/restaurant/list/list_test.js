@@ -24,20 +24,20 @@ QUnit.asyncTest("ViewModel", function(){
 		_id: "1",
 		name: "Cheese City",
 		slug: "cheese-city"
-    }];
+	}];
 
 	// use fixtures
-    fixture({
-	  "/api/states": ()=> ({data: states}),
-	  "/api/cities": function(request){
-		return request.data.state === "CA" ? caCities : ntCities;	  
-      },
-	  "/api/restaurants": ()=> ({data: casadinaRestaurants})
+	fixture({
+		"/api/states": ()=> ({data: states}),
+		"/api/cities": function(request){
+			return request.data.state === "CA" ? caCities : ntCities;	  
+	  	},
+		 "/api/restaurants": ()=> ({data: casadinaRestaurants})
 	});
 
-    var rlVM = new RestaurantListVM();
+    	var rlVM = new RestaurantListVM();
 
-    rlVM.attr("states").then(function(vmStates){
+    	rlVM.attr("states").then(function(vmStates){
 		QUnit.deepEqual(vmStates.attr(), states, "Got states");
 		rlVM.attr("state","CA");
 	});
