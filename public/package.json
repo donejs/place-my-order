@@ -14,7 +14,7 @@
     "can": "git://github.com/bitovi/canjs#place-my-order2",
     "can-connect": "git://github.com/canjs/can-connect#place-my-order2",
     "d3": "3.5.5",
-    "done-autorender": "^0.0.4",
+    "done-autorender": "^0.0.6",
     "done-css": "^0.0.6",
     "event-emitter": "^0.3.3",
     "funcunit": "^3.0.0",
