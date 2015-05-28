@@ -13,6 +13,7 @@
     "bit-tabs": "git://github.com/bitovi-components/bit-tabs#place-my-order2",
     "can": "git://github.com/bitovi/canjs#rebase-pmo2",
     "can-connect": "git://github.com/canjs/can-connect#place-my-order2",
+    "can-ssr": "0.0.14",
     "d3": "3.5.5",
     "done-autorender": "^0.0.7",
     "done-css": "^0.0.6",

@@ -1,4 +1,4 @@
-import AppMap from "can/map/app/";
+import AppMap from "can-ssr/app-map";
 
 const AppState = AppMap.extend({});
 
