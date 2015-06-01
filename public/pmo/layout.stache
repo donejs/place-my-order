@@ -9,13 +9,14 @@
     <can-import from="less/styles.less!" />
     <can-import from="pmo/appstate" [.]="{value}" />
 
-    <can-import from="pmo/header/" />
+    <can-import from="pmo/header.stache!" #header="{value}" />
     <can-import from="pmo/loading/" />
-    <pmo-header page="{page}"></pmo-header>
+
+    {{> header}}
 
     {{#eq page "home"}}
-      <can-import from="pmo/home/home" can-tag="pmo-loading">
-        <pmo-home></pmo-home>
+      <can-import from="pmo/home.stache!" #home="{value}" can-tag="pmo-loading">
+        {{> home}}
       </can-import>
     {{/eq}}
 
@@ -28,8 +29,8 @@
         {{/eq}}
 
         {{^if action}}
-          <can-import from="pmo/restaurant/details/details" can-tag="pmo-loading">
-            <pmo-restaurant-details slug="{slug}"></pmo-restaurant-details>
+          <can-import from="pmo/restaurant/details/details.stache!" #details="{value}" can-tag="pmo-loading">
+            {{> details}}
           </can-import>
         {{/if}}
       {{else}}
@@ -50,6 +51,7 @@
     {{#isProduction}}
     <script src="/node_modules/steal/steal.production.js" main="pmo/layout.stache!done-autorender"></script>
     {{else}}
+    <script>steal = { trace: true }</script>
     <script src="/node_modules/steal/steal.js"></script>
     {{/isProduction}}
   </body>
