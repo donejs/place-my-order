@@ -10,10 +10,10 @@
   "author": "Bitovi",
   "license": "MIT",
   "dependencies": {
-    "bit-tabs": "git://github.com/bitovi-components/bit-tabs#place-my-order2",
+    "bit-tabs": "0.1.0-pre.0",
     "can": "2.3.0-pre.1",
     "can-connect": "git://github.com/canjs/can-connect#place-my-order2",
-    "can-ssr": "0.0.14",
+    "can-ssr": "^0.0.15",
     "d3": "3.5.5",
     "done-autorender": "^0.0.7",
     "done-css": "^0.0.6",
@@ -23,7 +23,7 @@
     "socket.io-client": "^1.3.5",
     "steal": "^0.10.4",
     "steal-qunit": "0.0.4",
-    "system-component": "0.0.1"
+    "system-component": "0.0.2"
   },
   "system": {
     "main": "pmo/layout.stache!done-autorender",

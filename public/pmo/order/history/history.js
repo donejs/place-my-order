@@ -1,5 +1,5 @@
 import Component from 'can/component/component';
-import Order from 'pmo/models/order';
+import 'pmo/models/order';
 
 import template from './history.stache!';
 

@@ -11,8 +11,7 @@ module.exports = function(grunt){
             buildMode: true
           },
           buildOptions: {
-            bundlesPath: __dirname + "/public/dist/bundles",
-            minify: true
+            bundlesPath: __dirname + "/public/dist/bundles"
           }
         }
       }
