@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "bit-tabs": "git://github.com/bitovi-components/bit-tabs#place-my-order2",
-    "can": "git://github.com/bitovi/canjs#rebase-pmo2",
+    "can": "2.3.0-pre.1",
     "can-connect": "git://github.com/canjs/can-connect#place-my-order2",
     "can-ssr": "0.0.14",
     "d3": "3.5.5",
@@ -50,7 +50,7 @@
     "bundle": [
       "pmo/home.stache!",
       "pmo/order/order",
-      "pmo/restaurant/details/details",
+      "pmo/restaurant/details/details.stache!",
       "pmo/restaurant/list/list",
       "pmo/order/history/history"
     ]
