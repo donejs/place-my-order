@@ -48,7 +48,7 @@
       "system-config"
     ],
     "bundle": [
-      "pmo/home/home",
+      "pmo/home.stache!",
       "pmo/order/order",
       "pmo/restaurant/details/details",
       "pmo/restaurant/list/list",

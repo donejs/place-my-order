@@ -1,3 +1,7 @@
+<can-import from="pmo/order/history/order-items.stache!" #order-items="{value}" />
+<can-import from="pmo/order/history/history.less!" />
+<can-import from="pmo/models/order" />
+
 <div class="order-history">
   <div class="order header">
     <address>Name / Address / Phone</address>
