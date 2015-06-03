@@ -1,8 +1,11 @@
 {
   "name": "place-my-order",
   "version": "0.1.0",
-  "description": "A retraurant order application",
+  "description": "A full stack restaurant order application built in ES6 with StealJS + CanJS and Feathers + MongoDB",
   "main": "lib/index.js",
+  "bin": {
+    "place-my-order": "./bin/place-my-order"
+  },
   "scripts": {
     "start": "node lib/index.js",
     "install": "cd public/ && npm install",
@@ -27,8 +30,10 @@
   "dependencies": {
     "babel": "^5.1.13",
     "body-parser": "^1.12.3",
+    "commander": "^2.8.1",
     "can-ssr": "^0.0.15",
     "compression": "^1.4.4",
+    "done-server-side-render": "^0.0.11",
     "feathers": "^1.0.2",
     "feathers-hooks": "^0.5.0",
     "feathers-mongodb": "^0.3.2",

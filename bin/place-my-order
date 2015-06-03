@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+require('babel/register');
+
+var program = require('commander');
+var pkg = require('../package.json');
+var app = require('../lib/app');
+var service = app.api.service('restaurants');
+var importer = require('../lib/importer');
+
+program.version(pkg.version)
+  .usage('[options] <start|import>')
+  .description(pkg.description)
+  .option('-p, --port [port]', 'The server port')
+  .parse(process.argv);
+
+if(program.args[0] === 'import') {
+  console.log('Importing data');
+  service.on('imported', function() {
+    process.exit();
+  });
+
+  service.store.dropDatabase(function() {
+    console.log('Importer dropped database');
+  });
+} else {
+  var server = app.listen(program.port || 3030);
+  console.log('App listening at http://%s:%s', server.address().address,
+    server.address().port);
+}

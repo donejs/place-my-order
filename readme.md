@@ -8,7 +8,7 @@ A restaurant menu ordering application. Built in ES6 with CanJS + StealJS.
 
 Install and start [MongoDB](https://www.mongodb.org/) with the default settings. [MongoHub](http://mongohub.todayclose.com/) is a helpful client to view and query databases.
 
-Start MongoDB by doing:
+Start MongoDB with:
 
 > sudo mkdir -p /data/db
 
