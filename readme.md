@@ -30,6 +30,8 @@ Clone [the repository](https://github.com/bitovi/place-my-order) and in the fold
 
 > npm install
 
+> cd public/ && npm install
+
 The initial restaurant list (with the data located in `public/fixtures/restaurants.json`) can be loaded by running
 
 > bin/import
