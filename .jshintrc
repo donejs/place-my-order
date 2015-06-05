@@ -1,0 +1,15 @@
+{
+  "browser": true,
+  "jquery": true,
+  "node": true,
+
+  "esnext": true,
+  "camelcase": true,
+  "latedef": true,
+  "newcap": true,
+  "undef": true,
+  "unused": true,
+  "eqnull": true,
+
+  "globals": {}
+}
