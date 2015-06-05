@@ -4,7 +4,8 @@
   "description": "The place-my-order frontend, built with DoneJS",
   "main": "pmo/layout.stache!done-autorender",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .server.js",
+    "test": "testee test.html --browsers firefox --reporter Spec",
     "live-reload": "steal-tools live-reload"
   },
   "author": "Bitovi",
@@ -17,9 +18,11 @@
     "d3": "3.5.5",
     "done-autorender": "^0.0.7",
     "done-css": "^0.0.6",
+    "donejs-server": "^0.1.0",
     "event-emitter": "^0.3.3",
     "funcunit": "^3.0.0",
     "jquery": "^1.11.3",
+    "place-my-order-api": "^0.1.4",
     "socket.io-client": "^1.3.5",
     "steal": "^0.10.4",
     "steal-qunit": "0.0.4",
@@ -56,6 +59,9 @@
     ]
   },
   "devDependencies": {
-    "steal-tools": "^0.10.4"
+    "grunt": "^0.4.4",
+    "grunt-cli": "^0.1.13",
+    "steal-tools": "^0.10.4",
+    "testee": "^0.2.0"
   }
 }

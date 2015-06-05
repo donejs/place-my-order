@@ -2,7 +2,6 @@ var server = require('donejs-server');
 var api = require('place-my-order-api');
 var app = server({
   path: __dirname,
-  proxy: 'http://localhost:3030',
   configure: function(app) {
     app.use('/api', api);
     app.api = api;
