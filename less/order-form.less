@@ -5,6 +5,13 @@
   bit-panel {
     display: block;
     margin-top: 20px;
+
+    ul {
+      .list-group;
+    }
+    ul li {
+      &:extend(.list-group > li);
+    }
   }
 
   form {
@@ -28,7 +35,8 @@
   }
   .submit {
     .text-center;
-    .btn {
+    button[type="submit"] {
+      .btn;
       .btn-success; 
       font-size: @font-size-large;
     }
