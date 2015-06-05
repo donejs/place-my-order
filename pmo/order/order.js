@@ -86,6 +86,17 @@ export const ViewModel = Map.extend({
     let order = this.attr('order');
     this.attr('saveStatus', order.save());
     return false;
+  },
+
+  /**
+   * Resets the order form, so a new order can be placed.
+   *
+   * @returns {boolean} false to prevent the form submission
+   */
+  startNewOrder: function() {
+    this.attr('order', new Order());
+    this.attr('saveStatus', null);
+    return false;
   }
 });
 
