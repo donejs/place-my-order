@@ -18,3 +18,23 @@ test('Calculates and parses item price total', () => {
 
   equal(order.attr('total'), 5, 'Order total calculated');
 });
+
+test('Adding and removing menu items to the order', () => {
+  let order = new Order({});
+  let items = order.attr('items');
+
+  let item = new can.Map({
+    "name": "Spinach Fennel Watercress Ravioli",
+    "price": 35.99
+  });
+
+  ok(!items.has(item), 'items should be empty');
+  equal(items.attr('length'), 0, 'there are no items');
+
+  items.toggle(item);
+  ok(items.has(item), 'item added');
+
+  items.toggle(item);
+  ok(!items.has(item), 'items should be empty');
+  equal(items.attr('length'), 0, 'the item was removed');
+});

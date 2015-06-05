@@ -5,13 +5,29 @@ import tag from 'can-connect/tag';
 import set from 'can-set';
 import socket from './socket';
 
-var Order = can.Map.extend({
+let ItemsList = can.List.extend({}, {
+  has: function(item) {
+    return this.indexOf(item) !== -1;
+  },
+
+  toggle: function(item) {
+    var index = this.indexOf(item);
+
+    if (index !== -1) {
+      this.splice(index, 1);
+    } else {
+      this.push(item);
+    }
+  }
+});
+
+let Order = can.Map.extend({
   define: {
     status: {
       value: 'new'
     },
     items: {
-      Value: can.List
+      Value: ItemsList
     },
     total: {
       get() {
@@ -29,22 +45,22 @@ var Order = can.Map.extend({
 });
 
 Order.List = can.List.extend({
-	Map: Order
+  Map: Order
 }, {
-	totals(){
-		return this.map(function(order){
-			return order.attr("total");
-		});
-	}
+  totals(){
+    return this.map(function(order){
+      return order.attr("total");
+    });
+  }
 });
 
 let orderConnection = superMap({
-	resource: "/api/orders",
-	idProp: '_id',
-	Map: Order,
-	List: Order.List,
-	name: "orders"
-	, compare: set.comparators.enum("status", ["new","preparing","delivery","delivered"])
+  resource: "/api/orders",
+  idProp: '_id',
+  Map: Order,
+  List: Order.List,
+  name: "orders",
+  compare: set.comparators.enum("status", ["new","preparing","delivery","delivered"])
 });
 
 if(socket) {
