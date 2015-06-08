@@ -13,12 +13,11 @@
   "dependencies": {
     "bit-tabs": "0.1.0-pre.0",
     "can": "2.3.0-pre.1",
-    "can-connect": "git://github.com/canjs/can-connect#place-my-order2",
+    "can-connect": "git://github.com/canjs/can-connect#master",
     "can-ssr": "^0.1.1",
     "d3": "3.5.5",
     "done-autorender": "^0.0.7",
     "done-css": "^0.0.6",
-    "donejs-server": "^0.1.0",
     "jquery": "^1.11.3",
     "place-my-order-api": "^0.1.4",
     "socket.io-client": "^1.3.5",
