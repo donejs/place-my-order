@@ -7,11 +7,11 @@ module.exports = function(grunt){
       app: {
         options:  {
           system: {
-            config: __dirname + "/public/package.json!npm",
+            config: __dirname + "/package.json!npm",
             buildMode: true
           },
           buildOptions: {
-            bundlesPath: __dirname + "/public/dist/bundles"
+            bundlesPath: __dirname + "/dist/bundles"
           }
         }
       }

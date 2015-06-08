@@ -1,4 +1,4 @@
-var server = require('donejs-server');
+var server = require('can-ssr/server');
 var api = require('place-my-order-api');
 var app = server({
   path: __dirname,
