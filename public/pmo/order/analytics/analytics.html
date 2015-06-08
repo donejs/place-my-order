@@ -1,0 +1,22 @@
+<script type="text/stache" id="demo" can-autorender>
+  <can-import from="less/styles.less!" />
+  <can-import from="ui/bit_graph/bit_graph"/>
+  <can-import from="pmo/models/order" />
+
+  <div class="order-analytics">
+    <h2 class="page-header">Amount Spent Per Order</h2>
+
+    <order-model 
+      findAll="{slug='cheese-curd-city'}" 
+      [cheesecurdcity]="{value}"/>
+
+    <bit-graph>
+      <bit-series data="{../cheesecurdcity.totals}" />
+    </bit-graph>
+
+  </div>
+</script>
+
+<!-- Loading Script -->
+<script src="../../../node_modules/steal/steal.js" id="demo_source" main="can/view/autorender/">
+</script>
