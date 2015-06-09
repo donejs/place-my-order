@@ -61,7 +61,7 @@
       "pmo/order/history/history"
     ],
     "npmIgnore": [
-      "devDependencies", "place-my-order-api"
+      "testee", "place-my-order-api"
     ]
   }
 }
