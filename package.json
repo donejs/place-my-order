@@ -13,7 +13,7 @@
   "dependencies": {
     "bit-tabs": "0.1.0-pre.0",
     "can": "2.3.0-pre.1",
-    "can-connect": "git://github.com/canjs/can-connect#master",
+    "can-connect": "git://github.com/canjs/can-connect#5f9ccb8848d36a36fb74c57c679da3ecb798084c",
     "can-ssr": "^0.1.1",
     "d3": "3.5.5",
     "done-autorender": "^0.0.7",
