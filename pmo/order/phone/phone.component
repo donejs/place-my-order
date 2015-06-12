@@ -4,8 +4,8 @@
   </style>
   <template>
     <div class="form-group{{#if error}} has-error{{/if}}">
-      <label class="control-label">Phone:</label>
-      <input name="phone" type="text" class="form-control" can-keyup="{setPhoneValue @element.val}">
+      <label>Phone:</label>
+      <input name="phone" type="text" can-keyup="{setPhoneValue @element.val}">
       {{#if error}}
         {{#eq order.phone '911'}}
           <p>That's not your real number :-(</p>
