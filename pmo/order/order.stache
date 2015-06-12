@@ -67,6 +67,7 @@
               <div class="loading"></div>
             {{else}}
               <button type="submit" class="btn">Place My Order!</button>
+              <button type="submit" {{^if canPlaceOrder}}disabled{{/if}} class="btn">Place My Order!</button>
             {{/if}}
           {{/if}}
         </div>

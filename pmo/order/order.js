@@ -35,6 +35,18 @@ export const ViewModel = Map.extend({
       Value: Object
     },
     /**
+     * @property {Boolean} canPlaceOrder
+     *
+     * A flag to enable / disable the "Place my order" button.
+     */
+    canPlaceOrder: {
+      type: 'boolean',
+      get() {
+        let items = this.attr('order.items');
+        return items.attr('length');
+      }
+    },
+    /**
      * @property {can.Deferred} restaurant
      *
      * The restaurant instance as a Deferred.
