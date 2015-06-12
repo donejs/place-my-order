@@ -1,4 +1,3 @@
-<can-import from="pmo/order/history/order-items.stache!" #order-items="{value}" />
 <can-import from="pmo/order/history/history.less!" />
 <can-import from="pmo/models/order" />
 
@@ -9,76 +8,43 @@
     <div class="total">Total</div>
     <div class="actions">Action</div>
   </div>
-  <order-model findAll="{status='new'}">
-    <h4>New Orders</h4>
-    {{#if isPending}}
-      <div class="loading"></div>
-    {{else}}
-      {{#each value}}
-      <div class="order new">
-        <address>
-          {{name}} <br />{{address}} <br />{{phone}}
-        </address>
-        {{> orderItems}}
-      </div>
-      {{/each}}
-      {{^if value.length}}
-        <div class="order empty">No new orders</div>
-      {{/if}}
-    {{/if}}
-  </order-model>
-  <order-model findAll="{status='preparing'}">
-    <h4>Preparing</h4>
-    {{#if isPending}}
-      <div class="loading"></div>
-    {{else}}
-      {{#each value}}
-        <div class="order preparing">
-          <address>
-            {{name}} <br />{{address}} <br />{{phone}}
-          </address>
-          {{> orderItems}}
-        </div>
-      {{/each}}
-      {{^if value.length}}
-        <div class="order empty">No orders preparing</div>
-      {{/if}}
-    {{/if}}
-  </order-model>
-  <order-model findAll="{status='delivery'}">
-    <h4>In delivery</h4>
-    {{#if isPending}}
-      <div class="loading"></div>
-    {{else}}
-      {{#each value}}
-        <div class="order">
-          <address>
-            {{name}} <br />{{address}} <br />{{phone}}
-          </address>
-          {{> orderItems}}
-        </div>
-      {{/each}}
-      {{^if value.length}}
-        <div class="order empty">No orders in delivery</div>
-      {{/if}}
-    {{/if}}
-  </order-model>
-  <order-model findAll="{status='delivered'}">
-    <h4>Delivered</h4>
-    {{#if isPending}}
-     <div class="loading"></div>
-    {{else}}
-      {{#each value}}
-        <div class="order delivered">
-          <address>
-            {{name}} <br />{{address}} <br />{{phone}}
-          </address>
-          {{> orderItems}}
-        </div>
-      {{/each}}
-      {{^if value.length}}
-        <div class="order empty">No delivered orders</div>
-      {{/if}}
-    {{/if}}
-  </order-model>
+
+  <can-import from="pmo/order/list/list" can-tag="pmo-loading">
+    <order-model findAll="{status='new'}">
+      <pmo-orders-list
+        orders="{.}"
+        status="new"
+        title="New Orders"
+        empty-message="No new orders">
+      </pmo-orders-list>
+    </order-model>
+
+    <order-model findAll="{status='preparing'}">
+      <pmo-orders-list
+        orders="{.}"
+        status="preparing"
+        title="Preparing"
+        empty-message="No orders preparing">
+      </pmo-orders-list>
+    </order-model>
+
+    <order-model findAll="{status='delivery'}">
+      <pmo-orders-list
+        orders="{.}"
+        status="delivery"
+        title="In delivery"
+        empty-message="No orders in delivery">
+      </pmo-orders-list>
+    </order-model>
+
+    <order-model findAll="{status='delivered'}">
+      <pmo-orders-list
+        orders="{.}"
+        status="delivered"
+        title="Delivered"
+        empty-message="No delivered orders">
+      </pmo-orders-list>
+    </order-model>
+  </can-import>
+
 </div>
