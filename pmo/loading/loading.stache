@@ -1,5 +1,0 @@
-{{#eq state "resolved"}}
-  <content></content>
-{{else}}
-  <div class="loading"></div>
-{{/eq}}

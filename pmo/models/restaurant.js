@@ -1,12 +1,14 @@
 import can from 'can';
-import superMap from 'can-connect/super-map';
-import tag from 'can-connect/tag';
+import tag from 'can-connect/can/tag/';
+import superMap from 'can-connect/can/super-map/';
 
 let Restaurant = can.Map.extend({});
 Restaurant.List = can.List.extend({Map: Restaurant},{});
 
 let restaurantConnection = superMap({
-	resource: "/api/restaurants",
+  url: {
+	  resource: "/api/restaurants",
+  },
 	idProp: '_id',
 	Map: Restaurant,
 	List: Restaurant.List,
