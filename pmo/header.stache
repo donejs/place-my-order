@@ -2,7 +2,7 @@
 
 <header>
   <nav>
-    <h1>PlaceMyOrder.com</h1>
+    <h1>place-my-order.com</h1>
     <ul>
       <li class="{{#eq page 'home'}}active{{/eq}}">
         <a can-href='{page="home"}'>Home</a>
