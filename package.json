@@ -76,6 +76,7 @@
   },
   "window": {
     "width": 1060,
-    "height": 625
+    "height": 625,
+    "toolbar": false
   }
 }
