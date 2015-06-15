@@ -52,7 +52,7 @@ For Steals live reload:
 
 To use production first build:
 
-> grunt build
+> npm run build
 
 Then switch your `NODE_ENV` to production:
 
