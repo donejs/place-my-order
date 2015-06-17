@@ -54,12 +54,11 @@
       "system-config"
     ],
     "bundle": [
-      "pmo/home.component!",
-      "pmo/order/new/",
-      "pmo/order/history.component!",
-      "pmo/restaurant/details.component!",
+      "pmo/home.stache!",
+      "pmo/order/order",
+      "pmo/restaurant/details/details.stache!",
       "pmo/restaurant/list/list",
-      "pmo/order/history.component!"
+      "pmo/order/history/history"
     ],
     "npmIgnore": [
       "testee", "place-my-order-api"
