@@ -59,6 +59,7 @@
     "bundle": [
       "pmo/home.component!",
       "pmo/order/new/",
+      "pmo/order/list.component!",
       "pmo/restaurant/details.component!",
       "pmo/restaurant/list/list",
       "pmo/order/history.component!"
