@@ -2,7 +2,8 @@
   "name": "place-my-order",
   "version": "0.1.0",
   "description": "The place-my-order frontend, built with DoneJS",
-  "main": "pmo/layout.stache!done-autorender",
+  "main": "pmo/index.stache!done-autorender",
+  "repository": "git@github.com:donejs/place-my-order.git",
   "scripts": {
     "start": "node .server.js",
     "test": "testee test.html --browsers firefox --reporter Spec",
@@ -13,26 +14,28 @@
   "dependencies": {
     "bit-tabs": "0.1.0-pre.0",
     "can": "2.3.0-pre.1",
-    "can-connect": "git://github.com/canjs/can-connect#5f9ccb8848d36a36fb74c57c679da3ecb798084c",
+    "can-connect": "0.0.2",
     "can-ssr": "^0.1.1",
     "d3": "3.5.5",
     "done-autorender": "^0.0.7",
     "done-css": "^0.0.6",
     "jquery": "^1.11.3",
-    "place-my-order-api": "^0.1.4",
+    "place-my-order-api": "^0.2.0",
+    "place-my-order-assets": "^0.1.0",
     "socket.io-client": "^1.3.5",
     "steal": "^0.10.4",
     "system-component": "^0.0.3"
   },
   "devDependencies": {
-    "steal-qunit": "0.0.4",
+    "funcunit": "^3.0.0",
     "grunt": "^0.4.4",
     "grunt-cli": "^0.1.13",
-    "steal-tools": "^0.10.4",
+    "steal-qunit": "0.0.4",
+    "steal-tools": "^0.11.0-pre.0",
     "testee": "^0.2.0"
   },
   "system": {
-    "main": "pmo/layout.stache!done-autorender",
+    "main": "pmo/index.stache!done-autorender",
     "transpiler": "babel",
     "meta": {
       "socketio": {
@@ -54,14 +57,15 @@
       "system-config"
     ],
     "bundle": [
-      "pmo/home.stache!",
-      "pmo/order/order",
-      "pmo/restaurant/details/details.stache!",
+      "pmo/home.component!",
+      "pmo/order/new/",
+      "pmo/restaurant/details.component!",
       "pmo/restaurant/list/list",
-      "pmo/order/history/history"
+      "pmo/order/history.component!"
     ],
     "npmIgnore": [
-      "testee", "place-my-order-api"
+      "testee",
+      "place-my-order-api"
     ]
   }
 }

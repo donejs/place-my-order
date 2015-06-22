@@ -1,4 +1,4 @@
-<can-component tag="phone-validator">
+<can-component tag="pmo-order-phone">
   <style>
     .has-error p { font-weight: bolder; color: #a94442; }
   </style>
@@ -20,6 +20,9 @@
 
     export default Map.extend({
       error: function(){
+        if(!this.attr("order")) {
+          return false;
+        }
         let phone = this.attr("order").attr("phone");
         return phone && (!/^(\d|-)*$/.test(phone) || phone === "911");
       },
