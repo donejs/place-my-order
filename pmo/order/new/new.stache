@@ -3,7 +3,7 @@
 <can-import from="pmo/order/phone/phone.component!"/>
 
 <div class="order-form">
-  <restaurant-model get="{ _id=slug }">
+  <restaurant-model get="{ _id=slug }" [restaurant]="{value}">
     {{#if isPending}}
       <div class="loading"></div>
     {{else}}
@@ -53,27 +53,25 @@
               </bit-panel>
             </bit-tabs>
 
-            {{#order}}
             <div class="form-group">
               <label class="control-label">Name:</label>
-              <input name="name" type="text" class="form-control" can-value="{name}">
+              <input name="name" type="text" class="form-control" can-value="{order.name}">
               <p>Please enter your name.</p>
             </div>
               <div class="form-group">
               <label class="control-label">Address:</label>
-              <input name="address" type="text" class="form-control" can-value="{address}">
+              <input name="address" type="text" class="form-control" can-value="{order.address}">
               <p class="help-text">Please enter your address.</p>
             </div>
             <pmo-order-phone order="{order}"></pmo-order-phone>
             <div class="submit">
-              <h4>Total: ${{total}}</h4>
+              <h4>Total: ${{order.total}}</h4>
               {{#if saveStatus.isPending}}
                 <div class="loading"></div>
               {{else}}
                 <button type="submit" {{^if canPlaceOrder}}disabled{{/if}} class="btn">Place My Order!</button>
               {{/if}}
             </div>
-            {{/order}}
           </form>
         {{/if}}
       {{/value}}

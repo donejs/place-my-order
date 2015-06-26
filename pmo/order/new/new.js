@@ -45,8 +45,7 @@ export const ViewModel = Map.extend({
      */
     canPlaceOrder: {
       get() {
-        let items = this.attr('order.items');
-        return items.attr('length');
+        return !!this.attr('order.items.length');
       }
     }
   },
@@ -58,6 +57,7 @@ export const ViewModel = Map.extend({
    */
   placeOrder() {
     let order = this.attr('order');
+    order.attr('restaurant', this.attr('restaurant._id'));
     this.attr('saveStatus', order.save());
     return false;
   },
