@@ -3,80 +3,80 @@
 <can-import from="pmo/order/phone/phone.component!"/>
 
 <div class="order-form">
-  {{#if restaurant.isPending}}
-    <div class="loading"></div>
-  {{else}}
-    {{#restaurant.value}}
-      {{#if saveStatus.isResolved}}
-        <pmo-order-details order="{saveStatus.value}"></pmo-order-details>
-        <p><a href="javascript://" (click)="{startNewOrder}">Place another order</a></p>
-      {{else}}
-        <h3>Order from {{name}}</h3>
+  <restaurant-model get="{ _id=slug }">
+    {{#if isPending}}
+      <div class="loading"></div>
+    {{else}}
+      {{#value}}
+        {{#if saveStatus.isResolved}}
+          <pmo-order-details order="{saveStatus.value}"></pmo-order-details>
+          <p><a href="javascript://" (click)="{startNewOrder}">Place another order</a></p>
+        {{else}}
+          <h3>Order from {{name}}</h3>
 
-        <form (submit)="placeOrder">
-          <bit-tabs tabs-class="nav nav-tabs">
-            <p class="info {{^if order.items.length}}text-error{{else}}text-success{{/if}}">
-              {{^if order.items.length}}
-                Please choose an item
-              {{else}}
-                {{order.items.length}} selected
-              {{/if}}
-            </p>
-            <bit-panel title="Lunch menu">
-              <ul class="list-group">
-                {{#each menu.lunch}}
-                  <li class="list-group-item">
-                    <label>
-                      <input type="checkbox"
-                        (change)="{order.items.toggle this}"
-                        {{#if order.items.has}}checked{{/if}}>
-                      {{name}} <span class="badge">${{price}}</span>
-                    </label>
-                  </li>
-                {{/each}}
-              </ul>
-            </bit-panel>
-            <bit-panel title="Dinner menu">
-              <ul class="list-group">
-                {{#each menu.dinner}}
-                  <li class="list-group-item">
-                    <label>
-                      <input type="checkbox"
-                        (change)="{order.items.toggle this}"
-                        {{#if order.items.has}}checked{{/if}}>
-                      {{name}} <span class="badge">${{price}}</span>
-                    </label>
-                  </li>
-                {{/each}}
-              </ul>
-            </bit-panel>
-          </bit-tabs>
+          <form (submit)="placeOrder">
+            <bit-tabs tabs-class="nav nav-tabs">
+              <p class="info {{^if order.items.length}}text-error{{else}}text-success{{/if}}">
+                {{^if order.items.length}}
+                  Please choose an item
+                {{else}}
+                  {{order.items.length}} selected
+                {{/if}}
+              </p>
+              <bit-panel title="Lunch menu">
+                <ul class="list-group">
+                  {{#each menu.lunch}}
+                    <li class="list-group-item">
+                      <label>
+                        <input type="checkbox"
+                          (change)="{order.items.toggle this}"
+                          {{#if order.items.has}}checked{{/if}}>
+                        {{name}} <span class="badge">${{price}}</span>
+                      </label>
+                    </li>
+                  {{/each}}
+                </ul>
+              </bit-panel>
+              <bit-panel title="Dinner menu">
+                <ul class="list-group">
+                  {{#each menu.dinner}}
+                    <li class="list-group-item">
+                      <label>
+                        <input type="checkbox"
+                          (change)="{order.items.toggle this}"
+                          {{#if order.items.has}}checked{{/if}}>
+                        {{name}} <span class="badge">${{price}}</span>
+                      </label>
+                    </li>
+                  {{/each}}
+                </ul>
+              </bit-panel>
+            </bit-tabs>
 
-          <div class="form-group">
-            <label class="control-label">Name:</label>
-            <input name="name" type="text" class="form-control" can-value="{order.name}">
-            <p>Please enter your name.</p>
-          </div>
+            {{#order}}
             <div class="form-group">
-            <label class="control-label">Address:</label>
-            <input name="address" type="text" class="form-control" can-value="{order.address}">
-            <p class="help-text">Please enter your address.</p>
-          </div>
-          <pmo-order-phone order="{order}"></pmo-order-phone>
-          <div class="submit">
-            <h4>Total: ${{order.total}}</h4>
-            {{#if saveStatus.isResolved}}
-              Received order (Confirmation: {{saveStatus.value._id}})
-            {{else}}
+              <label class="control-label">Name:</label>
+              <input name="name" type="text" class="form-control" can-value="{name}">
+              <p>Please enter your name.</p>
+            </div>
+              <div class="form-group">
+              <label class="control-label">Address:</label>
+              <input name="address" type="text" class="form-control" can-value="{address}">
+              <p class="help-text">Please enter your address.</p>
+            </div>
+            <pmo-order-phone order="{order}"></pmo-order-phone>
+            <div class="submit">
+              <h4>Total: ${{total}}</h4>
               {{#if saveStatus.isPending}}
                 <div class="loading"></div>
               {{else}}
                 <button type="submit" {{^if canPlaceOrder}}disabled{{/if}} class="btn">Place My Order!</button>
               {{/if}}
-            {{/if}}
-          </div>
-        </form>
-      {{/if}}
-    {{/restaurant.value}}
-  {{/if}}
+            </div>
+            {{/order}}
+          </form>
+        {{/if}}
+      {{/value}}
+    {{/if}}
+  </restaurant-model>
 </div>

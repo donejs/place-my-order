@@ -5,7 +5,7 @@ import tag from 'can-connect/can/tag/';
 import canSet from 'can-set';
 import socket from './socket';
 
-let ItemsList = can.List.extend({}, {
+export const ItemsList = can.List.extend({}, {
   has: function(item) {
     return this.indexOf(item) !== -1;
   },
@@ -46,15 +46,9 @@ let Order = can.Map.extend({
 
 Order.List = can.List.extend({
   Map: Order
-}, {
-  totals(){
-    return this.map(function(order){
-      return order.attr("total");
-    });
-  }
-});
+}, {});
 
-let orderConnection = superMap({
+export const orderConnection = superMap({
   url: "/api/orders",
   idProp: '_id',
   Map: Order,

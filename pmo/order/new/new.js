@@ -5,6 +5,10 @@ import template from './new.stache!';
 import Restaurant from 'pmo/models/restaurant';
 import Order from 'pmo/models/order';
 
+/**
+ * @module pmo/order/new
+ * @parent pmo
+ */
 export const ViewModel = Map.extend({
   define: {
     /**
@@ -40,39 +44,9 @@ export const ViewModel = Map.extend({
      * A flag to enable / disable the "Place my order" button.
      */
     canPlaceOrder: {
-      type: 'boolean',
       get() {
         let items = this.attr('order.items');
         return items.attr('length');
-      }
-    },
-    /**
-     * @property {can.Deferred} restaurant
-     *
-     * The restaurant instance as a Deferred.
-     */
-    restaurant: {
-      /**
-       * Returns a Deferred that gets a restaurant based on the `slug`
-       * set in this component and sets the orders restaurant id.
-       *
-       * @param {can.Deferred} old The previous value
-       * @returns {can.Deferred}
-       */
-      get(old) {
-        let _id = this.attr('slug');
-        if(!old && _id) {
-          let dfd = Restaurant.get({ _id }).then(restaurant => {
-            this.attr('order.slug', restaurant.attr('slug'));
-            return restaurant;
-          });
-
-          this.attr('@root').pageData('restaurant', { _id }, dfd);
-
-          return dfd;
-        }
-
-        return old;
       }
     }
   },

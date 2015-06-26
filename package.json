@@ -5,6 +5,7 @@
   "main": "pmo/index.stache!done-autorender",
   "repository": "git@github.com:donejs/place-my-order.git",
   "scripts": {
+    "document": "documentjs",
     "start": "node .server.js",
     "test": "testee test.html --browsers firefox --reporter Spec",
     "live-reload": "steal-tools live-reload"
@@ -27,6 +28,7 @@
     "system-component": "^0.0.3"
   },
   "devDependencies": {
+    "documentjs": "^0.3.0-pre.5",
     "funcunit": "^3.0.0",
     "grunt": "^0.4.4",
     "grunt-cli": "^0.1.13",
