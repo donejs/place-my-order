@@ -67,6 +67,7 @@
       "pmo/order/history.component!"
     ],
     "npmIgnore": [
+      "documentjs",
       "testee",
       "place-my-order-api"
     ]
