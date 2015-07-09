@@ -21,7 +21,7 @@
     "done-autorender": "^0.0.7",
     "done-css": "^0.0.6",
     "jquery": "^1.11.3",
-    "place-my-order-api": "^0.2.0",
+    "place-my-order-api": "^0.4.0",
     "place-my-order-assets": "^0.1.0",
     "socket.io-client": "^1.3.5",
     "steal": "^0.10.4",
