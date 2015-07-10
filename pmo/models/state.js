@@ -1,6 +1,7 @@
 import Map from 'can/map/';
 import List from 'can/list/';
 import superMap from 'can-connect/can/super-map/';
+import baseUrl from './base-url';
 
 const State = Map.extend({});
 
@@ -9,7 +10,7 @@ State.List = List.extend({
 });
 
 const connection = superMap({
-  url: '/api/states',
+  url: baseUrl + '/api/states',
   idProp: 'short',
   Map: State,
   List: State.List,

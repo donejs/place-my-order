@@ -3,7 +3,8 @@
 var MySystem = require('@loader');
 
 var isNode = typeof process === "object" &&
-  {}.toString.call(process) === "[object process]";
+  {}.toString.call(process) === "[object process]" &&
+  !(function(){try{var nr = MySystem._nodeRequire; return nr && nr('nw.gui') !== 'undefined';}catch(e){return false;}})();
 
 if(isNode) {
 	exports.systemConfig = {

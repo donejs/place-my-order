@@ -4,6 +4,7 @@ import superMap from 'can-connect/can/super-map/';
 import tag from 'can-connect/can/tag/';
 import canSet from 'can-set';
 import socket from './socket';
+import baseUrl from './base-url';
 
 export const ItemsList = can.List.extend({}, {
   has: function(item) {
@@ -49,7 +50,7 @@ Order.List = can.List.extend({
 }, {});
 
 export const orderConnection = superMap({
-  url: "/api/orders",
+  url: baseUrl + "/api/orders",
   idProp: '_id',
   Map: Order,
   List: Order.List,
