@@ -49,6 +49,7 @@ function buildNw(buildResult) {
       "nw.html",
 
       "node_modules/steal/steal.production.js",
+      "node_modules/place-my-order-assets/**/*",
       "images/**/*",
       "dist/**/*"
     ]

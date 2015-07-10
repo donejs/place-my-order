@@ -7,7 +7,7 @@ let Restaurant = can.Map.extend({});
 Restaurant.List = can.List.extend({Map: Restaurant},{});
 
 let restaurantConnection = superMap({
-	resource: baseUrl + "/api/restaurants",
+	url: baseUrl + "/api/restaurants",
 	idProp: '_id',
 	Map: Restaurant,
 	List: Restaurant.List,

@@ -50,7 +50,7 @@ Order.List = can.List.extend({
 }, {});
 
 export const orderConnection = superMap({
-  resource: baseUrl + "/api/orders",
+  url: baseUrl + "/api/orders",
   idProp: '_id',
   Map: Order,
   List: Order.List,

@@ -8,7 +8,7 @@ const City = Map.extend({});
 City.List = List.extend({});
 
 superMap({
-  resource: baseUrl + '/api/cities',
+  url: baseUrl + '/api/cities',
   idProp: 'name',
   Map: City,
   List: City.List,
