@@ -1,6 +1,6 @@
 import can from 'can';
-import superMap from 'can-connect/super-map';
-import tag from 'can-connect/tag';
+import tag from 'can-connect/can/tag/';
+import superMap from 'can-connect/can/super-map/';
 import baseUrl from './base-url';
 
 let Restaurant = can.Map.extend({});

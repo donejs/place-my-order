@@ -10,7 +10,7 @@ F.attach(QUnit);
 QUnit.module("phone.component", {
   setup: function(){
     let order = new Order();
-    let template = stache("<phone-validator order='{order}'></phone-validator>");
+    let template = stache("<pmo-order-phone order='{order}'></pmo-order-phone>");
     let frag = template({ order });
     $("#qunit-fixture").html(frag);
   }

@@ -2,9 +2,9 @@
   "name": "Spago",
   "slug": "spago",
   "images": {
-    "thumbnail": "images/1-thumbnail.jpg",
-    "owner": "images/1-owner.jpg",
-    "banner": "images/1-banner.jpg"
+    "thumbnail": "node_modules/place-my-order-assets/images/1-thumbnail.jpg",
+    "owner": "node_modules/place-my-order-assets/images/1-owner.jpg",
+    "banner": "node_modules/place-my-order-assets/images/1-banner.jpg"
   },
   "address": {
     "street": "3108 Winchester Ct.",
@@ -38,9 +38,9 @@
   "name": "Gilt bar",
   "slug": "gilt-bar",
   "images": {
-    "thumbnail": "images/2-thumbnail.jpg",
-    "owner": "images/2-owner.jpg",
-    "banner": "images/2-banner.jpg"
+    "thumbnail": "node_modules/place-my-order-assets/images/2-thumbnail.jpg",
+    "owner": "node_modules/place-my-order-assets/images/2-owner.jpg",
+    "banner": "node_modules/place-my-order-assets/images/2-banner.jpg"
   },
   "address": {
     "street": "230 W Kinzie Street",

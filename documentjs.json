@@ -1,0 +1,14 @@
+{
+  "sites": {
+    "docs": {
+      "dest": "docs",
+      "parent": "pmo",
+      "pageConfig": {
+        "page": "docs"
+      },
+      "glob": {
+        "pattern": "pmo/**/*.{js,md}"
+      }
+    }
+  }
+}

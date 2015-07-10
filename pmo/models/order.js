@@ -1,12 +1,12 @@
 import 'can/map/define/define';
 import can from 'can';
-import superMap from 'can-connect/super-map';
-import tag from 'can-connect/tag';
-import set from 'can-set';
+import superMap from 'can-connect/can/super-map/';
+import tag from 'can-connect/can/tag/';
+import canSet from 'can-set';
 import socket from './socket';
 import baseUrl from './base-url';
 
-let ItemsList = can.List.extend({}, {
+export const ItemsList = can.List.extend({}, {
   has: function(item) {
     return this.indexOf(item) !== -1;
   },
@@ -47,29 +47,23 @@ let Order = can.Map.extend({
 
 Order.List = can.List.extend({
   Map: Order
-}, {
-  totals(){
-    return this.map(function(order){
-      return order.attr("total");
-    });
-  }
-});
+}, {});
 
-let orderConnection = superMap({
+export const orderConnection = superMap({
   resource: baseUrl + "/api/orders",
   idProp: '_id',
   Map: Order,
   List: Order.List,
   name: "orders",
-  compare: set.comparators.enum("status", ["new","preparing","delivery","delivered"])
+  compare: canSet.comparators.enum("status", ["new","preparing","delivery","delivered"])
 });
+
+tag('order-model', orderConnection);
 
 if(socket) {
   socket.on('orders created', order => orderConnection.createInstance(order));
   socket.on('orders updated', order => orderConnection.updateInstance(order));
   socket.on('orders removed', order => orderConnection.destroyInstance(order));
 }
-
-tag('order-model', orderConnection);
 
 export default Order;

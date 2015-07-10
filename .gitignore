@@ -3,3 +3,5 @@ build/
 dist/
 apps/build/
 cache/
+docs/
+db-data/

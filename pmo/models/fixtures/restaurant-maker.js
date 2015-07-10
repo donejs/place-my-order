@@ -8,9 +8,9 @@ const cities = {
 const addresses = ['3108 Winchester Ct.', '230 W Kinzie Street', '1601-1625 N Campbell Ave', '2451 W Washburne Ave', '285 W Adams Ave'];
 const zips = ['60045', '60602', '60632', '48211', '48229', '53205', '53295'];
 const images = {
-  thumbnail: ['images/1-thumbnail.jpg', 'images/2-thumbnail.jpg', 'images/3-thumbnail.jpg', 'images/4-thumbnail.jpg'],
-  owner: ['images/1-owner.jpg', 'images/2-owner.jpg', 'images/3-owner.jpg', 'images/4-owner.jpg'],
-  banner: ['images/1-banner.jpg', 'images/2-banner.jpg', 'images/3-banner.jpg', 'images/4-banner.jpg']
+  thumbnail: ['node_modules/place-my-order-assets/images/1-thumbnail.jpg', 'node_modules/place-my-order-assets/images/2-thumbnail.jpg', 'node_modules/place-my-order-assets/images/3-thumbnail.jpg', 'node_modules/place-my-order-assets/images/4-thumbnail.jpg'],
+  owner: ['node_modules/place-my-order-assets/images/1-owner.jpg', 'node_modules/place-my-order-assets/images/2-owner.jpg', 'node_modules/place-my-order-assets/images/3-owner.jpg', 'node_modules/place-my-order-assets/images/4-owner.jpg'],
+  banner: ['node_modules/place-my-order-assets/images/1-banner.jpg', 'node_modules/place-my-order-assets/images/2-banner.jpg', 'node_modules/place-my-order-assets/images/3-banner.jpg', 'node_modules/place-my-order-assets/images/4-banner.jpg']
 };
 const items = [{
     "name": "Spinach Fennel Watercress Ravioli",

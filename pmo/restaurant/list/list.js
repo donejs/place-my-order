@@ -11,7 +11,7 @@ export const ViewModel = Map.extend({
   define: {
     states: {
       get() {
-        return State.findAll({});
+        return State.getList({}).then(states => { return states; }, err => console.error(err.stack));
       }
     },
     state: {
@@ -24,20 +24,19 @@ export const ViewModel = Map.extend({
     cities: {
       get() {
         var state = this.attr('state');
-        return state ? City.findAll({ state }) : null;
+        return state ? City.getList({ state }) : null;
       }
     },
     city: {
       value: null
     },
     restaurants: {
-      get: function(){
-        var params = {},
-          state = this.attr('state'),
-          city = this.attr('city');
+      get(){
+        let state = this.attr('state');
+        let city = this.attr('city');
 
         return state && city ?
-          Restaurant.findAll({
+          Restaurant.getList({
             'address.state': state,
             'address.city': city
           }) : null;
