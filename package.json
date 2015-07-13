@@ -30,7 +30,7 @@
     "socket.io-client": "^1.3.5",
     "steal": "^0.10.4",
     "steal-platform": "0.0.4",
-    "system-component": "^0.0.3"
+    "done-component": "^0.1.0"
   },
   "devDependencies": {
     "documentjs": "^0.3.0-pre.5",
