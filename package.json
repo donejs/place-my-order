@@ -21,7 +21,7 @@
     "can-connect": "0.0.2",
     "can-ssr": "^0.3.1",
     "d3": "3.5.5",
-    "done-autorender": "^0.1.0-pre.2",
+    "done-autorender": "^0.2.0-pre.0",
     "done-css": "^0.0.8",
     "es6-promise": "^2.2.0",
     "jquery": "^1.11.3",
