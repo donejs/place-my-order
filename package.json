@@ -22,15 +22,16 @@
     "can-ssr": "^0.3.1",
     "d3": "3.5.5",
     "done-autorender": "^0.2.0",
-    "done-css": "^0.0.8",
+    "done-component": "^0.1.0",
+    "done-css": "^0.0.11",
+    "done-worker-autorender": "^0.1.0",
     "es6-promise": "^2.2.0",
     "jquery": "^1.11.3",
     "place-my-order-api": "^0.4.2",
     "place-my-order-assets": "^0.1.0",
     "socket.io-client": "^1.3.5",
     "steal": "^0.10.4",
-    "steal-platform": "0.0.4",
-    "done-component": "^0.1.0"
+    "steal-platform": "0.0.4"
   },
   "devDependencies": {
     "documentjs": "^0.3.0-pre.5",
