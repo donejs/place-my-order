@@ -17,11 +17,35 @@
       <can-import from="pmo/home.component!" can-tag="pmo-loading">
         <pmo-home></pmo-home>
       </can-import>
-    {{else}}
-        <can-import from="pmo/restaurant/list/" can-tag="pmo-loading">
-          hello
-        </can-import>
     {{/eq}}
+
+    {{#eq page "restaurants"}}
+      {{#if slug}}
+        {{#eq action 'order'}}
+          <can-import from="pmo/order/new/" can-tag="pmo-loading">
+            <pmo-order-new slug="{slug}"></pmo-order-new>
+          </can-import>
+        {{/eq}}
+
+        {{^if action}}
+          <can-import from="pmo/restaurant/details.component!" can-tag="pmo-loading">
+            <pmo-restaurant-details></pmo-restaurant-details>
+          </can-import>
+        {{/if}}
+      {{else}}
+        <can-import from="pmo/restaurant/list/" can-tag="pmo-loading">
+          <pmo-restaurant-list></pmo-restaurant-list>
+        </can-import>
+      {{/if}}
+    {{/eq}}
+
+    {{#eq page "orders"}}
+      <can-import from="pmo/order/history.component!" can-tag="pmo-loading">
+        <pmo-order-history></pmo-order-history>
+      </can-import>
+    {{/eq}}
+
+    {{asset "inline-cache"}}
 
     {{#isProduction}}
     <script src="/node_modules/steal/steal.production.js" main="pmo/index.stache!done-autorender"></script>

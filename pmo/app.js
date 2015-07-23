@@ -4,9 +4,9 @@ import 'can/route/pushstate/pushstate';
 import $ from 'jquery';
 import platform from 'steal-platform';
 
-if(platform.isCordova || platform.isNW) {
+//if(platform.isCordova || platform.isNW) {
   route.defaultBinding = "hashchange";
-}
+//}
 
 const AppState = AppMap.extend({});
 
