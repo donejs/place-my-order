@@ -45,7 +45,7 @@
     "testee": "^0.2.0"
   },
   "system": {
-    "main": "pmo/index.stache!done-autorender",
+    "main": "pmo/index.stache!done-worker-autorender",
     "transpiler": "babel",
     "meta": {
       "socketio": {
