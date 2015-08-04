@@ -3,6 +3,11 @@ import route from 'can/route/route';
 import 'can/route/pushstate/pushstate';
 import $ from 'jquery';
 import platform from 'steal-platform';
+import loader from "@loader";
+
+if(loader.env === "production") {
+  can.baseUrl = "http://matt-pmo.divshot.io/";
+}
 
 if(platform.isCordova || platform.isNW) {
   route.defaultBinding = "hashchange";

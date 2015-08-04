@@ -19,9 +19,9 @@
     "bit-tabs": "0.1.0-pre.0",
     "can": "2.3.0-pre.1",
     "can-connect": "0.0.2",
-    "can-ssr": "^0.3.1",
+    "can-ssr": "^0.4.0",
     "d3": "3.5.5",
-    "done-autorender": "^0.2.1",
+    "done-autorender": "^0.3.0",
     "done-css": "^0.0.8",
     "es6-promise": "^2.2.0",
     "jquery": "^1.11.3",
@@ -34,23 +34,31 @@
   },
   "devDependencies": {
     "documentjs": "^0.3.0-pre.5",
+    "donejs-deploy": "^0.1.0",
     "funcunit": "^3.0.0",
     "grunt": "^0.4.4",
     "grunt-cli": "^0.1.13",
-    "steal-qunit": "0.0.4",
-    "steal-tools": "^0.11.0-pre.2",
     "steal-cordova": "0.0.5",
     "steal-nw": "0.0.2",
+    "steal-qunit": "0.0.4",
+    "steal-tools": "^0.11.0-pre.4",
     "testee": "^0.2.0"
   },
   "donejs": {
     "deploy": {
-      "glob": "node_modules/place-my-order-assets/images/**/*",
+      "root": "dist",
       "services": {
         "production": {
-          "type": "s3",
-          "bucket": "placemyorder",
-          "config-path": ".aws.s3.json"
+          "type": "divshot",
+          "environment": "production",
+          "config": {
+            "name": "matt-pmo",
+            "headers": {
+              "/**": {
+                "Access-Control-Allow-Origin": "*"
+              }
+            }
+          }
         }
       }
     }
@@ -90,7 +98,8 @@
       "steal-nw",
       "documentjs",
       "testee",
-      "place-my-order-api"
+      "place-my-order-api",
+      "donejs-deploy"
     ]
   },
   "window": {

@@ -7,18 +7,21 @@ var isNode = typeof process === "object" &&
   !(function(){try{var nr = MySystem._nodeRequire; return nr && nr('nw.gui') !== 'undefined';}catch(e){return false;}})();
 
 if(isNode) {
-	exports.systemConfig = {
-    map: {
+  var config = exports.systemConfig = {};
+
+  if(!MySystem.buildMode) {
+    config.map = {
       'socketio': '@empty'
-    },
-		meta: {
-			'jquery': {
-				"format": "global",
-				"exports": "jQuery",
-				"deps": ["can/util/vdom/vdom"]
-			}
-		}
-	};
+    };
+  }
+
+  config.meta = {
+    'jquery': {
+      "format": "global",
+      "exports": "jQuery",
+      "deps": ["can/util/vdom/vdom"]
+    }
+  };
 } else {
   exports.systemConfig = {
     map: {
