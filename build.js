@@ -4,8 +4,7 @@ var cordova = process.argv.indexOf("cordova") > 0;
 var nw = process.argv.indexOf("nw") > 0;
 
 var buildPromise = stealTools.build({
-  config: __dirname + "/package.json!npm",
-  buildMode: true
+  config: __dirname + "/package.json!npm"
 },{
   minify: false,
   bundleAssets: {
