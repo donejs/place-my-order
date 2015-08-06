@@ -19,7 +19,7 @@
     "bit-tabs": "^0.1.0-pre.1",
     "can": "^2.3.0-pre.3",
     "can-connect": "0.0.2",
-    "can-ssr": "^0.5.0",
+    "can-ssr": "0.5.0",
     "d3": "3.5.5",
     "done-autorender": "^0.3.0",
     "done-css": "^1.1.0",
