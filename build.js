@@ -6,7 +6,10 @@ var nw = process.argv.indexOf("nw") > 0;
 var buildPromise = stealTools.build({
   config: __dirname + "/package.json!npm"
 },{
-  minify: false
+  minify: false,
+  bundleAssets: {
+    glob: "node_modules/place-my-order-assets/images/**/*"
+  }
 });
 
 // Build Cordova if "cordova" option passed.

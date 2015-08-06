@@ -16,13 +16,13 @@
   "author": "Bitovi",
   "license": "MIT",
   "dependencies": {
-    "bit-tabs": "0.1.0-pre.0",
-    "can": "2.3.0-pre.1",
+    "bit-tabs": "^0.1.0-pre.1",
+    "can": "^2.3.0-pre.3",
     "can-connect": "0.0.2",
-    "can-ssr": "^0.3.1",
+    "can-ssr": "^0.5.0",
     "d3": "3.5.5",
-    "done-autorender": "^0.2.1",
-    "done-css": "^0.0.8",
+    "done-autorender": "^0.3.0",
+    "done-css": "^1.1.0",
     "es6-promise": "^2.2.0",
     "jquery": "^1.11.3",
     "place-my-order-api": "^0.4.2",
@@ -34,23 +34,31 @@
   },
   "devDependencies": {
     "documentjs": "^0.3.0-pre.5",
+    "donejs-deploy": "^0.1.0",
     "funcunit": "^3.0.0",
     "grunt": "^0.4.4",
     "grunt-cli": "^0.1.13",
-    "steal-qunit": "0.0.4",
-    "steal-tools": "^0.11.0-pre.2",
     "steal-cordova": "0.0.5",
     "steal-nw": "0.0.2",
+    "steal-qunit": "0.0.4",
+    "steal-tools": "^0.11.0-pre.4",
     "testee": "^0.2.0"
   },
   "donejs": {
     "deploy": {
-      "glob": "node_modules/place-my-order-assets/images/**/*",
+      "root": "dist",
       "services": {
         "production": {
-          "type": "s3",
-          "bucket": "placemyorder",
-          "config-path": ".aws.s3.json"
+          "type": "divshot",
+          "environment": "production",
+          "config": {
+            "name": "matt-pmo",
+            "headers": {
+              "/**": {
+                "Access-Control-Allow-Origin": "*"
+              }
+            }
+          }
         }
       }
     }
@@ -58,6 +66,24 @@
   "system": {
     "main": "pmo/index.stache!done-autorender",
     "transpiler": "babel",
+    "envs": {
+      "production": {
+        "baseURL": "http://matt-pmo.divshot.io/"
+      },
+      "server,build": {
+        "meta": {
+          "jquery": {
+            "format": "global",
+            "deps": ["can/util/vdom/vdom"]
+          }
+        }
+      },
+      "server": {
+        "map": {
+          "socketio": "@empty"
+        }
+      }
+    },
     "meta": {
       "socketio": {
         "format": "global"
@@ -67,8 +93,8 @@
       }
     },
     "map": {
-      "bit-tabs@0.0.4#tabs.less!$less": "@empty",
-      "$css": "done-css"
+      "bit-tabs/tabs.less!$less": "@empty",
+      "./$css": "done-css"
     },
     "paths": {
       "socketio": "node_modules/socket.io-client/socket.io.js"
@@ -90,7 +116,9 @@
       "steal-nw",
       "documentjs",
       "testee",
-      "place-my-order-api"
+      "place-my-order-api",
+      "donejs-deploy",
+      "testee"
     ]
   },
   "window": {

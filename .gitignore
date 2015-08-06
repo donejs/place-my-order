@@ -5,3 +5,4 @@ apps/build/
 cache/
 docs/
 db-data/
+.divshot-cache/

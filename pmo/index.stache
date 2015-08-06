@@ -6,7 +6,7 @@
   </head>
   <body>
     <can-import from="place-my-order-assets" />
-    <can-import from="pmo/app" [.]="{value}" />
+    <can-import from="pmo/app" as="viewModel" />
 
     <can-import from="pmo/header.component!" />
     <can-import from="pmo/loading.component!" />
@@ -47,11 +47,16 @@
 
     {{asset "inline-cache"}}
 
-    {{#isProduction}}
-    <script src="/node_modules/steal/steal.production.js" main="pmo/index.stache!done-autorender"></script>
-    {{else}}
-    <script>steal = { trace: true }</script>
-    <script src="/node_modules/steal/steal.js"></script>
-    {{/isProduction}}
+    {{#switch @env.NODE_ENV}}
+
+      {{#case "production"}}
+        <script src="http://matt-pmo.divshot.io/node_modules/steal/steal.production.js" main="pmo/index.stache!done-autorender"></script>
+      {{/case}}
+
+      {{#default}}
+        <script src="/node_modules/steal/steal.js"></script>
+      {{/default}}
+
+    {{/switch}}
   </body>
 </html>
