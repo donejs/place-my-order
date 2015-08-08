@@ -1,0 +1,22 @@
+language: node_js
+node_js: node
+script: npm test
+before_install:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+before_deploy:
+- git config --global user.email "me@example.com"
+- git config --global user.name "PMO deploy bot"
+- node build
+- git add dist/ --force
+- git commit -m "Updating build."
+- node_modules/.bin/donejs-deploy
+deploy:
+  skip_cleanup: true
+  provider: heroku
+  app: place-my-order
+  api_key:
+    secure: JxrWJvn2TZw11cZqLwhhd4/N0AgFPJmeOsf9iFN7p2ecKhXcRnTKM3pvXIvntGv0LajOZx0mTdiP8Sfj1AKcmV7hUZZqUVxrAEX7dWsEdwKmNa6p+Psn/1scah+AJfwLI5RXFwzrL3j4KbRQQPVf7zFsbllLmbLop2VG//gHBD4=
+env:
+  global:
+    secure: mMNhdjetm37ltdN1dX1W7Rt5i1LS3qlZGIg2MzRbF4/NDeH1NGfc0Ot4tz2yONKyo0eAnKxM/7eo8GdOcdgLEkgc20w5YvON2xvDefgOCRoKwFKIPjBb9WWSSewTvZb3U4puhFjvFddImAzfp+5jnvI0gYE7lVL1HnMzE0UaVk4=
