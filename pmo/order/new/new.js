@@ -1,3 +1,7 @@
+/**
+ * @module {Module} new <pmo-order-new>
+ * @parent pmo
+ */
 import Component from 'can/component/component';
 import Map from 'can/map/';
 import 'can/map/define/';
@@ -6,14 +10,14 @@ import Restaurant from 'pmo/models/restaurant';
 import Order from 'pmo/models/order';
 
 /**
- * @module pmo/order/new
- * @parent pmo
+ * @property {can.Map} new.ViewModel
+ * @parent new
  */
 export const ViewModel = Map.extend({
   define: {
     /**
-     * @property {String} slug
-     *
+     * @property {String} new.ViewModel.slug
+     * @parent new.ViewModel
      * The restaurants slug (short name). Will
      * be used to request the actual restaurant.
      */
@@ -21,16 +25,18 @@ export const ViewModel = Map.extend({
       type: 'string'
     },
     /**
-     * @property {pmo/models/order} order
+     * @property {pmo/models/order} new.ViewModel.order
+     * @parent new.ViewModel
      *
      * The order that is being processed. Will
-     * be an empty new order inititally.
+     * be an empty new order initially.
      */
     order: {
       Value: Order
     },
     /**
-     * @property {can.Deferred} saveStatus
+     * @property {can.Deferred} new.ViewModel.saveStatus
+     * @parent new.ViewModel
      *
      * A deferred that contains the status of the order when
      * it is being saved.
@@ -39,7 +45,8 @@ export const ViewModel = Map.extend({
       Value: Object
     },
     /**
-     * @property {Boolean} canPlaceOrder
+     * @property {Boolean} new.ViewModel.canPlaceOrder
+     * @parent new.ViewModel
      *
      * A flag to enable / disable the "Place my order" button.
      */
@@ -51,9 +58,10 @@ export const ViewModel = Map.extend({
   },
 
   /**
+   * @function {Function} new.ViewModel.placeOrder
+   * @parent new.ViewModel
    * Save the current order and update the status Deferred.
-   *
-   * @returns {boolean} false to prevent the form submission
+   * @return {boolean} false to prevent the form submission
    */
   placeOrder() {
     let order = this.attr('order');
@@ -63,9 +71,10 @@ export const ViewModel = Map.extend({
   },
 
   /**
+   * @function {Function} new.ViewModel.startNewOrder
+   * @parent new.ViewModel
    * Resets the order form, so a new order can be placed.
-   *
-   * @returns {boolean} false to prevent the form submission
+   * @return {boolean} false to prevent the form submission
    */
   startNewOrder: function() {
     this.attr('order', new Order());
