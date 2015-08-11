@@ -1,0 +1,58 @@
+@import '../node_modules/place-my-order-assets/less/config';
+
+header {
+    .navbar {
+        border: none;
+        min-height: 45px;
+    }
+}
+
+.navbar-default {
+    background-color: @brand-primary;
+
+    .navbar-nav {
+        > .active > a,
+        > .active > a:hover,
+        > .active > a:focus {
+            color: #fff;
+            background-color: #1d4568;
+        }
+        > li {
+            > a {
+                color: #fff;
+            }
+        }
+    }
+
+    .navbar-toggle:hover,
+    .navbar-toggle:focus,
+    .navbar-nav > li > a:hover,
+    .navbar-nav > li > a:focus {
+        color: #ffffff;
+        background: #286090;
+        text-decoration: none;
+    }
+
+    .navbar-toggle .icon-bar,
+    .navbar-toggle .icon-bar {
+        background-color: #fff;
+    }
+
+    .navbar-brand {
+        color: #fff;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-nav {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        overflow-y: hidden;
+    }
+
+    .navbar-collapse {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

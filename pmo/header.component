@@ -1,22 +1,37 @@
 <can-component tag="pmo-header">
   <template>
     <can-import from="can/view/href/href"/>
+    <can-import from='node_modules/bootstrap/less/bootstrap.less!' />
+    <can-import from="pmo/header.less!" />
+    <can-import from='bootstrap' />
 
     <header>
-      <nav>
-        <h1>place-my-order.com</h1>
-        <ul>
-          <li class="{{#eq page 'home'}}active{{/eq}}">
-            <a can-href='{page="home"}'>Home</a>
-          </li>
-          <li class="{{#eq page 'restaurants'}}active{{/eq}}">
-            <a can-href='{page="restaurants"}'>Restaurants</a>
-          </li>
-          <li class="{{#eq page 'orders'}}active{{/eq}}">
-            <a can-href='{page="orders"}'>Order History</a>
-          </li>
-        </ul>
-      </nav>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#pmo-navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <h1>place-my-order.com</h1>
+            </div>
+            <div class="collapse navbar-collapse" id="pmo-navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li class="{{#eq page 'home'}}active{{/eq}}">
+                    <a can-href='{page="home"}'>Home</a>
+                </li>
+                <li class="{{#eq page 'restaurants'}}active{{/eq}}">
+                    <a can-href='{page="restaurants"}'>Restaurants</a>
+                </li>
+                <li class="{{#eq page 'orders'}}active{{/eq}}">
+                    <a can-href='{page="orders"}'>Order History</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
     </header>
   </template>
 </can-component>
