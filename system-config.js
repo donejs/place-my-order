@@ -11,3 +11,9 @@ if(!envMap.server && !envMap.build) {
     'can/util/vdom/vdom': '@empty'
   };
 }
+
+if(envMap.server) {
+  systemConfig.map = {
+    'socketio': '@empty'
+  }
+}
