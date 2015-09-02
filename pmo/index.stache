@@ -50,7 +50,7 @@
     {{#switch @env.NODE_ENV}}
 
       {{#case "production"}}
-        <script src="http://matt-pmo.divshot.io/node_modules/steal/steal.production.js" main="pmo/index.stache!done-autorender"></script>
+        <script src="/node_modules/steal/steal.production.js" main="pmo/index.stache!done-autorender"></script>
       {{/case}}
 
       {{#default}}
