@@ -2,7 +2,6 @@
   <template>
     <can-import from="can/view/href/href"/>
     <can-import from='node_modules/bootstrap/less/bootstrap.less!' />
-    <can-import from="pmo/header.less!" />
     <can-import from='bootstrap' />
 
     <header>
