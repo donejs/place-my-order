@@ -65,7 +65,10 @@
     }
   },
   "system": {
-    "main": "pmo/index.stache!done-autorender",
+    "main": "place-my-order/index.stache!done-autorender",
+    "directories": {
+      "lib": "src"
+    },
     "transpiler": "babel",
     "envs": {
       "server-development": {

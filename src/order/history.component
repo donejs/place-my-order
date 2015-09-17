@@ -1,6 +1,6 @@
 <can-component tag="pmo-order-history">
   <template>
-    <can-import from="pmo/models/order" />
+    <can-import from="place-my-order/models/order" />
 
     <div class="order-history">
       <div class="order header">
@@ -10,7 +10,7 @@
         <div class="actions">Action</div>
       </div>
 
-      <can-import from="pmo/order/list.component!" can-tag="pmo-loading">
+      <can-import from="place-my-order/order/list.component!" can-tag="pmo-loading">
         <order-model getList="{status='new'}">
           <pmo-order-list
             orders="{.}"

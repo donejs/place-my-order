@@ -3,7 +3,7 @@ import F from "funcunit";
 import "./phone.component!";
 import $ from "jquery";
 import stache from "can/view/stache/";
-import Order from "pmo/models/order";
+import Order from "place-my-order/models/order";
 
 F.attach(QUnit);
 
