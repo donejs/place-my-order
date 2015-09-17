@@ -1,4 +1,4 @@
-import io from 'socketio';
+import io from 'socket.io-client';
 // import EventEmitter from 'event-emitter';
 
 let socket;

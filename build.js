@@ -8,6 +8,7 @@ var buildPromise = stealTools.build({
 },{
   minify: false,
   bundleAssets: {
+    infer: false,
     glob: "node_modules/place-my-order-assets/images/**/*"
   }
 });
