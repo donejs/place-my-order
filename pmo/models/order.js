@@ -4,7 +4,7 @@ import superMap from 'can-connect/can/super-map/';
 import tag from 'can-connect/can/tag/';
 import canSet from 'can-set';
 import socket from './socket';
-import baseUrl from './base-url';
+import baseUrl from '../service-base-url';
 
 export const ItemsList = can.List.extend({}, {
   has: function(item) {
