@@ -1,7 +1,7 @@
 import can from 'can';
 import tag from 'can-connect/can/tag/';
 import superMap from 'can-connect/can/super-map/';
-import baseUrl from './base-url';
+import baseUrl from '../service-base-url';
 
 let Restaurant = can.Map.extend({});
 Restaurant.List = can.List.extend({Map: Restaurant},{});
