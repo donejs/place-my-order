@@ -39,8 +39,8 @@
     "funcunit": "^3.0.0",
     "grunt": "^0.4.4",
     "grunt-cli": "^0.1.13",
-    "steal-cordova": "0.0.5",
-    "steal-nw": "0.0.2",
+    "steal-cordova": "0.1.1",
+    "steal-nw": "0.1.3",
     "steal-qunit": "0.1.0",
     "steal-tools": "^0.12.0-pre.0",
     "testee": "^0.2.0"

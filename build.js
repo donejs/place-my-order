@@ -34,8 +34,7 @@ function buildCordova(buildResult) {
     ],
     index: __dirname + "/app.html",
     glob: [
-      "node_modules/steal/steal.production.js",
-      "images/**/*"
+      "node_modules/steal/steal.production.js"
     ]
   };
 
