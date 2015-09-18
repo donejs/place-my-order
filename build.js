@@ -45,7 +45,7 @@ function buildCordova(buildResult) {
 function buildNw(buildResult) {
   var nwOptions = {
     buildDir: "./build",
-    platforms: ["osx"],
+    platforms: ["osx64"],
     glob: [
       "package.json",
       "app.html",
