@@ -20,7 +20,7 @@
     "bootstrap": "^3.3.5",
     "can": "^2.3.0-pre.9",
     "can-connect": "~0.2.2",
-    "can-ssr": "^0.7.0",
+    "can-ssr": "^0.7.1",
     "d3": "3.5.5",
     "done-autorender": "^0.4.0",
     "done-component": "^0.2.0",
@@ -53,7 +53,7 @@
           "type": "divshot",
           "environment": "production",
           "config": {
-            "name": "matt-pmo",
+            "name": "place-my-order",
             "headers": {
               "/**": {
                 "Access-Control-Allow-Origin": "*"
