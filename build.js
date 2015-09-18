@@ -34,12 +34,13 @@ function buildCordova(buildResult) {
     ],
     index: __dirname + "/app.html",
     glob: [
-      "node_modules/steal/steal.production.js"
+      "node_modules/steal/steal.production.js",
+      "node_modules/place-my-order-assets/**/*"
     ]
   };
 
   var stealCordova = require("steal-cordova")(cordovaOptions);
-  return stealCordova.build(buildResult);
+  return stealCordova.build(buildResult).then(stealCordova.ios.emulate);
 }
 
 function buildNw(buildResult) {
