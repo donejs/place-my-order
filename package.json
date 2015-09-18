@@ -71,6 +71,9 @@
     },
     "transpiler": "babel",
     "envs": {
+      "production": {
+        "baseURL": "https://place-my-order.divshot.io/"
+      },
       "server-development": {
         "map": {
           "socket.io-client/socket.io": "@empty"

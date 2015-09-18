@@ -50,7 +50,7 @@
     {{#switch @env.NODE_ENV}}
 
       {{#case "production"}}
-        <script src="/node_modules/steal/steal.production.js" main="place-my-order/index.stache!done-autorender"></script>
+        <script src="https://place-my-order.divshot.io/node_modules/steal/steal.production.js" main="place-my-order/index.stache!done-autorender"></script>
       {{/case}}
 
       {{#default}}
