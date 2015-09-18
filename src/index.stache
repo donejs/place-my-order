@@ -5,11 +5,11 @@
     {{asset "css"}}
   </head>
   <body>
-    <can-import from="place-my-order-assets" />
     <can-import from="place-my-order/app" as="viewModel" />
 
     <can-import from="place-my-order/header.component!" />
     <can-import from="place-my-order/loading.component!" />
+    <can-import from="place-my-order-assets" />
 
     <pmo-header page="{page}"></pmo-header>
 
