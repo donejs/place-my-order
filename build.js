@@ -28,12 +28,12 @@ function buildCordova(buildResult) {
     path: './build/cordova',
     id: 'com.bitovi.placemyorder',
     name: 'PlaceMyOrder',
-    platforms: ['ios', 'android'],
+    platforms: ['ios'],
     plugins: [
       'org.apache.cordova.statusbar'
     ],
-    index: __dirname + "/cordova.html",
-    files: [
+    index: __dirname + "/app.html",
+    glob: [
       "node_modules/steal/steal.production.js",
       "images/**/*"
     ]
@@ -47,13 +47,12 @@ function buildNw(buildResult) {
   var nwOptions = {
     buildDir: "./build",
     platforms: ["osx"],
-    files: [
+    glob: [
       "package.json",
-      "nw.html",
+      "app.html",
 
       "node_modules/steal/steal.production.js",
       "node_modules/place-my-order-assets/**/*",
-      "images/**/*",
       "dist/**/*"
     ]
   };

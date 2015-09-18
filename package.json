@@ -2,7 +2,7 @@
   "name": "place-my-order",
   "version": "0.1.0",
   "description": "The place-my-order frontend, built with DoneJS",
-  "main": "nw.html",
+  "main": "app.html",
   "repository": "git@github.com:donejs/place-my-order.git",
   "scripts": {
     "document": "documentjs",
