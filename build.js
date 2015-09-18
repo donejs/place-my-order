@@ -6,8 +6,8 @@ var nw = process.argv.indexOf("nw") > 0;
 var buildPromise = stealTools.build({
   config: __dirname + "/package.json!npm"
 },{
-  minify: false,
   bundleAssets: {
+    infer: false,
     glob: "node_modules/place-my-order-assets/images/**/*"
   }
 });
@@ -28,14 +28,13 @@ function buildCordova(buildResult) {
     path: './build/cordova',
     id: 'com.bitovi.placemyorder',
     name: 'PlaceMyOrder',
-    platforms: ['ios', 'android'],
+    platforms: ['ios'],
     plugins: [
       'org.apache.cordova.statusbar'
     ],
-    index: __dirname + "/cordova.html",
-    files: [
-      "node_modules/steal/steal.production.js",
-      "images/**/*"
+    index: __dirname + "/app.html",
+    glob: [
+      "node_modules/steal/steal.production.js"
     ]
   };
 
@@ -47,13 +46,12 @@ function buildNw(buildResult) {
   var nwOptions = {
     buildDir: "./build",
     platforms: ["osx"],
-    files: [
+    glob: [
       "package.json",
-      "nw.html",
+      "app.html",
 
       "node_modules/steal/steal.production.js",
       "node_modules/place-my-order-assets/**/*",
-      "images/**/*",
       "dist/**/*"
     ]
   };

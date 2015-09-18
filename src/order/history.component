@@ -1,0 +1,52 @@
+<can-component tag="pmo-order-history">
+  <template>
+    <can-import from="place-my-order/models/order" />
+    <can-import from="place-my-order/order/list.component!" can-tag="pmo-loading"/>
+
+    <div class="order-history">
+      <div class="order header">
+        <address>Name / Address / Phone</address>
+        <div class="items">Order</div>
+        <div class="total">Total</div>
+        <div class="actions">Action</div>
+      </div>
+
+      <order-model getList="{status='new'}">
+        <pmo-order-list
+          orders="{.}"
+          status="new"
+          title="New Orders"
+          empty-message="No new orders">
+        </pmo-order-list>
+      </order-model>
+
+      <order-model getList="{status='preparing'}">
+        <pmo-order-list
+          orders="{.}"
+          status="preparing"
+          title="Preparing"
+          empty-message="No orders preparing">
+        </pmo-order-list>
+      </order-model>
+
+      <order-model getList="{status='delivery'}">
+        <pmo-order-list
+          orders="{.}"
+          status="delivery"
+          title="In delivery"
+          empty-message="No orders in delivery">
+        </pmo-order-list>
+      </order-model>
+
+      <order-model getList="{status='delivered'}">
+        <pmo-order-list
+          orders="{.}"
+          status="delivered"
+          title="Delivered"
+          empty-message="No delivered orders">
+        </pmo-order-list>
+      </order-model>
+
+    </div>
+  </template>
+</can-component>

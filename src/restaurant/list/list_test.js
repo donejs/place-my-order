@@ -1,6 +1,6 @@
 import { ViewModel as RestaurantListVM } from "./list";
 import QUnit from 'steal-qunit';
-import fixture from 'pmo/models/fixtures/';
+import fixture from 'place-my-order/models/fixtures/';
 
 QUnit.module("place-my-order/restaurant/list", {
   setup: function () {

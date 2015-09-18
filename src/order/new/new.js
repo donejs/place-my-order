@@ -6,8 +6,8 @@ import Component from 'can/component/component';
 import Map from 'can/map/';
 import 'can/map/define/';
 import template from './new.stache!';
-import Restaurant from 'pmo/models/restaurant';
-import Order from 'pmo/models/order';
+import Restaurant from 'place-my-order/models/restaurant';
+import Order from 'place-my-order/models/order';
 
 /**
  * @property {can.Map} new.ViewModel

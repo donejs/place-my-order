@@ -4,12 +4,30 @@ import 'can/route/pushstate/pushstate';
 import $ from 'jquery';
 import platform from 'steal-platform';
 import loader from "@loader";
+import 'can/map/define/';
 
 if(platform.isCordova || platform.isNW) {
   route.defaultBinding = "hashchange";
 }
 
-const AppState = AppMap.extend({});
+const pages = {
+  "home": true,
+  "restaurants": true,
+  "orders": true
+};
+
+const AppState = AppMap.extend({
+  define: {
+    page: {
+      set: function(val){
+        if(!pages[val]) {
+          this.pageStatus(404, "Not a valid page: " + val);
+        }
+        return val;
+      }
+    }
+  }
+});
 
 route(':page', { page: 'home' });
 route(':page/:slug', { slug: null });

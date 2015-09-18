@@ -1,6 +1,6 @@
 <can-import from="bit-tabs"/>
-<can-import from="pmo/order/details.component!" />
-<can-import from="pmo/order/phone/phone.component!"/>
+<can-import from="place-my-order/order/details.component!" />
+<can-import from="place-my-order/order/phone/phone.component!"/>
 
 <div class="order-form">
   <restaurant-model get="{ _id=slug }" [restaurant]="{value}">

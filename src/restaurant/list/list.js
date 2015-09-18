@@ -2,9 +2,9 @@ import Component from 'can/component/';
 import Map from 'can/map/';
 import 'can/map/define/';
 
-import City from 'pmo/models/city';
-import State from 'pmo/models/state';
-import Restaurant from 'pmo/models/restaurant';
+import City from 'place-my-order/models/city';
+import State from 'place-my-order/models/state';
+import Restaurant from 'place-my-order/models/restaurant';
 import template from './list.stache!';
 
 export const ViewModel = Map.extend({

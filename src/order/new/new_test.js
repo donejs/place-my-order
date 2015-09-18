@@ -1,7 +1,7 @@
 import 'steal-qunit';
-import 'pmo/models/fixtures/';
+import 'place-my-order/models/fixtures/';
 import AppState from '../../app';
-import Order from 'pmo/models/order';
+import Order from 'place-my-order/models/order';
 import { ViewModel } from './new';
 
 QUnit.module('Order ViewModel');

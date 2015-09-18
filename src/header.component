@@ -1,8 +1,8 @@
 <can-component tag="pmo-header">
   <template>
     <can-import from="can/view/href/href"/>
-    <can-import from='node_modules/bootstrap/less/bootstrap.less!' />
     <can-import from='bootstrap' />
+    <can-import from='bootstrap/less/bootstrap.less!' />
 
     <header>
         <nav class="navbar navbar-default">
