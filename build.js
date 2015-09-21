@@ -46,7 +46,7 @@ function buildCordova(buildResult) {
 function buildNw(buildResult) {
   var nwOptions = {
     buildDir: "./build",
-    platforms: ["osx64"],
+    platforms: ["osx"],
     glob: [
       "package.json",
       "app.html",
@@ -54,7 +54,8 @@ function buildNw(buildResult) {
       "node_modules/steal/steal.production.js",
       "node_modules/place-my-order-assets/**/*",
       "dist/**/*"
-    ]
+    ],
+    version: "0.12.3"
   };
 
   var stealNw = require("steal-nw");
