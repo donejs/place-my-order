@@ -6,3 +6,4 @@ cache/
 docs/
 db-data/
 .divshot-cache/
+.DS_Store
