@@ -28,7 +28,7 @@ function buildCordova(buildResult) {
     path: './build/cordova',
     id: 'com.bitovi.placemyorder',
     name: 'PlaceMyOrder',
-    platforms: ['ios'],
+    platforms: ['ios','android'],
     plugins: [
       'org.apache.cordova.statusbar'
     ],
