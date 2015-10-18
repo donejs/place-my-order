@@ -3,7 +3,7 @@
 <can-import from="place-my-order/order/phone/phone.component!"/>
 
 <div class="order-form">
-  <restaurant-model get="{ _id=slug }" [restaurant]="{value}">
+  <restaurant-model get="{ _id=slug }">
     {{#if isPending}}
       <div class="loading"></div>
     {{else}}
@@ -14,7 +14,7 @@
         {{else}}
           <h3>Order from {{name}}</h3>
 
-          <form (submit)="placeOrder">
+          <form ($submit)="placeOrder()">
             <bit-tabs tabs-class="nav nav-tabs">
               <p class="info {{^if order.items.length}}text-error{{else}}text-success{{/if}}">
                 {{^if order.items.length}}
@@ -29,8 +29,8 @@
                     <li class="list-group-item">
                       <label>
                         <input type="checkbox"
-                          (change)="{order.items.toggle this}"
-                          {{#if order.items.has}}checked{{/if}}>
+                          ($change)="order.items.toggle(.)"
+                          {{#order.items.has(.)}}checked{{/}}>
                         {{name}} <span class="badge">${{price}}</span>
                       </label>
                     </li>
@@ -43,8 +43,8 @@
                     <li class="list-group-item">
                       <label>
                         <input type="checkbox"
-                          (change)="{order.items.toggle this}"
-                          {{#if order.items.has}}checked{{/if}}>
+                          ($change)="order.items.toggle(.)"
+                          {{#order.items.has(.)}}checked{{/}}>
                         {{name}} <span class="badge">${{price}}</span>
                       </label>
                     </li>
@@ -55,12 +55,12 @@
 
             <div class="form-group">
               <label class="control-label">Name:</label>
-              <input name="name" type="text" class="form-control" can-value="{order.name}">
+              <input name="name" type="text" class="form-control" {($value)}="order.name">
               <p>Please enter your name.</p>
             </div>
               <div class="form-group">
               <label class="control-label">Address:</label>
-              <input name="address" type="text" class="form-control" can-value="{order.address}">
+              <input name="address" type="text" class="form-control" {($value)}="order.address">
               <p class="help-text">Please enter your address.</p>
             </div>
             <pmo-order-phone order="{order}"></pmo-order-phone>
