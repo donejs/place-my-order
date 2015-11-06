@@ -1,12 +1,11 @@
-import 'can/map/define/define';
-import can from 'can';
 import superMap from 'can-connect/can/super-map/';
 import tag from 'can-connect/can/tag/';
-import canSet from 'can-set';
-import socket from './socket';
-import baseUrl from '../service-base-url';
+import List from 'can/list/';
+import Map from 'can/map/';
+import 'can/map/define/';
+import io from 'steal-socket.io';
 
-export const ItemsList = can.List.extend({}, {
+const ItemsList = List.extend({}, {
   has: function(item) {
     return this.indexOf(item) !== -1;
   },
@@ -22,7 +21,7 @@ export const ItemsList = can.List.extend({}, {
   }
 });
 
-let Order = can.Map.extend({
+let Order = Map.extend({
   define: {
     status: {
       value: 'new'
@@ -33,7 +32,8 @@ let Order = can.Map.extend({
     total: {
       get() {
         let total = 0.0;
-        this.attr('items').forEach(item => total += parseFloat(item.attr('price')));
+        this.attr('items').forEach(item =>
+            total += parseFloat(item.attr('price')));
         return total.toFixed(2);
       }
     }
@@ -45,25 +45,20 @@ let Order = can.Map.extend({
   }
 });
 
-Order.List = can.List.extend({
-  Map: Order
-}, {});
-
-export const orderConnection = superMap({
-  url: baseUrl + "/api/orders",
+export const connection = superMap({
+  url: '/api/orders',
   idProp: '_id',
   Map: Order,
   List: Order.List,
-  name: "orders",
-  compare: canSet.comparators.enum("status", ["new","preparing","delivery","delivered"])
+  name: 'orders'
 });
 
-tag('order-model', orderConnection);
+tag('order-model', connection);
 
-if(socket) {
-  socket.on('orders created', order => orderConnection.createInstance(order));
-  socket.on('orders updated', order => orderConnection.updateInstance(order));
-  socket.on('orders removed', order => orderConnection.destroyInstance(order));
-}
+// const socket = io();
+
+// socket.on('orders created', order => connection.createInstance(order));
+// socket.on('orders updated', order => connection.updateInstance(order));
+// socket.on('orders removed', order => connection.destroyInstance(order));
 
 export default Order;

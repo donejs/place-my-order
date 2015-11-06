@@ -1,62 +1,69 @@
 <html>
   <head>
-    <title>Place My Order</title>
-
+    <title>{{title}}</title>
     {{asset "css"}}
+    {{asset "html5shiv"}}
   </head>
   <body>
-    <can-import from="place-my-order/app" as="viewModel" />
-
-    <can-import from="place-my-order/header.component!" />
-    <can-import from="place-my-order/loading.component!" />
     <can-import from="place-my-order-assets" />
+    <can-import from="place-my-order/styles.less!" />
+    <can-import from="place-my-order/app" export-as="viewModel" />
 
+    <can-import from="place-my-order/loading.component!" />
+    <can-import from="place-my-order/header.component!" />
     <pmo-header page="{page}"></pmo-header>
 
-    {{#eq page "home"}}
-      <can-import from="place-my-order/home.component!" can-tag="pmo-loading">
-        <pmo-home></pmo-home>
-      </can-import>
-    {{/eq}}
+    {{#switch page}}
+      {{#case "home"}}
+        <can-import from="place-my-order/home.component!"
+            can-tag="pmo-loading">
+          <pmo-home></pmo-home>
+        </can-import>
+      {{/case}}
+      {{#case "restaurants"}}
+        {{#if slug}}
+          {{#switch action}}
+            {{#case 'order'}}
+              <can-import from="place-my-order/order/new/"
+                  can-tag="pmo-loading">
+                <pmo-order-new slug="{slug}"></pmo-order-new>
+              </can-import>
+            {{/case}}
 
-    {{#eq page "restaurants"}}
-      {{#if slug}}
-        {{#eq action 'order'}}
-          <can-import from="place-my-order/order/new/" can-tag="pmo-loading">
-            <pmo-order-new slug="{slug}"></pmo-order-new>
-          </can-import>
-        {{/eq}}
-
-        {{^if action}}
-          <can-import from="place-my-order/restaurant/details.component!" can-tag="pmo-loading">
-            <pmo-restaurant-details></pmo-restaurant-details>
+            {{#default}}
+              <can-import from="place-my-order/restaurant/details.component!"
+                  can-tag="pmo-loading">
+                <pmo-restaurant-details></pmo-restaurant-details>
+              </can-import>
+            {{/default}}
+          {{/switch}}
+        {{else}}
+          <can-import from="place-my-order/restaurant/list/"
+              can-tag="pmo-loading">
+            <pmo-restaurant-list></pmo-restaurant-list>
           </can-import>
         {{/if}}
-      {{else}}
-        <can-import from="place-my-order/restaurant/list/" can-tag="pmo-loading">
-          <pmo-restaurant-list></pmo-restaurant-list>
+      {{/case}}
+      {{#case "order-history"}}
+        <can-import from="place-my-order/order/history.component!"
+            can-tag="pmo-loading">
+          <pmo-order-history></pmo-order-history>
         </can-import>
-      {{/if}}
-    {{/eq}}
-
-    {{#eq page "orders"}}
-      <can-import from="place-my-order/order/history.component!" can-tag="pmo-loading">
-        <pmo-order-history></pmo-order-history>
-      </can-import>
-    {{/eq}}
+      {{/case}}
+    {{/switch}}
 
     {{asset "inline-cache"}}
 
-    {{#switch @env.NODE_ENV}}
-
+    {{#switch env.NODE_ENV}}
       {{#case "production"}}
-        <script src="https://place-my-order.divshot.io/node_modules/steal/steal.production.js" main="place-my-order/index.stache!done-autorender"></script>
+        <script
+          src="{{joinBase 'node_modules/steal/steal.production.js'}}"
+          main="place-my-order/index.stache!done-autorender">
+        </script>
       {{/case}}
-
       {{#default}}
         <script src="/node_modules/steal/steal.js"></script>
       {{/default}}
-
     {{/switch}}
   </body>
 </html>

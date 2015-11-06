@@ -1,63 +1,49 @@
 var stealTools = require("steal-tools");
 
-var cordova = process.argv.indexOf("cordova") > 0;
-var nw = process.argv.indexOf("nw") > 0;
-
 var buildPromise = stealTools.build({
   config: __dirname + "/package.json!npm"
-},{
+}, {
   bundleAssets: {
-    infer: false,
     glob: "node_modules/place-my-order-assets/images/**/*"
   }
 });
+var cordovaOptions = {
+  buildDir: "./build/cordova",
+  id: "com.donejs.placemyorder",
+  name: "place-my-order",
+  platforms: ["ios"],
+  plugins: ["cordova-plugin-transport-security"],
+  index: __dirname + "/production.html",
+  glob: [
+    "node_modules/steal/steal.production.js"
+  ]
+};
 
-// Build Cordova if "cordova" option passed.
-if(cordova) {
-  buildPromise = buildPromise.then(buildCordova);
+var stealCordova = require("steal-cordova")(cordovaOptions);
+// Check if the cordova option is passed.
+var buildCordova = process.argv.indexOf("cordova") > 0;
+
+if(buildCordova) {
+  buildPromise.then(stealCordova.build).then(stealCordova.ios.emulate);
 }
+var nwOptions = {
+  buildDir: "./build",
+  version: "0.12.3",
+  platforms: ["osx32","osx64"],
+  files: [
+    "package.json",
+    "production.html",
+    "node_modules/steal/steal.production.js"
+  ]
+};
 
-// Build NW.js if "nw" optino passed.
-if(nw) {
-  buildPromise = buildPromise.then(buildNw);
-}
+var stealNw = require("steal-nw");
 
+// Check if the cordova option is passed.
+var buildNW = process.argv.indexOf("nw") > 0;
 
-function buildCordova(buildResult) {
-  var cordovaOptions = {
-    path: './build/cordova',
-    id: 'com.bitovi.placemyorder',
-    name: 'PlaceMyOrder',
-    platforms: ['ios','android'],
-    plugins: [
-      'org.apache.cordova.statusbar'
-    ],
-    index: __dirname + "/app.html",
-    glob: [
-      "node_modules/steal/steal.production.js",
-      "node_modules/place-my-order-assets/**/*"
-    ]
-  };
-
-  var stealCordova = require("steal-cordova")(cordovaOptions);
-  return stealCordova.build(buildResult).then(stealCordova.ios.emulate);
-}
-
-function buildNw(buildResult) {
-  var nwOptions = {
-    buildDir: "./build",
-    platforms: ["osx"],
-    glob: [
-      "package.json",
-      "app.html",
-
-      "node_modules/steal/steal.production.js",
-      "node_modules/place-my-order-assets/**/*",
-      "dist/**/*"
-    ],
-    version: "0.12.3"
-  };
-
-  var stealNw = require("steal-nw");
-  return stealNw(nwOptions, buildResult);
+if(buildNW) {
+  buildPromise = buildPromise.then(function(buildResult){
+    stealNw(nwOptions, buildResult);
+  });
 }

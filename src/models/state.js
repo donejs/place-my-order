@@ -1,20 +1,24 @@
-import Map from 'can/map/';
-import List from 'can/list/';
+import can from 'can';
 import superMap from 'can-connect/can/super-map/';
-import baseUrl from '../service-base-url';
+import tag from 'can-connect/can/tag/';
+import 'can/map/define/define';
 
-const State = Map.extend({});
-
-State.List = List.extend({
-  Map: State
+export const State = can.Map.extend({
+  define: {}
 });
 
-const connection = superMap({
-  url: baseUrl + '/api/states',
+State.List = can.List.extend({
+  Map: State
+}, {});
+
+export const stateConnection = superMap({
+  url: '/api/states',
   idProp: 'short',
   Map: State,
   List: State.List,
-  name: 'states'
+  name: 'state'
 });
 
-export default connection.Map;
+tag('state-model', stateConnection);
+
+export default State;

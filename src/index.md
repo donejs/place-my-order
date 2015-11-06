@@ -1,5 +1,5 @@
-@page pmo
+@page place-my-order
 
-# place-my-order.com
+# place-my-order
 
-This is the documentation for the frontend of [place-my-order.com](http://place-my-order.com).
+This is the documentation for place-my-order

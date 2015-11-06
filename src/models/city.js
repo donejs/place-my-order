@@ -1,18 +1,24 @@
-import Map from 'can/map/';
-import List from 'can/list/';
+import can from 'can';
 import superMap from 'can-connect/can/super-map/';
-import baseUrl from '../service-base-url';
+import tag from 'can-connect/can/tag/';
+import 'can/map/define/define';
 
-const City = Map.extend({});
+export const City = can.Map.extend({
+  define: {}
+});
 
-City.List = List.extend({});
+City.List = can.List.extend({
+  Map: City
+}, {});
 
-superMap({
-  url: baseUrl + '/api/cities',
+export const cityConnection = superMap({
+  url: '/api/cities',
   idProp: 'name',
   Map: City,
   List: City.List,
-  name: 'cities'
+  name: 'city'
 });
+
+tag('city-model', cityConnection);
 
 export default City;

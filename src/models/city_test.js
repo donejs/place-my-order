@@ -1,11 +1,11 @@
 import QUnit from 'steal-qunit';
-import Order from './order';
+import City from './city';
 
-QUnit.module('models/order');
+QUnit.module('models/city');
 
 QUnit.test('getList', function(){
   stop();
-  Order.getList().then(function(items) {
+  City.getList().then(function(items) {
     QUnit.equal(items.length, 2);
     QUnit.equal(items.attr('0.description'), 'First item');
     start();

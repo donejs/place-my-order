@@ -1,20 +1,21 @@
-<can-import from="bit-tabs"/>
+<can-import from="bit-tabs/unstyled"/>
 <can-import from="place-my-order/order/details.component!" />
-<can-import from="place-my-order/order/phone/phone.component!"/>
 
 <div class="order-form">
-  <restaurant-model get="{ _id=slug }" [restaurant]="{value}">
+  <restaurant-model get="{ _id=slug }" #restaurant="{value}">
     {{#if isPending}}
       <div class="loading"></div>
     {{else}}
       {{#value}}
         {{#if saveStatus.isResolved}}
           <pmo-order-details order="{saveStatus.value}"></pmo-order-details>
-          <p><a href="javascript://" (click)="{startNewOrder}">Place another order</a></p>
+          <p><a href="javascript://" ($click)="startNewOrder">
+            Place another order
+          </a></p>
         {{else}}
           <h3>Order from {{name}}</h3>
 
-          <form (submit)="placeOrder">
+          <form ($submit)="placeOrder">
             <bit-tabs tabs-class="nav nav-tabs">
               <p class="info {{^if order.items.length}}text-error{{else}}text-success{{/if}}">
                 {{^if order.items.length}}
@@ -29,7 +30,7 @@
                     <li class="list-group-item">
                       <label>
                         <input type="checkbox"
-                          (change)="{order.items.toggle this}"
+                          ($change)="{order.items.toggle this}"
                           {{#if order.items.has}}checked{{/if}}>
                         {{name}} <span class="badge">${{price}}</span>
                       </label>
@@ -43,7 +44,7 @@
                     <li class="list-group-item">
                       <label>
                         <input type="checkbox"
-                          (change)="{order.items.toggle this}"
+                          ($change)="{order.items.toggle this}"
                           {{#if order.items.has}}checked{{/if}}>
                         {{name}} <span class="badge">${{price}}</span>
                       </label>
@@ -55,21 +56,31 @@
 
             <div class="form-group">
               <label class="control-label">Name:</label>
-              <input name="name" type="text" class="form-control" can-value="{order.name}">
+              <input name="name" type="text" class="form-control"
+                {($value)}="order.name">
               <p>Please enter your name.</p>
             </div>
-              <div class="form-group">
+            <div class="form-group">
               <label class="control-label">Address:</label>
-              <input name="address" type="text" class="form-control" can-value="{order.address}">
+              <input name="address" type="text" class="form-control"
+                {($value)}="order.address">
               <p class="help-text">Please enter your address.</p>
             </div>
-            <pmo-order-phone order="{order}"></pmo-order-phone>
+            <div class="form-group">
+              <label class="control-label">Phone:</label>
+              <input name="phone" type="text" class="form-control"
+                {($value)}="order.phone">
+              <p class="help-text">Please enter your phone number.</p>
+            </div>
             <div class="submit">
               <h4>Total: ${{order.total}}</h4>
               {{#if saveStatus.isPending}}
                 <div class="loading"></div>
               {{else}}
-                <button type="submit" {{^if canPlaceOrder}}disabled{{/if}} class="btn">Place My Order!</button>
+                <button type="submit"
+                    {{^if canPlaceOrder}}disabled{{/if}} class="btn">
+                  Place My Order!
+                </button>
               {{/if}}
             </div>
           </form>

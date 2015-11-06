@@ -1,0 +1,23 @@
+{
+  "generator-donejs": {
+    "folder": "src",
+    "name": "place-my-order"
+  },
+  "donejs-cordova": {
+    "name": "place-my-order",
+    "id": "com.donejs.placemyorder",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "donejs-nw": {
+    "main": "production.html",
+    "width": 1000,
+    "height": 600,
+    "platforms": [
+      "osx32",
+      "osx64"
+    ],
+    "version": "0.12.3"
+  }
+}

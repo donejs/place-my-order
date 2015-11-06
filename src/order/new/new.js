@@ -1,7 +1,3 @@
-/**
- * @module {Module} new <pmo-order-new>
- * @parent pmo
- */
 import Component from 'can/component/component';
 import Map from 'can/map/';
 import 'can/map/define/';
@@ -10,14 +6,13 @@ import Restaurant from 'place-my-order/models/restaurant';
 import Order from 'place-my-order/models/order';
 
 /**
- * @property {can.Map} new.ViewModel
- * @parent new
+ * @add order/new
  */
 export const ViewModel = Map.extend({
   define: {
     /**
-     * @property {String} new.ViewModel.slug
-     * @parent new.ViewModel
+     * @property {String} slug
+     *
      * The restaurants slug (short name). Will
      * be used to request the actual restaurant.
      */
@@ -25,18 +20,16 @@ export const ViewModel = Map.extend({
       type: 'string'
     },
     /**
-     * @property {pmo/models/order} new.ViewModel.order
-     * @parent new.ViewModel
+     * @property {place-my-order/models/order} order
      *
      * The order that is being processed. Will
-     * be an empty new order initially.
+     * be an empty new order inititally.
      */
     order: {
       Value: Order
     },
     /**
-     * @property {can.Deferred} new.ViewModel.saveStatus
-     * @parent new.ViewModel
+     * @property {can.Deferred} saveStatus
      *
      * A deferred that contains the status of the order when
      * it is being saved.
@@ -45,35 +38,36 @@ export const ViewModel = Map.extend({
       Value: Object
     },
     /**
-     * @property {Boolean} new.ViewModel.canPlaceOrder
-     * @parent new.ViewModel
+     * @property {Boolean} canPlaceOrder
      *
      * A flag to enable / disable the "Place my order" button.
      */
     canPlaceOrder: {
       get() {
-        return !!this.attr('order.items.length');
+        let items = this.attr('order.items');
+        return items.attr('length');
       }
     }
   },
 
   /**
-   * @function {Function} new.ViewModel.placeOrder
-   * @parent new.ViewModel
+   * @function placeOrder
+   *
    * Save the current order and update the status Deferred.
+   *
    * @return {boolean} false to prevent the form submission
    */
   placeOrder() {
     let order = this.attr('order');
-    order.attr('restaurant', this.attr('restaurant._id'));
     this.attr('saveStatus', order.save());
     return false;
   },
 
   /**
-   * @function {Function} new.ViewModel.startNewOrder
-   * @parent new.ViewModel
+   * @function startNewOrder
+   *
    * Resets the order form, so a new order can be placed.
+   *
    * @return {boolean} false to prevent the form submission
    */
   startNewOrder: function() {

@@ -1,6 +1,8 @@
-import fixture from 'can/util/fixture/';
+import 'place-my-order/models/fixtures/restaurant';
 
-fixture('GET /api/restaurants', '/src/models/fixtures/restaurants.json');
-fixture('GET /api/restaurants/{_id}', '/src/models/fixtures/spago.json');
+import 'place-my-order/models/fixtures/state';
 
-export default fixture;
+import 'place-my-order/models/fixtures/city';
+
+
+import 'place-my-order/models/fixtures/order';

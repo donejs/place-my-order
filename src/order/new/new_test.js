@@ -1,30 +1,10 @@
-import 'steal-qunit';
-import 'place-my-order/models/fixtures/';
-import AppState from '../../app';
-import Order from 'place-my-order/models/order';
+import QUnit from 'steal-qunit';
 import { ViewModel } from './new';
 
-QUnit.module('Order ViewModel');
+// ViewModel unit tests
+QUnit.module('place-my-order/order/new');
 
-test('Default order is initialized', () => {
-  let vm = new ViewModel();
-  ok(vm.attr('order') instanceof Order);
-});
-
-test('canPlaceOrder indicates whether the order has items', () => {
-  let vm = new ViewModel();
-  let items = vm.attr('order.items');
-
-  let item = {
-    name: 'pabellon criollo',
-    price: 35.90
-  };
-
-  ok(!items.attr('length'), 'order has no items');
-  ok(!vm.attr('canPlaceOrder'), 'user can not place order without items');
-
-  items.push(item);
-
-  equal(items.attr('length'), 1, 'order has 1 item');
-  ok(vm.attr('canPlaceOrder'), 'user can place the order');
+QUnit.test('Has message', function(){
+  var vm = new ViewModel();
+  QUnit.equal(vm.attr('message'), 'This is the pmo-order-new component');
 });

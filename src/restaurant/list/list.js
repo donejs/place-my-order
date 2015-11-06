@@ -1,20 +1,20 @@
 import Component from 'can/component/';
 import Map from 'can/map/';
 import 'can/map/define/';
-
-import City from 'place-my-order/models/city';
-import State from 'place-my-order/models/state';
-import Restaurant from 'place-my-order/models/restaurant';
 import template from './list.stache!';
+import Restaurant from 'place-my-order/models/restaurant';
+import State from 'place-my-order/models/state';
+import City from 'place-my-order/models/city';
 
-export const ViewModel = Map.extend({
+export var ViewModel = Map.extend({
   define: {
     states: {
       get() {
-        return State.getList({}).then(states => { return states; }, err => console.error(err.stack));
+        return State.getList({});
       }
     },
     state: {
+      type: 'string',
       value: null,
       set() {
         // Remove the city when the state changes
@@ -23,23 +23,32 @@ export const ViewModel = Map.extend({
     },
     cities: {
       get() {
-        var state = this.attr('state');
-        return state ? City.getList({ state }) : null;
+        let state = this.attr('state');
+
+        if(!state) {
+          return null;
+        }
+
+        return City.getList({ state });
       }
     },
     city: {
+      type: 'string',
       value: null
     },
     restaurants: {
-      get(){
+      get() {
         let state = this.attr('state');
         let city = this.attr('city');
 
-        return state && city ?
-          Restaurant.getList({
+        if(state && city) {
+          return Restaurant.getList({
             'address.state': state,
             'address.city': city
-          }) : null;
+          });
+        }
+
+        return null;
       }
     }
   }
@@ -48,5 +57,5 @@ export const ViewModel = Map.extend({
 export default Component.extend({
   tag: 'pmo-restaurant-list',
   viewModel: ViewModel,
-  template
+  template: template
 });

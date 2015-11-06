@@ -2,12 +2,12 @@
   "sites": {
     "docs": {
       "dest": "docs",
-      "parent": "pmo",
+      "parent": "place-my-order",
       "pageConfig": {
         "page": "docs"
       },
       "glob": {
-        "pattern": "pmo/**/*.{js,md}"
+        "pattern": "src/**/*.{js,md}"
       }
     }
   }

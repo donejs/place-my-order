@@ -2,7 +2,9 @@
   <template>
     {{#order}}
       <h3>Thanks for your order {{name}}!</h3>
-      <div><label class="control-label">Confirmation Number: {{_id}}</label></div>
+      <div><label class="control-label">
+        Confirmation Number: {{_id}}</label>
+      </div>
 
       <h4>Items ordered:</h4>
       <ul class="list-group panel">
@@ -15,12 +17,18 @@
         {{/each}}
 
         <li class="list-group-item">
-          <label>Total <span class="badge">${{total}}</span></label>
+          <label>
+            Total <span class="badge">${{total}}</span>
+          </label>
         </li>
       </ul>
 
-      <div><label class="control-label">Phone: {{phone}}</label></div>
-      <div><label class="control-label">Address: {{address}}</label></div>
+      <div><label class="control-label">
+        Phone: {{phone}}
+      </label></div>
+      <div><label class="control-label">
+        Address: {{address}}
+      </label></div>
     {{/order}}
   </template>
 </can-component>
