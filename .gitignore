@@ -28,4 +28,6 @@ build/Release
 node_modules
 
 # DoneJS
-docs
+docs/
+dist/
+build/
