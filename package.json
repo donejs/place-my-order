@@ -35,7 +35,12 @@
       "donejs-deploy",
       "generator-donejs",
       "donejs-cli"
-    ]
+    ],
+    "envs": {
+      "server-production": {
+        "baseURL": "https://place-my-order.firebaseapp.com/"
+      }
+    }
   },
   "dependencies": {
     "bit-tabs": "^0.2.0",
@@ -68,5 +73,26 @@
     "width": 1000,
     "height": 600,
     "toolbar": false
+  },
+  "donejs": {
+    "deploy": {
+      "root": "dist",
+      "services": {
+        "production": {
+          "type": "firebase",
+          "config": {
+            "firebase": "place-my-order",
+            "public": "./dist",
+            "headers": [{
+              "source": "/**",
+              "headers": [{
+                "key": "Access-Control-Allow-Origin",
+                "value": "*"
+              }]
+            }]
+          }
+        }
+      }
+    }
   }
 }

@@ -1,5 +1,5 @@
 language: node_js
-node_js: "0.12.0"
+node_js: 0.12.0
 script: npm test
 before_install:
 - export DISPLAY=:99.0
@@ -19,4 +19,4 @@ deploy:
     secure: JxrWJvn2TZw11cZqLwhhd4/N0AgFPJmeOsf9iFN7p2ecKhXcRnTKM3pvXIvntGv0LajOZx0mTdiP8Sfj1AKcmV7hUZZqUVxrAEX7dWsEdwKmNa6p+Psn/1scah+AJfwLI5RXFwzrL3j4KbRQQPVf7zFsbllLmbLop2VG//gHBD4=
 env:
   global:
-    secure: mMNhdjetm37ltdN1dX1W7Rt5i1LS3qlZGIg2MzRbF4/NDeH1NGfc0Ot4tz2yONKyo0eAnKxM/7eo8GdOcdgLEkgc20w5YvON2xvDefgOCRoKwFKIPjBb9WWSSewTvZb3U4puhFjvFddImAzfp+5jnvI0gYE7lVL1HnMzE0UaVk4=
+    secure: WLcFkAjd3UQtlvX8tZ1pw0WiYedpzKMtDpiC8CnKDYMx5dbtKlI108c7v7/YaanQMgwRxE48kN6RyQRflIEuoPV8W4NfqoYGaf7/mPk+43VKNZLN+SFv2eu4E41DCmyt9DObItGP32uBEv1kylkqYLS2ztc4MeoSYIYcB/iSUM0=
