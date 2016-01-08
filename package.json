@@ -53,7 +53,7 @@
     "done-autorender": "^0.5.0",
     "done-component": "^0.3.1",
     "done-css": "^1.1.15",
-    "jquery": "^2.1.4",
+    "jquery": "2.1.4",
     "place-my-order-api": "^0.4.3",
     "place-my-order-assets": "^0.1.6",
     "steal": "^0.12.3",
