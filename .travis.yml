@@ -1,22 +1,21 @@
 language: node_js
-node_js: 0.12.0
-script: npm test
+node_js: node
 before_install:
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 before_deploy:
-- git config --global user.email "me@example.com"
-- git config --global user.name "PMO deploy bot"
-- node build
-- git add dist/ --force
-- git commit -m "Updating build."
-- node_modules/.bin/deploy
+  - 'git config --global user.email "me@example.com"'
+  - 'git config --global user.name "PMO deploy bot"'
+  - node build
+  - git add dist/ --force
+  - 'git commit -m "Updating build."'
+  - node_modules/.bin/donejs-deploy
 deploy:
   skip_cleanup: true
   provider: heroku
   app: place-my-order
   api_key:
-    secure: JxrWJvn2TZw11cZqLwhhd4/N0AgFPJmeOsf9iFN7p2ecKhXcRnTKM3pvXIvntGv0LajOZx0mTdiP8Sfj1AKcmV7hUZZqUVxrAEX7dWsEdwKmNa6p+Psn/1scah+AJfwLI5RXFwzrL3j4KbRQQPVf7zFsbllLmbLop2VG//gHBD4=
+    - secure: KPr/1zV03FEFMclP/3ZMFQV7J5By3Qzv9JIq/NnhfbEylfcT8ck3zNotzK61TYOrJzSr4/nZlih4DKX1LgRV4YwN4YDz8HF+1atDsPUOhrNNs/1IPhikXjUPOjmCHwuockjC1sxYQh1SVgmknKTRwbYBDA4d/fN/JS7QfALxcgE=
 env:
   global:
-    secure: WLcFkAjd3UQtlvX8tZ1pw0WiYedpzKMtDpiC8CnKDYMx5dbtKlI108c7v7/YaanQMgwRxE48kN6RyQRflIEuoPV8W4NfqoYGaf7/mPk+43VKNZLN+SFv2eu4E41DCmyt9DObItGP32uBEv1kylkqYLS2ztc4MeoSYIYcB/iSUM0=
+    - secure: ffDcDRjZAkQe9jJza5Zfvh+wXvBAihKIJDefSCPd37KJq2JdH3nhjBzd98IKZABpgCk5CdZoPlyyMxVWJOpeiS/PkWHDebcy7+rMxo+eai3cfe1TbAViMOuRUDwLAdsDymVAUvYXZQ0ZbFHxZt3FieNG8q0VV0zpim558UTn+eE=
