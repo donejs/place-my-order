@@ -9,7 +9,7 @@ before_deploy:
   - node build
   - git add dist/ --force
   - 'git commit -m "Updating build."'
-  - node_modules/.bin/donejs-deploy
+  - node_modules/.bin/deploy
 deploy:
   skip_cleanup: true
   provider: heroku
