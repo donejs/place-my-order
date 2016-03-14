@@ -1,8 +1,8 @@
 language: node_js
 node_js: node
 before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+  - 'export DISPLAY=:99.0'
+  - sh -e /etc/init.d/xvfb start
 before_deploy:
   - 'git config --global user.email "me@example.com"'
   - 'git config --global user.name "PMO deploy bot"'
@@ -16,3 +16,6 @@ deploy:
   app: place-my-order
   api_key:
     - secure: KPr/1zV03FEFMclP/3ZMFQV7J5By3Qzv9JIq/NnhfbEylfcT8ck3zNotzK61TYOrJzSr4/nZlih4DKX1LgRV4YwN4YDz8HF+1atDsPUOhrNNs/1IPhikXjUPOjmCHwuockjC1sxYQh1SVgmknKTRwbYBDA4d/fN/JS7QfALxcgE=
+env:
+  global:
+    - secure: aGhdKTU1Hc28xbBcUx7rEKQGmOUWd1Czj4hadIFagko8oCCesCHqQ9dtOrNrgVkzP/qRmLUBbRCuAPAXkMNQkjc2HAbaQ55sOWVvvDGS3D9G6iz3S88Cid3R5c82gmwBBvEY+YUmNxx1Z8ajLhq8ztEm4EPpmtGehIsvYEJB58Y=
