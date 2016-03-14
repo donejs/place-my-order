@@ -16,6 +16,3 @@ deploy:
   app: place-my-order
   api_key:
     - secure: KPr/1zV03FEFMclP/3ZMFQV7J5By3Qzv9JIq/NnhfbEylfcT8ck3zNotzK61TYOrJzSr4/nZlih4DKX1LgRV4YwN4YDz8HF+1atDsPUOhrNNs/1IPhikXjUPOjmCHwuockjC1sxYQh1SVgmknKTRwbYBDA4d/fN/JS7QfALxcgE=
-env:
-  global:
-    - secure: ffDcDRjZAkQe9jJza5Zfvh+wXvBAihKIJDefSCPd37KJq2JdH3nhjBzd98IKZABpgCk5CdZoPlyyMxVWJOpeiS/PkWHDebcy7+rMxo+eai3cfe1TbAViMOuRUDwLAdsDymVAUvYXZQ0ZbFHxZt3FieNG8q0VV0zpim558UTn+eE=
