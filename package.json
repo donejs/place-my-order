@@ -64,7 +64,7 @@
     "can-fixture": "0.0.1",
     "documentjs": "^0.3.3",
     "donejs-cli": "^0.5.6",
-    "donejs-deploy": "^0.3.1",
+    "donejs-deploy": "^0.4.0",
     "funcunit": "^3.0.0",
     "steal-cordova": "^0.1.1",
     "steal-nw": "^0.1.4",
