@@ -19,3 +19,5 @@ deploy:
 env:
   global:
     - secure: ViDcjjzg7VIS+NYJLwPPsWFFbGs9lxeZ8nP+T1i9NMzuD6d7bYiEJaZhUTy0bnElQMqkyOp/84feD1rVjHT3t0ilZsycIcjG0j3cJpZIEKwC5PH1zpNy3CSVYLofREkjcRDxotusiISCBsH30SapfQMXayruZF4hNuFLGOcbEF8=
+    - secure: gbzlusNRagwxtqDejBvEB1j6xVOcQ8u3BysGgVdhJtB0G86Ot7gHlvXSBD7gA+OX/jYIVmASYhmqOgFmtg6g3gZELpJ5cAApY446bcby4ExRb+iivKbKsWsSJT2qiblkRBWf9xtLrmR55/qHDjIYSnxctdF8GeJvUYYK2DkGIKQ=
+    - secure: mM4qUlAqKv1Z03lHiqeywpLiRtXop2N2RTa71HXXwsX99EHROPD/jTj22jVB1nTV/RU1ZHtrRE0rQtld6e6NcUDZgKiPPzUbRrOiPxLnVR0sFB8QAQu9pj6MmnvY4L8wdt+ebij0hTEJxpf+zZSQm8sa620E9uVr+WguTjBJvck=
