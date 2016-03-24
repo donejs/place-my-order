@@ -4,7 +4,9 @@ import { ViewModel } from './new';
 // ViewModel unit tests
 QUnit.module('place-my-order/order/new');
 
-QUnit.test('Has message', function(){
-  var vm = new ViewModel();
-  QUnit.equal(vm.attr('message'), 'This is the pmo-order-new component');
+QUnit.test('canPlaceOrder', function(){
+  var vm = new ViewModel({
+    order: { items: [1] }
+  });
+  QUnit.equal(vm.attr('canPlaceOrder'), true, 'can place an order');
 });
