@@ -31,3 +31,4 @@ node_modules
 docs/
 dist/
 build/
+db-data/
