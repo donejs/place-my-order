@@ -12,10 +12,10 @@ QUnit.module('place-my-order/restaurant/list', {
 
 QUnit.asyncTest('loads all states', function() {
   var vm = new ViewModel();
-  var expectedSates = stateStore.findAll({});
+  var expectedStates = stateStore.findAll({});
 
   vm.attr('states').then(states => {
-    QUnit.deepEqual(states.attr(), expectedSates.data, 'Got all states');
+    QUnit.deepEqual(states.attr(), expectedStates.data, 'Got all states');
     QUnit.start();
   });
 });

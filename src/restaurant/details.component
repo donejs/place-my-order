@@ -7,7 +7,7 @@
       {{else}}
       {{#value}}
       <div class="restaurant-header"
-          style="background-image: url(/{{images.banner}});">
+          style="background-image: url({{joinBase images.banner}});">
         <div class="background">
           <h2>{{name}}</h2>
 
@@ -31,7 +31,7 @@
         <h3>The best food this side of the Mississippi</h3>
 
         <p class="description">
-          <img src="/{{images.owner}}" />
+          <img src="{{joinBase images.owner}}" />
           Description for {{name}}
         </p>
         <p class="order-link">

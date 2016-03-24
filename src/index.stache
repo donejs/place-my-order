@@ -1,8 +1,7 @@
 <html>
   <head>
     <title>{{title}}</title>
-    {{asset "css"}}
-    {{asset "html5shiv"}}
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
   <body>
     <can-import from="place-my-order-assets" />
@@ -51,8 +50,6 @@
         </can-import>
       {{/case}}
     {{/switch}}
-
-    {{asset "inline-cache"}}
 
     {{#switch env.NODE_ENV}}
       {{#case "production"}}

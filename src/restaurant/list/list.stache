@@ -40,7 +40,7 @@
   {{#if restaurants.isResolved}}
     {{#each restaurants.value}}
     <div class="restaurant">
-      <img src="/{{images.thumbnail}}" width="100" height="100">
+      <img src="{{joinBase images.thumbnail}}" width="100" height="100">
       <h3>{{name}}</h3>
       {{#address}}
       <div class="address">
