@@ -6,7 +6,7 @@ A restaurant menu ordering application. Built in ES6 with DoneJS.
 
 To install all dependencies, (e.g. after cloning it from a Git repository) run
 
-``
+```
 npm install donejs -g
 npm install
 ```
@@ -17,7 +17,7 @@ Tests can be run with
 
 ```
 donejs test
-``
+```
 
 ## Development mode
 
