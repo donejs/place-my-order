@@ -1,9 +1,9 @@
-<can-component tag="pmo-loading">
+<can-component tag="pmo-loading" leak-scope>
   <template>
-    {{#eq state "resolved"}}
+    {{#if isResolved}}
       <content></content>
     {{else}}
       <div class="loading"></div>
-    {{/eq}}
+    {{/if}}
   </template>
 </can-component>

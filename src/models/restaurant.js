@@ -1,16 +1,18 @@
-import can from 'can';
+import DefineMap from 'can-define/map/';
+import DefineList from 'can-define/list/';
 import superMap from 'can-connect/can/super-map/';
 import tag from 'can-connect/can/tag/';
-import 'can/map/define/define';
 import baseUrl from '../service-base-url';
 
-export const Restaurant = can.Map.extend({
-  define: {}
+export const Restaurant = DefineMap.extend({
+  seal: false
+}, {
+
 });
 
-Restaurant.List = can.List.extend({
-  Map: Restaurant
-}, {});
+Restaurant.List = DefineList.extend({
+  '*': Restaurant
+});
 
 export const restaurantConnection = superMap({
   url: baseUrl + '/api/restaurants',

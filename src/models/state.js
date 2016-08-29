@@ -1,16 +1,18 @@
-import can from 'can';
+import DefineMap from 'can-define/map/';
+import DefineList from 'can-define/list/';
 import superMap from 'can-connect/can/super-map/';
 import tag from 'can-connect/can/tag/';
-import 'can/map/define/define';
 import baseUrl from '../service-base-url';
 
-export const State = can.Map.extend({
-  define: {}
+export const State = DefineMap.extend({
+  seal: false
+}, {
+
 });
 
-State.List = can.List.extend({
-  Map: State
-}, {});
+State.List = DefineList.extend({
+  '*': State
+});
 
 export const stateConnection = superMap({
   url: baseUrl + '/api/states',
