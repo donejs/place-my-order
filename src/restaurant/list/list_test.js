@@ -15,7 +15,7 @@ QUnit.asyncTest('loads all states', function() {
   var expectedStates = stateStore.findAll({});
 
   vm.states.then(states => {
-    QUnit.deepEqual(states, expectedStates.data, 'Got all states');
+    QUnit.deepEqual(states.get(), expectedStates.data, 'Got all states');
     QUnit.start();
   });
 });
@@ -27,7 +27,7 @@ QUnit.asyncTest('setting a state loads its cities', function() {
   QUnit.equal(vm.cities, null, '');
   vm.state = 'CA';
   vm.cities.then(cities => {
-    QUnit.deepEqual(cities, expectedCities);
+    QUnit.deepEqual(cities.get(), expectedCities);
     QUnit.start();
   });
 });
@@ -39,7 +39,7 @@ QUnit.asyncTest('changing a state resets city', function() {
   QUnit.equal(vm.cities, null, '');
   vm.state = 'CA';
   vm.cities.then(cities => {
-    QUnit.deepEqual(cities, expectedCities);
+    QUnit.deepEqual(cities.get(), expectedCities);
     vm.state = 'NT';
     QUnit.equal(vm.city, null);
     QUnit.start();
@@ -56,7 +56,7 @@ QUnit.asyncTest('setting state and city loads a list of its restaurants', functi
   vm.city = 'Alberny';
 
   vm.restaurants.then(restaurants => {
-    QUnit.deepEqual(restaurants, expectedRestaurants);
+    QUnit.deepEqual(restaurants.get(), expectedRestaurants);
     QUnit.start();
   });
 });
