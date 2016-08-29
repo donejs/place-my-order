@@ -2,20 +2,20 @@
 <can-import from="place-my-order/order/details.component" />
 
 <div class="order-form">
-  <restaurant-model get="{ _id=slug }">
+  <restaurant-model get="{ _id=slug }" {^value}="restaurant">
     {{#if isPending}}
       <div class="loading"></div>
     {{else}}
       {{#value}}
         {{#if saveStatus.isResolved}}
-          <pmo-order-details order="{saveStatus.value}"></pmo-order-details>
-          <p><a href="javascript://" ($click)="startNewOrder">
+          <pmo-order-details {order}="saveStatus.value"></pmo-order-details>
+          <p><a href="javascript://" ($click)="startNewOrder()">
             Place another order
           </a></p>
         {{else}}
           <h3>Order from {{name}}</h3>
 
-          <form ($submit)="placeOrder">
+          <form ($submit)="placeOrder(%event)">
             <bit-tabs tabs-class="nav nav-tabs">
               <p class="info {{^if order.items.length}}text-error{{else}}text-success{{/if}}">
                 {{^if order.items.length}}

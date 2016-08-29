@@ -1,45 +1,39 @@
-import Component from 'can/component/component';
-import Map from 'can/map/';
-import 'can/map/define/';
-import template from './new.stache!';
+import Component from 'can-component';
+import DefineMap from 'can-define/map/';
+import template from './new.stache';
 import Restaurant from 'place-my-order/models/restaurant';
 import Order from 'place-my-order/models/order';
 
-export const ViewModel = Map.extend({
-  define: {
-    slug: {
-      type: 'string'
-    },
-    order: {
-      Value: Order
-    },
-    saveStatus: {
-      Value: Object
-    },
-    canPlaceOrder: {
-      get() {
-        let items = this.attr('order.items');
-        return items.attr('length');
-      }
+export const ViewModel = DefineMap.extend({
+  slug: 'string',
+  restaurant: Restaurant,
+  order: {
+    Value: Order
+  },
+  saveStatus: '*',
+  canPlaceOrder: {
+    get() {
+      return !!this.order.items.length;
     }
   },
 
-  placeOrder() {
-    let order = this.attr('order');
-    order.attr('restaurant', this.attr('restaurant._id'));
-    this.attr('saveStatus', order.save());
-    return false;
+  placeOrder(event) {
+    let order = this.order;
+    order.restaurant = this.restaurant._id;
+    this.saveStatus = order.save();
+
+    event.preventDefault();
   },
 
   startNewOrder() {
-    this.attr('order', new Order());
-    this.attr('saveStatus', null);
+    this.order = new Order();
+    this.saveStatus = null;
     return false;
   }
 });
 
 export default Component.extend({
   tag: 'pmo-order-new',
-  viewModel: ViewModel,
+  ViewModel: ViewModel,
   template
 });
