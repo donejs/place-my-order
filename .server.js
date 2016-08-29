@@ -1,5 +1,6 @@
-var server = require('done-serve');
 var api = require('place-my-order-api');
+var server = require('done-serve');
+
 var app = server({
   path: __dirname,
   configure: function(app) {
