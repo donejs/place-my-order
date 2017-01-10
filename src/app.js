@@ -13,8 +13,8 @@ const AppViewModel = DefineMap.extend({
   }
 });
 
-route(':page', { page: 'home' });
-route(':page/:slug', { slug: null });
-route(':page/:slug/:action', { slug: null, action: null });
+route('{page}', { page: 'home' });
+route('{page}/{slug}', { slug: null });
+route('{page}/{slug}/{action}', { slug: null, action: null });
 
 export default AppViewModel;
