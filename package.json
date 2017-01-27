@@ -39,9 +39,10 @@
       }
     },
     "plugins": [
-      "steal-stache",
+      "done-css",
+      "done-component",
       "steal-less",
-      "done-component"
+      "steal-stache"
     ]
   },
   "dependencies": {

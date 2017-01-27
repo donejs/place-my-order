@@ -6,10 +6,8 @@ import State from 'place-my-order/models/state';
 import City from 'place-my-order/models/city';
 
 export var ViewModel = DefineMap.extend({
-  states: {
-    get() {
-      return State.getList({});
-    }
+  get states() {
+    return State.getList({});
   },
   state: {
     type: 'string',
@@ -19,32 +17,28 @@ export var ViewModel = DefineMap.extend({
       this.city = null;
     }
   },
-  cities: {
-    get() {
-      let state = this.state;
+  get cities() {
+    let state = this.state;
 
-      if(!state) {
-        return null;
-      }
-
-      return City.getList({ state });
-    }
-  },
-  city: 'string',
-  restaurants: {
-    get() {
-      let state = this.state;
-      let city = this.city;
-
-      if(state && city) {
-        return Restaurant.getList({
-          'address.state': state,
-          'address.city': city
-        });
-      }
-
+    if(!state) {
       return null;
     }
+
+    return City.getList({ state });
+  },
+  city: 'string',
+  get restaurants() {
+    let state = this.state;
+    let city = this.city;
+
+    if(state && city) {
+      return Restaurant.getList({
+        'address.state': state,
+        'address.city': city
+      });
+    }
+
+    return null;
   }
 });
 
