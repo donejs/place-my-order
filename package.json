@@ -71,12 +71,13 @@
   "devDependencies": {
     "can-fixture": "^1.0.11",
     "documentjs": "^0.4.4",
+    "donejs-cli": "^1.0.0-alpha.4",
     "donejs-deploy": "^0.4.2",
     "funcunit": "^3.1.0",
     "steal-cordova": "^0.1.3",
     "steal-nw": "^0.1.4",
-    "steal-tools": "^1.0.1",
     "steal-qunit": "^1.0.0",
+    "steal-tools": "^1.0.1",
     "testee": "^0.3.0"
   },
   "window": {
