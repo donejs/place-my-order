@@ -12,7 +12,7 @@ QUnit.module('place-my-order/restaurant/list', {
 
 QUnit.asyncTest('loads all states', function() {
   var vm = new ViewModel();
-  var expectedStates = stateStore.findAll({});
+  var expectedStates = stateStore.getList({});
 
   vm.states.then(states => {
     QUnit.deepEqual(states.get(), expectedStates.data, 'Got all states');
@@ -22,7 +22,7 @@ QUnit.asyncTest('loads all states', function() {
 
 QUnit.asyncTest('setting a state loads its cities', function() {
   var vm = new ViewModel();
-  var expectedCities = cityStore.findAll({data: {state: "CA"}}).data;
+  var expectedCities = cityStore.getList({state: "CA"}).data;
 
   QUnit.equal(vm.cities, null, '');
   vm.state = 'CA';
@@ -34,7 +34,7 @@ QUnit.asyncTest('setting a state loads its cities', function() {
 
 QUnit.asyncTest('changing a state resets city', function() {
   var vm = new ViewModel();
-  var expectedCities = cityStore.findAll({data: {state: "CA"}}).data;
+  var expectedCities = cityStore.getList({state: "CA"}).data;
 
   QUnit.equal(vm.cities, null, '');
   vm.state = 'CA';
@@ -48,8 +48,8 @@ QUnit.asyncTest('changing a state resets city', function() {
 
 QUnit.asyncTest('setting state and city loads a list of its restaurants', function() {
   var vm = new ViewModel();
-  var expectedRestaurants = restaurantStore.findAll({
-    data: {"address.city": "Alberny"}
+  var expectedRestaurants = restaurantStore.getList({
+    "address.city": "Alberny"
   }).data;
 
   vm.state = 'NT';

@@ -1,4 +1,5 @@
 import fixture from 'can-fixture';
+import Order from '../order';
 
 const store = fixture.store([{
   _id: 0,
@@ -6,14 +7,8 @@ const store = fixture.store([{
 }, {
   _id: 1,
   description: 'Second item'
-}]);
+}], Order.connection.algebra);
 
-fixture({
-  'GET /api/orders': store.findAll,
-  'GET /api/orders/{_id}': store.findOne,
-  'POST /api/orders': store.create,
-  'PUT /api/orders/{_id}': store.update,
-  'DELETE /api/orders/{_id}': store.destroy
-});
+fixture('/api/orders/{_id}', store);
 
 export default store;

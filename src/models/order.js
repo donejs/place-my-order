@@ -1,4 +1,5 @@
 import superMap from 'can-connect/can/super-map/';
+import set from 'can-set';
 import tag from 'can-connect/can/tag/';
 import DefineList from 'can-define/list/';
 import DefineMap from 'can-define/map/';
@@ -21,7 +22,12 @@ const ItemsList = DefineList.extend({}, {
   }
 });
 
-let Order = DefineMap.extend({
+const algebra = new set.Algebra(
+  set.props.id('_id'),
+  set.comparators.enum("status", ["new", "preparing", "delivery", "delivered"])
+);
+
+const Order = DefineMap.extend({
   seal: false
 }, {
   name: "string",
@@ -54,20 +60,23 @@ Order.List = DefineList.extend({
   '*': Order
 });
 
-export const connection = superMap({
+Order.connection = superMap({
   url: baseUrl + '/api/orders',
   idProp: '_id',
   Map: Order,
   List: Order.List,
-  name: 'orders'
+  name: 'orders',
+  algebra
 });
+
+Order.connection.algebra = algebra;
 
 const socket = io(baseUrl);
 
-socket.on('orders created', order => connection.createInstance(order));
-socket.on('orders updated', order => connection.updateInstance(order));
-socket.on('orders removed', order => connection.destroyInstance(order));
+socket.on('orders created', order => Order.connection.createInstance(order));
+socket.on('orders updated', order => Order.connection.updateInstance(order));
+socket.on('orders removed', order => Order.connection.destroyInstance(order));
 
-tag('order-model', connection);
+tag('order-model', Order.connection);
 
 export default Order;
