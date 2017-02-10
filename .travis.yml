@@ -22,4 +22,4 @@ deploy:
 env:
   global:
     - secure: >-
-        Rw1Sfz7QuyAey/cfEOfsoaJokTDf1Jn6Cnm6GkZV3BsTRd5dyLOxW2lWuGzGIaakcLkP+8bCyuSS9sybAfAe9o9OlbEv5hudC4ZibQ7/jlTNzHkUOj915QMem0zs+AfkhVoZaL8aj+0T4lBWWOvPXIIjvT78ypVxDSFvyhiOznI=
+        lcfbNTppUpOZd55WZtfS/1vrPoKWG2exzt5pDF2O/xFN68mt/bDjZcPJ2EFb9T8U5zluFRWhQu79R6FhUd8vRWOw2nRsIy3iKgG/TWtXZ2qN7Wp3ebCb2mH1YP9Q0IpM4C8dn0p31M276AcOC6B3Agvyi34LBRKVbFuRH5PrZlk=
