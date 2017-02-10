@@ -6,18 +6,20 @@ before_install:
   - 'export DISPLAY=:99.0'
   - sh -e /etc/init.d/xvfb start
 before_deploy:
-  - 'git config --global user.email "me@example.com"'
-  - 'git config --global user.name "PMO deploy bot"'
+  - git config --global user.email "me@example.com"
+  - git config --global user.name "PMO deploy bot"
   - node build
   - git add dist/ --force
-  - 'git commit -m "Updating build."'
-  - node_modules/.bin/deploy
+  - git commit -m "Updating build."
+  - node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
 deploy:
   skip_cleanup: true
   provider: heroku
   app: place-my-order
   api_key:
-    - secure: KPr/1zV03FEFMclP/3ZMFQV7J5By3Qzv9JIq/NnhfbEylfcT8ck3zNotzK61TYOrJzSr4/nZlih4DKX1LgRV4YwN4YDz8HF+1atDsPUOhrNNs/1IPhikXjUPOjmCHwuockjC1sxYQh1SVgmknKTRwbYBDA4d/fN/JS7QfALxcgE=
+    - secure: >-
+        KPr/1zV03FEFMclP/3ZMFQV7J5By3Qzv9JIq/NnhfbEylfcT8ck3zNotzK61TYOrJzSr4/nZlih4DKX1LgRV4YwN4YDz8HF+1atDsPUOhrNNs/1IPhikXjUPOjmCHwuockjC1sxYQh1SVgmknKTRwbYBDA4d/fN/JS7QfALxcgE=
 env:
   global:
-    - secure: SxwGFCbVfA+USidODPBZ6Yi93c65mxO3zwKoSR9BK7scfNQcsPGYtrNG80+swXt+NXBKaXvJmrBX/QMsVJ+9wkosSCeBcxvoDcy7JhRvrpI4EK+FA8kuYf7b32VlofOwMP139+8pyounHsYCc3D2H+5Mu4X8RPGDW29OwAyAKs0=
+    - secure: >-
+        Rw1Sfz7QuyAey/cfEOfsoaJokTDf1Jn6Cnm6GkZV3BsTRd5dyLOxW2lWuGzGIaakcLkP+8bCyuSS9sybAfAe9o9OlbEv5hudC4ZibQ7/jlTNzHkUOj915QMem0zs+AfkhVoZaL8aj+0T4lBWWOvPXIIjvT78ypVxDSFvyhiOznI=
