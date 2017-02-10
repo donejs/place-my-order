@@ -4,6 +4,7 @@ import DefineList from 'can-define/list/';
 import DefineMap from 'can-define/map/';
 import io from 'steal-socket.io';
 import baseUrl from '../service-base-url';
+import tag from 'can-connect/can/tag/';
 
 const ItemsList = DefineList.extend({}, {
   has: function(item) {
@@ -72,5 +73,7 @@ const socket = io(baseUrl);
 socket.on('orders created', order => Order.connection.createInstance(order));
 socket.on('orders updated', order => Order.connection.updateInstance(order));
 socket.on('orders removed', order => Order.connection.destroyInstance(order));
+
+tag('order-model', Order.connection);
 
 export default Order;
