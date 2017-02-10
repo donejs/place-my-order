@@ -1,27 +1,29 @@
 import DefineMap from 'can-define/map/';
 import DefineList from 'can-define/list/';
+import set from 'can-set';
 import superMap from 'can-connect/can/super-map/';
-import tag from 'can-connect/can/tag/';
 import baseUrl from '../service-base-url';
 
-export const City = DefineMap.extend({
+const City = DefineMap.extend({
   seal: false
 }, {
 
 });
 
+const algebra = new set.Algebra(
+  set.props.id('name')
+);
+
 City.List = DefineList.extend({
   '*': City
 });
 
-export const cityConnection = superMap({
+City.connection = superMap({
   url: baseUrl + '/api/cities',
-  idProp: 'name',
   Map: City,
   List: City.List,
-  name: 'city'
+  name: 'city',
+  algebra
 });
-
-tag('city-model', cityConnection);
 
 export default City;

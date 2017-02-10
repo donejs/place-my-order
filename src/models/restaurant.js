@@ -1,27 +1,37 @@
 import DefineMap from 'can-define/map/';
 import DefineList from 'can-define/list/';
+import set from 'can-set';
 import superMap from 'can-connect/can/super-map/';
-import tag from 'can-connect/can/tag/';
 import baseUrl from '../service-base-url';
 
-export const Restaurant = DefineMap.extend({
+const Restaurant = DefineMap.extend({
   seal: false
 }, {
 
 });
 
+const algebra = new set.Algebra(
+  set.props.id('_id'),
+  {
+    "address.city": function(restaurantValue, paramValue, restaurant){
+      return restaurant['address.city'] === restaurantValue;
+    },
+    "address.state": function(restaurantValue, paramValue, restaurant){
+      return restaurant['address.state'] === restaurantValue;
+    }
+  }
+);
+
 Restaurant.List = DefineList.extend({
   '*': Restaurant
 });
 
-export const restaurantConnection = superMap({
+Restaurant.connection = superMap({
   url: baseUrl + '/api/restaurants',
-  idProp: '_id',
   Map: Restaurant,
   List: Restaurant.List,
-  name: 'restaurant'
+  name: 'restaurant',
+  algebra
 });
-
-tag('restaurant-model', restaurantConnection);
 
 export default Restaurant;
