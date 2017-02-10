@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "firebase": "place-my-order",
+    "public": "./dist",
+    "headers": [
+      {
+        "source": "/**",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      }
+    ]
+  }
+}

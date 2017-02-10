@@ -14,7 +14,9 @@
     "start": "done-serve --proxy http://localhost:7070 --port 8080",
     "develop": "done-serve --develop --proxy http://localhost:7070 --port 8080",
     "document": "documentjs",
-    "build": "node build"
+    "build": "node build",
+    "deploy": "firebase deploy",
+    "deploy:ci": "firebase deploy --token \"$FIREBASE_TOKEN\""
   },
   "engines": {
     "node": "5.8"
@@ -74,6 +76,7 @@
     "documentjs": "^0.4.4",
     "donejs-cli": "^1.0.0-alpha.4",
     "donejs-deploy": "^0.4.2",
+    "firebase-tools": "^3.2.2",
     "funcunit": "^3.1.0",
     "steal-cordova": "^0.1.3",
     "steal-nw": "^0.1.4",
@@ -85,30 +88,5 @@
     "width": 1000,
     "height": 600,
     "toolbar": false
-  },
-  "donejs": {
-    "deploy": {
-      "root": "dist",
-      "services": {
-        "production": {
-          "type": "firebase",
-          "config": {
-            "firebase": "place-my-order",
-            "public": "./dist",
-            "headers": [
-              {
-                "source": "/**",
-                "headers": [
-                  {
-                    "key": "Access-Control-Allow-Origin",
-                    "value": "*"
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      }
-    }
   }
 }
