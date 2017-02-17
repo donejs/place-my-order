@@ -1,12 +1,11 @@
-<can-component tag="pmo-restaurant-details" leak-scope>
-  <template>
-    <can-import from="place-my-order/models/restaurant"/>
-
-    <restaurant-model get="{ _id=slug }">
-      {{#if isPending}}
-        <div class="loading"></div>
-      {{else}}
-      {{#value}}
+<can-component tag="pmo-restaurant-details">
+  <view>
+    <can-import from="place-my-order/models/restaurant" />
+    <can-import from="can-stache/helpers/route" />
+    {{#if restaurantPromise.isPending}}
+      <div class="loading"></div>
+    {{else}}
+      {{#restaurantPromise.value}}
       <div class="restaurant-header"
           style="background-image: url({{joinBase images.banner}});">
         <div class="background">
@@ -41,8 +40,18 @@
           </a>
         </p>
       </div>
-      {{/value}}
-      {{/if}}
-    </restaurant-model>
-  </template>
+      {{/restaurantPromise.value}}
+    {{/if}}
+  </view>
+  <script type="view-model">
+    import DefineMap from 'can-define/map/';
+    import Restaurant from 'place-my-order/models/restaurant';
+
+    export default DefineMap.extend({
+      slug: 'string',
+      get restaurantPromise() {
+        return Restaurant.get({ _id: this.slug });
+      }
+    });
+  </script>
 </can-component>

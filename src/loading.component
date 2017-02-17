@@ -1,9 +1,23 @@
 <can-component tag="pmo-loading" leak-scope>
-  <template>
-    {{#if isResolved}}
+  <style type="less">
+    display: block;
+
+    p { font-weight: bold; }
+  </style>
+  <view>
+    {{#eq state "resolved"}}
       <content></content>
     {{else}}
       <div class="loading"></div>
-    {{/if}}
-  </template>
+    {{/eq}}
+  </view>
+  <script type="view-model">
+    import DefineMap from 'can-define/map/';
+
+    export default DefineMap.extend({
+      message: {
+        value: 'This is the pmo-loading component'
+      }
+    });
+  </script>
 </can-component>

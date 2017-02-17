@@ -1,34 +1,36 @@
 import Component from 'can-component';
 import DefineMap from 'can-define/map/';
+import './new.less';
 import view from './new.stache';
 import Restaurant from 'place-my-order/models/restaurant';
 import Order from 'place-my-order/models/order';
 
 export const ViewModel = DefineMap.extend({
   slug: 'string',
-  restaurant: Restaurant,
+  saveStatus: '*',
   order: {
     Value: Order
   },
-  saveStatus: '*',
-  canPlaceOrder: {
-    get() {
-      return !!this.order.items.length;
+  get restaurantPromise() {
+    return Restaurant.get({ _id: this.slug });
+  },
+  restaurant: {
+    get(lastSetVal, resolve) {
+      this.restaurantPromise.then(resolve);
     }
   },
-
-  placeOrder(event) {
+  get canPlaceOrder() {
+    return this.order.items.length;
+  },
+  placeOrder(ev) {
+    ev.preventDefault();
     let order = this.order;
     order.restaurant = this.restaurant._id;
     this.saveStatus = order.save();
-
-    event.preventDefault();
   },
-
   startNewOrder() {
     this.order = new Order();
     this.saveStatus = null;
-    return false;
   }
 });
 

@@ -4,12 +4,11 @@ import 'can-route-pushstate';
 
 const AppViewModel = DefineMap.extend({
   page: 'string',
-  route: 'string',
   slug: 'string',
   action: 'string',
   title: {
-    serialize: false,
-    value: 'place-my-order'
+    value: 'place-my-order',
+    serialize: false
   }
 });
 

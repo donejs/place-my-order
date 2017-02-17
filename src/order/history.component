@@ -1,5 +1,5 @@
 <can-component tag="pmo-order-history">
-  <template>
+  <view>
     <can-import from="place-my-order/models/order" />
 
     <div class="order-history">
@@ -53,5 +53,5 @@
           empty-message="No delivered orders"/>
       </order-model>
     </div>
-  </template>
+  </view>
 </can-component>
