@@ -2,12 +2,12 @@ import DefineMap from 'can-define/map/';
 import DefineList from 'can-define/list/';
 import set from 'can-set';
 import superMap from 'can-connect/can/super-map/';
-import baseUrl from '../service-base-url';
+import loader from '@loader';
 
 const City = DefineMap.extend({
   seal: false
 }, {
-
+  'name': '*'
 });
 
 const algebra = new set.Algebra(
@@ -19,7 +19,7 @@ City.List = DefineList.extend({
 });
 
 City.connection = superMap({
-  url: baseUrl + '/api/cities',
+  url: loader.serviceBaseURL + '/api/cities',
   Map: City,
   List: City.List,
   name: 'city',

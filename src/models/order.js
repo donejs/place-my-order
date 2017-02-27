@@ -1,12 +1,18 @@
-import superMap from 'can-connect/can/super-map/';
-import set from 'can-set';
-import DefineList from 'can-define/list/';
 import DefineMap from 'can-define/map/';
-import io from 'steal-socket.io';
-import baseUrl from '../service-base-url';
+import DefineList from 'can-define/list/';
+import set from 'can-set';
+import superMap from 'can-connect/can/super-map/';
+import loader from '@loader';
 import tag from 'can-connect/can/tag/';
+import io from 'steal-socket.io';
 
-const ItemsList = DefineList.extend({}, {
+const Item = DefineMap.extend({
+  price: 'number'
+});
+
+const ItemsList = DefineList.extend({
+  '*': Item
+}, {
   has: function(item) {
     return this.indexOf(item) !== -1;
   },
@@ -25,10 +31,11 @@ const ItemsList = DefineList.extend({}, {
 const Order = DefineMap.extend({
   seal: false
 }, {
-  name: "string",
-  address: "string",
-  phone: "string",
-  restaurant: "string",
+  '_id': '*',
+  name: 'string',
+  address: 'string',
+  phone: 'string',
+  restaurant: 'string',
 
   status: {
     value: 'new'
@@ -36,15 +43,12 @@ const Order = DefineMap.extend({
   items: {
     Value: ItemsList
   },
-  total: {
-    get() {
-      let total = 0.0;
-      this.items.forEach(item =>
-          total += parseFloat(item.price));
-      return total.toFixed(2);
-    }
+  get total() {
+    let total = 0.0;
+    this.items.forEach(item =>
+        total += parseFloat(item.price));
+    return total.toFixed(2);
   },
-
   markAs(status) {
     this.status = status;
     this.save();
@@ -61,14 +65,14 @@ Order.List = DefineList.extend({
 });
 
 Order.connection = superMap({
-  url: baseUrl + '/api/orders',
+  url: loader.serviceBaseURL + '/api/orders',
   Map: Order,
   List: Order.List,
-  name: 'orders',
+  name: 'order',
   algebra
 });
 
-const socket = io(baseUrl);
+const socket = io(loader.serviceBaseURL);
 
 socket.on('orders created', order => Order.connection.createInstance(order));
 socket.on('orders updated', order => Order.connection.updateInstance(order));

@@ -45,7 +45,8 @@
       "done-component",
       "steal-less",
       "steal-stache"
-    ]
+    ],
+    "serviceBaseURL": ""
   },
   "dependencies": {
     "bit-tabs": "^1.0.0-alpha.0",
@@ -68,7 +69,7 @@
     "steal": "^1.0.5",
     "steal-less": "^1.0.2",
     "steal-platform": "0.0.4",
-    "steal-socket.io": "^2.0.3",
+    "steal-socket.io": "^4.0.9",
     "steal-stache": "^3.0.4"
   },
   "devDependencies": {

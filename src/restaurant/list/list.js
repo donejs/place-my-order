@@ -1,11 +1,12 @@
 import Component from 'can-component';
 import DefineMap from 'can-define/map/';
+import './list.less';
 import view from './list.stache';
 import Restaurant from 'place-my-order/models/restaurant';
 import State from 'place-my-order/models/state';
 import City from 'place-my-order/models/city';
 
-export var ViewModel = DefineMap.extend({
+export const ViewModel = DefineMap.extend({
   get states() {
     return State.getList({});
   },
@@ -26,7 +27,10 @@ export var ViewModel = DefineMap.extend({
 
     return City.getList({ state });
   },
-  city: 'string',
+  city: {
+    type: 'string',
+    value: null
+  },
   get restaurants() {
     let state = this.state;
     let city = this.city;
