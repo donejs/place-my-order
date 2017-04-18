@@ -16,7 +16,9 @@
     "document": "documentjs",
     "build": "node build",
     "deploy": "firebase deploy",
-    "deploy:ci": "firebase deploy --token \"$FIREBASE_TOKEN\""
+    "deploy:ci": "firebase deploy --token \"$FIREBASE_TOKEN\"",
+    "dev-bundle": "steal-tools bundle --dev",
+    "deps-bundle": "steal-tools bundle --deps"
   },
   "engines": {
     "node": "5.8"
@@ -66,8 +68,8 @@
     "generator-donejs": "^1.0.0-alpha.0",
     "place-my-order-api": "^0.4.4",
     "place-my-order-assets": "^0.1.7",
-    "steal": "^1.0.5",
-    "steal-less": "^1.0.2",
+    "steal": "1.3.0-pre.0",
+    "steal-less": "^1.2.0",
     "steal-platform": "0.0.4",
     "steal-socket.io": "^4.0.9",
     "steal-stache": "^3.0.4"
@@ -82,7 +84,7 @@
     "steal-cordova": "^0.1.3",
     "steal-nw": "^0.1.4",
     "steal-qunit": "^1.0.0",
-    "steal-tools": "^1.0.1",
+    "steal-tools": "1.2.0-pre.3",
     "testee": "^0.3.0"
   },
   "window": {
