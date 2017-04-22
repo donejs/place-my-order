@@ -6,7 +6,12 @@
 <body>
   <!-- Use hashchange routing for development -->
   <script>
-    steal = {map: {"can-route-pushstate": "@empty"}}
+    steal = {
+      map: {
+        "@dev": "dev-bundle",
+        "can-route-pushstate": "@empty"
+      }
+    };
   </script>
   <script src="node_modules/steal/steal.js"></script>
 </body>
