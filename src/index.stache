@@ -10,7 +10,7 @@
 
     <can-import from="place-my-order/loading.component" />
     <can-import from="place-my-order/header.component" />
-    <pmo-header {page}="page"/>
+    <pmo-header page:from="page"/>
 
     {{#switch page}}
       {{#case "home"}}
@@ -25,14 +25,14 @@
             {{#case 'order'}}
               <can-import from="place-my-order/order/new/"
                   can-tag="pmo-loading">
-                <pmo-order-new {slug}="slug"/>
+                <pmo-order-new slug:from="slug"/>
               </can-import>
             {{/case}}
 
             {{#default}}
               <can-import from="place-my-order/restaurant/details.component"
                   can-tag="pmo-loading">
-                <pmo-restaurant-details {slug}="slug"/>
+                <pmo-restaurant-details slug:from="slug"/>
               </can-import>
             {{/default}}
           {{/switch}}
