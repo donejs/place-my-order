@@ -19,7 +19,7 @@
     "deploy:ci": "firebase deploy --token \"$FIREBASE_TOKEN\""
   },
   "engines": {
-    "node": "5.8"
+    "node": "8.5"
   },
   "main": "production.html",
   "files": [
