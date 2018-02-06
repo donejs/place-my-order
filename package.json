@@ -79,7 +79,7 @@
     "donejs-deploy": "^0.4.2",
     "firebase-tools": "^3.2.2",
     "funcunit": "^3.1.0",
-    "steal-cordova": "^0.1.3",
+    "steal-cordova": "^1.0.2",
     "steal-nw": "^0.1.4",
     "steal-qunit": "^1.0.0",
     "steal-tools": "^1.0.1",
