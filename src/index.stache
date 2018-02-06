@@ -12,48 +12,44 @@
     <can-import from="place-my-order/header.component" />
     <pmo-header page:from="page"/>
 
-    {{#switch page}}
-      {{#case "home"}}
-        <can-import from="place-my-order/home.component"
-            can-tag="pmo-loading">
+    {{#switch(page)}}
+      {{#case("home")}}
+        <can-import from="place-my-order/home.component" can-tag="pmo-loading">
           <pmo-home/>
         </can-import>
       {{/case}}
-      {{#case "restaurants"}}
-        {{#if slug}}
-          {{#switch action}}
-            {{#case 'order'}}
-              <can-import from="place-my-order/order/new/"
-                  can-tag="pmo-loading">
-                <pmo-order-new slug:from="slug"/>
+      {{#case("restaurants")}}
+        {{#if(slug)}}
+          {{#switch(action)}}
+            {{#case('order')}}
+              <can-import from="place-my-order/order/new/" can-tag="pmo-loading">
+                <pmo-order-new slug:from="scope.root.slug"/>
               </can-import>
             {{/case}}
 
             {{#default}}
               <can-import from="place-my-order/restaurant/details.component"
                   can-tag="pmo-loading">
-                <pmo-restaurant-details slug:from="slug"/>
+                <pmo-restaurant-details slug:from="scope.root.slug"/>
               </can-import>
             {{/default}}
           {{/switch}}
         {{else}}
-          <can-import from="place-my-order/restaurant/list/"
-              can-tag="pmo-loading">
+          <can-import from="place-my-order/restaurant/list/" can-tag="pmo-loading">
             <pmo-restaurant-list/>
           </can-import>
         {{/if}}
       {{/case}}
-      {{#case "order-history"}}
-        <can-import from="place-my-order/order/history.component"
-            can-tag="pmo-loading">
+      {{#case("order-history")}}
+        <can-import from="place-my-order/order/history.component" can-tag="pmo-loading">
           <pmo-order-history/>
         </can-import>
       {{/case}}
     {{/switch}}
 
-    {{#switch env.NODE_ENV}}
-      {{#case "production"}}
-        <script src="{{joinBase 'steal.production.js'}}"></script>
+    {{#switch(env.NODE_ENV)}}
+      {{#case("production")}}
+        <script src="{{joinBase('steal.production.js')}}"></script>
       {{/case}}
       {{#default}}
         <script src="/node_modules/steal/steal.js"></script>
