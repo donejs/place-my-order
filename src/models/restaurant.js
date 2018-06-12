@@ -1,31 +1,24 @@
-import DefineMap from 'can-define/map/';
-import DefineList from 'can-define/list/';
-import set from 'can-set';
-import superMap from 'can-connect/can/super-map/';
+import { DefineList, DefineMap, realtimeRestModel } from 'can';
 import loader from '@loader';
 
 const Restaurant = DefineMap.extend({
   seal: false
 }, {
-  '_id': '*'
+  '_id': {
+    identity: true,
+    type: 'any'
+  }
 });
-
-const algebra = new set.Algebra(
-  set.props.id('_id'),
-  set.props.dotNotation('address.state'),
-  set.props.dotNotation('address.city')
-);
 
 Restaurant.List = DefineList.extend({
-  '*': Restaurant
+  '#': Restaurant
 });
 
-Restaurant.connection = superMap({
+Restaurant.connection = realtimeRestModel({
   url: loader.serviceBaseURL + '/api/restaurants',
   Map: Restaurant,
   List: Restaurant.List,
-  name: 'restaurant',
-  algebra
+  name: 'restaurant'
 });
 
 export default Restaurant;

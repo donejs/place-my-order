@@ -1,9 +1,8 @@
-import Component from 'can-component';
-import DefineMap from 'can-define/map/';
-import './new.less';
+import { Component, DefineMap } from 'can';
+import Restaurant from '~/models/restaurant';
+import Order from '~/models/order';
 import view from './new.stache';
-import Restaurant from 'place-my-order/models/restaurant';
-import Order from 'place-my-order/models/order';
+import './new.less';
 
 export const ViewModel = DefineMap.extend({
   slug: 'string',

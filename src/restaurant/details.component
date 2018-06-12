@@ -2,6 +2,7 @@
   <view>
     <can-import from="place-my-order/models/restaurant" />
     <can-import from="can-stache-route-helpers" />
+
     {{#if(restaurantPromise.isPending)}}
       <div class="loading"></div>
     {{else}}
@@ -44,7 +45,7 @@
     {{/if}}
   </view>
   <script type="view-model">
-    import DefineMap from 'can-define/map/';
+    import { DefineMap } from 'can';
     import Restaurant from 'place-my-order/models/restaurant';
 
     export default DefineMap.extend({
