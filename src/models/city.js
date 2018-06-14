@@ -1,7 +1,7 @@
 import { DefineMap, DefineList, realtimeRestModel } from 'can';
 import loader from '@loader';
 
-const City = DefineMap.extend({
+const City = DefineMap.extend('City', {
   seal: false
 }, {
   'name': {
@@ -11,7 +11,7 @@ const City = DefineMap.extend({
 });
 
 City.List = DefineList.extend({
-  '*': City
+  '#': City
 });
 
 City.connection = realtimeRestModel({

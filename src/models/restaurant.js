@@ -1,7 +1,7 @@
 import { DefineList, DefineMap, realtimeRestModel } from 'can';
 import loader from '@loader';
 
-const Restaurant = DefineMap.extend({
+const Restaurant = DefineMap.extend('Restaurant', {
   seal: false
 }, {
   '_id': {

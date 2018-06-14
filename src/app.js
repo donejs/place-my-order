@@ -1,5 +1,5 @@
-import { DefineMap, route } from "can";
-import "can-route-pushstate";
+import { DefineMap } from "can";
+import route from "can-route-pushstate";
 
 const AppViewModel = DefineMap.extend({
   page: 'string',

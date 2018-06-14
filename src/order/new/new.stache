@@ -28,8 +28,8 @@
                 <li class="list-group-item">
                   <label>
                     <input type="checkbox"
-                      on:change="scope.root.order.items.toggle(.)"
-                      {{#if(scope.root.order.items.has(.))}}checked{{/if}}>
+                      on:change="scope.vm.order.items.toggle(.)"
+                      {{#if(scope.vm.order.items.has(.))}}checked{{/if}}>
                     {{name}} <span class="badge">${{price}}</span>
                   </label>
                 </li>
@@ -42,8 +42,8 @@
                 <li class="list-group-item">
                   <label>
                     <input type="checkbox"
-                      on:change="scope.root.order.items.toggle(this)"
-                      {{#if(scope.root.order.items.has(.))}}checked{{/if}}>
+                      on:change="scope.vm.order.items.toggle(this)"
+                      {{#if(scope.vm.order.items.has(.))}}checked{{/if}}>
                     {{name}} <span class="badge">${{price}}</span>
                   </label>
                 </li>
@@ -67,16 +67,16 @@
         <div class="form-group">
           <label class="control-label">Phone:</label>
           <input name="phone" type="text" class="form-control"
-            value:bind="scope.root.order.phone">
+            value:bind="order.phone">
           <p class="help-text">Please enter your phone number.</p>
         </div>
         <div class="submit">
-          <h4>Total: ${{scope.root.order.total}}</h4>
-          {{#if(scope.root.saveStatus.isPending)}}
+          <h4>Total: ${{scope.vm.order.total}}</h4>
+          {{#if(saveStatus.isPending)}}
             <div class="loading"></div>
           {{else}}
             <button type="submit"
-                {{^if(scope.root.canPlaceOrder)}}disabled{{/if}} class="btn">
+                {{^if(canPlaceOrder)}}disabled{{/if}} class="btn">
               Place My Order!
             </button>
           {{/if}}

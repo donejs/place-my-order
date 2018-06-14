@@ -24,7 +24,7 @@ export const ViewModel = DefineMap.extend({
       return null;
     }
 
-    return City.getList({ state });
+    return City.getList({ filter: { state } });
   },
   city: {
     type: 'string',
@@ -36,8 +36,10 @@ export const ViewModel = DefineMap.extend({
 
     if(state && city) {
       return Restaurant.getList({
-        'address.state': state,
-        'address.city': city
+        filter: {
+          'address.state': state,
+          'address.city': city
+        }
       });
     }
 

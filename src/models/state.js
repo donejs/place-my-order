@@ -1,7 +1,7 @@
 import { DefineMap, DefineList, realtimeRestModel } from 'can';
 import loader from '@loader';
 
-const State = DefineMap.extend({
+const State = DefineMap.extend('State', {
   seal: false
 }, {
   'short': {

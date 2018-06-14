@@ -1,4 +1,4 @@
-import { DefineMap, DefineList, QueryLogic, realtimeRestModel } from 'can';
+import { DefineMap, DefineList, QueryLogic, superModel } from 'can';
 import loader from '@loader';
 import io from 'steal-socket.io';
 
@@ -26,12 +26,12 @@ const ItemsList = DefineList.extend({
 
 const Status = QueryLogic.makeEnum(["new", "preparing", "delivery", "delivered"]);
 
-const Order = DefineMap.extend({
+const Order = DefineMap.extend('Order', {
   seal: false
 }, {
   '_id': {
     identity: true,
-    type: '*'
+    type: 'any'
   },
   name: 'string',
   address: 'string',
@@ -40,8 +40,9 @@ const Order = DefineMap.extend({
 
   status: {
     default: 'new',
-    type: Status
+    Type: Status
   },
+
   items: {
     Default: ItemsList
   },
@@ -58,10 +59,10 @@ const Order = DefineMap.extend({
 });
 
 Order.List = DefineList.extend({
-  '*': Order
+  '#': Order
 });
 
-Order.connection = realtimeRestModel({
+Order.connection = superModel({
   url: loader.serviceBaseURL + '/api/orders',
   Map: Order,
   List: Order.List,

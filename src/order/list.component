@@ -20,12 +20,12 @@
         <div class="total">${{total}}</div>
 
         <div class="actions">
-          <span class="badge">{{scope.root.statusTitle}}</span>
-          {{#if(scope.root.action)}}
+          <span class="badge">{{scope.vm.statusTitle}}</span>
+          {{#if(scope.vm.action)}}
             <p class="action">
               Mark as:
-              <a href="javascript://" on:click="markAs(scope.root.action)">
-                {{scope.root.actionTitle}}
+              <a href="javascript://" on:click="markAs(scope.vm.action)">
+                {{scope.vm.actionTitle}}
               </a>
             </p>
           {{/if}}
@@ -36,7 +36,7 @@
         </div>
       </div>
       {{else}}
-        <div class="order empty">{{scope.root.emptyMessage}}</div>
+        <div class="order empty">{{scope.vm.emptyMessage}}</div>
       {{/each}}
     {{/if}}
   </view>

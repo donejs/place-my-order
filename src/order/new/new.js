@@ -6,7 +6,7 @@ import './new.less';
 
 export const ViewModel = DefineMap.extend({
   slug: 'string',
-  saveStatus: '*',
+  saveStatus: 'any',
   order: {
     Default: Order
   },

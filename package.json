@@ -54,9 +54,9 @@
     "done-autorender": "^2.0.0-pre.11",
     "done-component": "^2.0.0-pre.1",
     "done-css": "^3.0.2",
-    "done-serve": "^2.0.0-pre.0",
+    "done-serve": "^3.0.0-pre.0",
     "generator-donejs": "^2.0.0-alpha.3",
-    "place-my-order-api": "^0.4.4",
+    "place-my-order-api": "^1.0.0",
     "place-my-order-assets": "^0.1.7",
     "steal": "^2.0.0-pre.3",
     "steal-less": "^1.0.2",
@@ -65,13 +65,14 @@
     "steal-stache": "^4.0.0-pre.2"
   },
   "devDependencies": {
+    "can-stache-route-helpers": "^1.0.0",
     "documentjs": "^0.4.4",
     "donejs-cli": "^2.0.0-pre.2",
     "firebase-tools": "^3.2.2",
     "funcunit": "^3.1.0",
     "steal-cordova": "^1.0.2",
     "steal-nw": "^0.1.4",
-    "steal-qunit": "^1.0.0",
+    "steal-qunit": "^1.0.2",
     "steal-tools": "^2.0.0-pre.0",
     "testee": "^0.7.0"
   },
