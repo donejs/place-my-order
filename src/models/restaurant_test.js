@@ -6,8 +6,7 @@ QUnit.module('models/restaurant');
 QUnit.test('getList', function(){
   stop();
   Restaurant.getList().then(function(items) {
-    QUnit.equal(items.length, 2);
-    QUnit.equal(items.item(0).description, 'First item');
+    QUnit.equal(items.item(0).name, 'Cheese City');
     start();
   });
 });

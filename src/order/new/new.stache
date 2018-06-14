@@ -14,7 +14,7 @@
       <h3>Order from {{restaurant.name}}</h3>
 
       <form on:submit="placeOrder(scope.event)">
-        <bit-tabs tabsClass:from="'nav nav-tabs'">
+        <bit-tabs tabsClass:raw="nav nav-tabs">
           <p class="info {{^if(order.items.length)}}text-error{{else}}text-success{{/if}}">
             {{^if(order.items.length)}}
               Please choose an item
@@ -22,28 +22,28 @@
               {{order.items.length}} selected
             {{/if}}
           </p>
-          <bit-panel title:from="'Lunch menu'">
+          <bit-panel title:raw="Lunch menu">
             <ul class="list-group">
               {{#each(restaurant.menu.lunch)}}
                 <li class="list-group-item">
                   <label>
                     <input type="checkbox"
-                      on:change="scope.root.order.items.toggle(.)"
-                      {{#if(scope.root.order.items.has(.))}}checked{{/if}}>
+                      on:change="scope.vm.order.items.toggle(.)"
+                      {{#if(scope.vm.order.items.has(.))}}checked{{/if}}>
                     {{name}} <span class="badge">${{price}}</span>
                   </label>
                 </li>
               {{/each}}
             </ul>
           </bit-panel>
-          <bit-panel title:from="'Dinner menu'">
+          <bit-panel title:raw="Dinner menu">
             <ul class="list-group">
               {{#each(restaurant.menu.dinner)}}
                 <li class="list-group-item">
                   <label>
                     <input type="checkbox"
-                      on:change="scope.root.order.items.toggle(this)"
-                      {{#if(scope.root.order.items.has(.))}}checked{{/if}}>
+                      on:change="scope.vm.order.items.toggle(this)"
+                      {{#if(scope.vm.order.items.has(.))}}checked{{/if}}>
                     {{name}} <span class="badge">${{price}}</span>
                   </label>
                 </li>
@@ -67,16 +67,16 @@
         <div class="form-group">
           <label class="control-label">Phone:</label>
           <input name="phone" type="text" class="form-control"
-            value:bind="scope.root.order.phone">
+            value:bind="order.phone">
           <p class="help-text">Please enter your phone number.</p>
         </div>
         <div class="submit">
-          <h4>Total: ${{scope.root.order.total}}</h4>
-          {{#if(scope.root.saveStatus.isPending)}}
+          <h4>Total: ${{scope.vm.order.total}}</h4>
+          {{#if(saveStatus.isPending)}}
             <div class="loading"></div>
           {{else}}
             <button type="submit"
-                {{^if(scope.root.canPlaceOrder)}}disabled{{/if}} class="btn">
+                {{^if(canPlaceOrder)}}disabled{{/if}} class="btn">
               Place My Order!
             </button>
           {{/if}}

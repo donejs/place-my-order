@@ -7,7 +7,7 @@ QUnit.test('getList', function(){
   stop();
   State.getList().then(function(items) {
     QUnit.equal(items.length, 2);
-    QUnit.equal(items.item(0).description, 'First item');
+    QUnit.equal(items.item(0).name, 'Calisota');
     start();
   });
 });

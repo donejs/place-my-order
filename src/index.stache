@@ -23,14 +23,14 @@
           {{#switch(action)}}
             {{#case('order')}}
               <can-import from="place-my-order/order/new/" can-tag="pmo-loading">
-                <pmo-order-new slug:from="scope.root.slug"/>
+                <pmo-order-new slug:from="scope.vm.slug"/>
               </can-import>
             {{/case}}
 
             {{#default}}
               <can-import from="place-my-order/restaurant/details.component"
                   can-tag="pmo-loading">
-                <pmo-restaurant-details slug:from="scope.root.slug"/>
+                <pmo-restaurant-details slug:from="scope.vm.slug"/>
               </can-import>
             {{/default}}
           {{/switch}}
@@ -52,7 +52,7 @@
         <script src="{{joinBase('steal.production.js')}}"></script>
       {{/case}}
       {{#default}}
-        <script src="/node_modules/steal/steal.js"></script>
+        <script src="/node_modules/steal/steal.js" main></script>
       {{/default}}
     {{/switch}}
   </body>

@@ -1,4 +1,4 @@
-import fixture from 'can-fixture';
+import { fixture } from 'can';
 import Order from '../order';
 
 const store = fixture.store([{
@@ -7,7 +7,7 @@ const store = fixture.store([{
 }, {
   _id: 1,
   description: 'Second item'
-}], Order.connection.algebra);
+}], Order.connection.queryLogic);
 
 fixture('/api/orders/{_id}', store);
 

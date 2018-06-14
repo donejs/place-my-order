@@ -1,10 +1,9 @@
-import Component from 'can-component';
-import DefineMap from 'can-define/map/';
-import './list.less';
-import view from './list.stache';
+import { Component, DefineMap } from 'can';
 import Restaurant from 'place-my-order/models/restaurant';
 import State from 'place-my-order/models/state';
 import City from 'place-my-order/models/city';
+import view from './list.stache';
+import './list.less';
 
 export const ViewModel = DefineMap.extend({
   get states() {
@@ -25,7 +24,7 @@ export const ViewModel = DefineMap.extend({
       return null;
     }
 
-    return City.getList({ state });
+    return City.getList({ filter: { state } });
   },
   city: {
     type: 'string',
@@ -37,8 +36,10 @@ export const ViewModel = DefineMap.extend({
 
     if(state && city) {
       return Restaurant.getList({
-        'address.state': state,
-        'address.city': city
+        filter: {
+          'address.state': state,
+          'address.city': city
+        }
       });
     }
 

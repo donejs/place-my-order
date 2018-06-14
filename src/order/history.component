@@ -1,6 +1,6 @@
 <can-component tag="pmo-order-history">
   <view>
-    <can-import from="place-my-order/models/order" />
+    <can-import from="place-my-order/order/list.component" />
 
     <div class="order-history">
       <div class="order header">
@@ -10,48 +10,58 @@
         <div class="actions">Action</div>
       </div>
 
-      <can-import from="place-my-order/order/list.component" />
-      <order-model get-list="{status='new'}">
-        <pmo-order-list
-          orders:from="."
-          listTitle:from="'New Orders'"
-          status:from="'new'"
-          statusTitle:from="'New Order!''"
-          action:from="'preparing'"
-          actionTitle:from="'Preparing'"
-          emptyMessage:from="'No new orders'"/>
-      </order-model>
+      <pmo-order-list
+        orders:from="newOrdersPromise"
+        listTitle:raw="New Orders"
+        status:raw="new"
+        statusTitle:raw="New Order!"
+        action:raw="preparing"
+        actionTitle:raw="Preparing"
+        emptyMessage:raw="No new orders" />
 
-      <order-model get-list="{status='preparing'}">
-        <pmo-order-list
-          orders:from="."
-          listTitle:from="'Preparing'"
-          status:from="'preparing'"
-          statusTitle:from="'Preparing'"
-          action:from="'delivery'"
-          actionTitle:from="'Out for delivery'"
-          emptyMessage:from="'No orders preparing'"/>
-      </order-model>
+      <pmo-order-list
+        orders:from="preparingOrdersPromise"
+        listTitle:raw="Preparing"
+        status:raw="preparing"
+        statusTitle:raw="Preparing"
+        action:raw="delivery"
+        actionTitle:raw="Out for delivery"
+        emptyMessage:raw="No orders preparing"/>
 
-      <order-model get-list="{status='delivery'}">
-        <pmo-order-list
-          orders:from="."
-          listTitle:from="'Out for delivery'"
-          status:from="'delivery'"
-          statusTitle:from="'Out for delivery'"
-          action:from="'delivered'"
-          actionTitle:from="'Delivered'"
-          emptyMessage:from="'No orders are being delivered'"/>
-      </order-model>
+      <pmo-order-list
+        orders:from="deliveryOrdersPromise"
+        listTitle:raw="Out for delivery"
+        status:raw="delivery"
+        statusTitle:raw="Out for delivery"
+        action:raw="delivered"
+        actionTitle:raw="Delivered"
+        emptyMessage:raw="No orders are being delivered"/>
 
-      <order-model get-list="{status='delivered'}">
-        <pmo-order-list
-          orders:from="."
-          listTitle:from="'Delivered'"
-          status:from="'delivered'"
-          statusTitle:from="'Delivered'"
-          emptyMessage:from="'No delivered orders'"/>
-      </order-model>
+      <pmo-order-list
+        orders:from="deliveredOrdersPromise"
+        listTitle:raw="Delivered"
+        status:raw="delivered"
+        statusTitle:raw="Delivered"
+        emptyMessage:raw="No delivered orders"/>
     </div>
   </view>
+  <script type="view-model">
+    import { DefineMap } from 'can';
+    import Order from '~/models/order';
+
+    export default DefineMap.extend({
+      get newOrdersPromise() {
+        return Order.getList({ filter: { status: 'new' } });
+      },
+      get preparingOrdersPromise() {
+        return Order.getList({ filter: { status: 'preparing' } });
+      },
+      get deliveryOrdersPromise() {
+        return Order.getList({ filter: { status: 'delivery' } });
+      },
+      get deliveredOrdersPromise() {
+        return Order.getList({ filter: { status: 'delivered' } });
+      }
+    });
+  </script>
 </can-component>
