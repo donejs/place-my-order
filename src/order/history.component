@@ -42,6 +42,7 @@
         listTitle:raw="Delivered"
         status:raw="delivered"
         statusTitle:raw="Delivered"
+        action:raw=""
         emptyMessage:raw="No delivered orders"/>
     </div>
   </view>

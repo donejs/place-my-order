@@ -21,14 +21,14 @@
 
         <div class="actions">
           <span class="badge">{{scope.vm.statusTitle}}</span>
-          {{#if(scope.vm.action)}}
+          {{^eq(scope.vm.action, '')}}
             <p class="action">
               Mark as:
               <a href="javascript://" on:click="markAs(scope.vm.action)">
                 {{scope.vm.actionTitle}}
               </a>
             </p>
-          {{/if}}
+          {{/eq}}
 
           <p class="action">
             <a href="javascript://" on:click="destroy()">Delete</a>
