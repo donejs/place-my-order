@@ -1,6 +1,5 @@
 <can-component tag="pmo-restaurant-details">
   <view>
-    <can-import from="place-my-order/models/restaurant" />
     <can-import from="can-stache-route-helpers" />
 
     {{#if(restaurantPromise.isPending)}}
