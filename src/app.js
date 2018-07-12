@@ -1,5 +1,4 @@
-import { DefineMap } from "can";
-import route from "can-route-pushstate";
+import { DefineMap, route, RoutePushstate } from "can";
 
 const AppViewModel = DefineMap.extend({
   page: 'string',
@@ -11,8 +10,10 @@ const AppViewModel = DefineMap.extend({
   }
 });
 
+route.urlData = new RoutePushstate();
 route.register('{page}', { page: 'home' });
 route.register('{page}/{slug}', { slug: null });
 route.register('{page}/{slug}/{action}', { slug: null, action: null });
+route.start();
 
 export default AppViewModel;
