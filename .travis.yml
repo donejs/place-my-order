@@ -12,6 +12,7 @@ before_deploy:
   - git add dist/ --force
   - git commit -m "Updating build."
   - node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
+  - 'npm run deploy:ci'
 deploy:
   skip_cleanup: true
   provider: heroku
@@ -22,4 +23,4 @@ deploy:
 env:
   global:
     - secure: >-
-        lcfbNTppUpOZd55WZtfS/1vrPoKWG2exzt5pDF2O/xFN68mt/bDjZcPJ2EFb9T8U5zluFRWhQu79R6FhUd8vRWOw2nRsIy3iKgG/TWtXZ2qN7Wp3ebCb2mH1YP9Q0IpM4C8dn0p31M276AcOC6B3Agvyi34LBRKVbFuRH5PrZlk=
+        P6ygNkClZQtxoIHXsgZgtBgN/Y70Zw0uJ1pfX9RCig59atUy4/VpiEFU7G4l8mTKf0lyz+AenSzEXxS7a8gw7tUzez9iTrg9HbeAB7paZpaljRHUgucPYqAWIGDQkPLEHVBW7bKEklc0gZy+66yG1Wwh6cT9VSLmX1cf++f5hHM=
