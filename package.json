@@ -78,7 +78,7 @@
     "can-route-hash": "^1.0.1",
     "documentjs": "^0.4.4",
     "donejs-cli": "^2.0.0",
-    "firebase-tools": "^3.2.2",
+    "firebase-tools": "^6.0.1",
     "funcunit": "^3.2.0",
     "steal-conditional": "^1.0.0",
     "steal-qunit": "^1.0.1",
