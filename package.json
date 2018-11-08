@@ -10,7 +10,7 @@
   },
   "scripts": {
     "api": "place-my-order-api --port 7070",
-    "test": "testee src/test.html --browsers firefox --reporter Spec",
+    "test": "testee test.html --browsers firefox --reporter Spec",
     "start": "done-serve --proxy http://localhost:7070 --port 8080",
     "develop": "done-serve --develop --proxy http://localhost:7070 --port 8080",
     "document": "documentjs",
@@ -19,7 +19,7 @@
     "deploy:ci": "firebase deploy --token \"$FIREBASE_TOKEN\""
   },
   "engines": {
-    "node": "8.5"
+    "node": "10.0"
   },
   "main": "production.html",
   "files": [
@@ -33,7 +33,8 @@
     },
     "configDependencies": [
       "live-reload",
-      "node_modules/can-zone/register"
+      "node_modules/can-zone/register",
+      "node_modules/steal-conditional/conditional"
     ],
     "envs": {
       "server-production": {
@@ -46,39 +47,42 @@
       "steal-less",
       "steal-stache"
     ],
+    "bundle": [
+      "~/pages/**/",
+      "~/pages/**/*.component"
+    ],
     "serviceBaseURL": ""
   },
   "dependencies": {
-    "bit-tabs": "^2.0.0-pre.2",
-    "can": "^5.0.0-pre.0",
-    "done-autorender": "^2.0.0-pre.11",
-    "done-component": "^2.0.0-pre.1",
+    "bit-tabs": "^2.0.1",
+    "can": "^5.16.0",
+    "can-route-pushstate": "^5.0.7",
+    "can-stache-route-helpers": "^1.1.1",
+    "can-zone": "^1.0.0",
+    "done-autorender": "^2.4.3",
+    "done-component": "^2.2.0",
     "done-css": "^3.0.2",
-    "done-serve": "^3.0.0-pre.0",
-    "generator-donejs": "^2.0.0-alpha.3",
-    "place-my-order-api": "^1.0.0",
+    "done-serve": "^3.0.0-pre.4",
+    "donejs-documentjs": "^0.1.2",
+    "generator-donejs": "^3.0.0-pre.2",
+    "place-my-order-api": "^1.0.1",
     "place-my-order-assets": "^0.1.7",
-    "steal": "^2.0.0-pre.3",
-    "steal-less": "^1.0.2",
-    "steal-platform": "0.0.4",
-    "steal-socket.io": "^4.0.9",
-    "steal-stache": "^4.0.0-pre.2"
+    "steal": "^2.1.6",
+    "steal-conditional": "^1.0.0",
+    "steal-less": "^1.2.2",
+    "steal-socket.io": "^4.1.0",
+    "steal-stache": "^4.1.2"
   },
   "devDependencies": {
-    "can-stache-route-helpers": "^1.0.0",
+    "can-debug": "^2.0.1",
+    "can-route-hash": "^1.0.1",
     "documentjs": "^0.4.4",
-    "donejs-cli": "^2.0.0-pre.2",
+    "donejs-cli": "^2.0.0",
     "firebase-tools": "^3.2.2",
-    "funcunit": "^3.1.0",
-    "steal-cordova": "^1.0.2",
-    "steal-nw": "^0.1.4",
-    "steal-qunit": "^1.0.2",
-    "steal-tools": "^2.0.0-pre.0",
-    "testee": "^0.7.0"
-  },
-  "window": {
-    "width": 1000,
-    "height": 600,
-    "toolbar": false
+    "funcunit": "^3.2.0",
+    "steal-conditional": "^1.0.0",
+    "steal-qunit": "^1.0.1",
+    "steal-tools": "^2.0.6",
+    "testee": "^0.8.1"
   }
 }

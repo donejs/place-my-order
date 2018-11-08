@@ -1,10 +1,10 @@
 import QUnit from 'steal-qunit';
-import cityStore from 'place-my-order/models/fixtures/cities';
-import stateStore from 'place-my-order/models/fixtures/states';
-import restaurantStore from 'place-my-order/models/fixtures/restaurants';
+import cityStore from '~/models/fixtures/cities';
+import stateStore from '~/models/fixtures/states';
+import restaurantStore from '~/models/fixtures/restaurants';
 import { ViewModel } from './list';
 
-QUnit.module('place-my-order/restaurant/list', {
+QUnit.module('~/restaurant/list', {
   beforeEach() {
     localStorage.clear();
   }
@@ -22,7 +22,7 @@ QUnit.asyncTest('loads all states', function() {
 
 QUnit.asyncTest('setting a state loads its cities', function() {
   var vm = new ViewModel();
-  var expectedCities = cityStore.getList({ filter: { state: "CA" } }).data;
+  var expectedCities = cityStore.getList({ state: "CA" }).data;
 
   QUnit.equal(vm.cities, null, '');
   vm.state = 'CA';
@@ -34,7 +34,7 @@ QUnit.asyncTest('setting a state loads its cities', function() {
 
 QUnit.asyncTest('changing a state resets city', function() {
   var vm = new ViewModel();
-  var expectedCities = cityStore.getList({ filter: { state : "CA" } }).data;
+  var expectedCities = cityStore.getList({ state : "CA" }).data;
 
   QUnit.equal(vm.cities, null, '');
   vm.state = 'CA';
@@ -48,17 +48,16 @@ QUnit.asyncTest('changing a state resets city', function() {
 
 QUnit.asyncTest('setting state and city loads a list of its restaurants', function() {
   var vm = new ViewModel();
+  vm.bind('city', () => {});
   var expectedRestaurants = restaurantStore.getList({
-    filter: {
-      "address.city": "Alberny"
-    }
+    filter: { address: { city: "Alberny" } }
   }).data;
 
   vm.state = 'NT';
   vm.city = 'Alberny';
 
   vm.restaurants.then(restaurants => {
-    QUnit.deepEqual(restaurants.serialize(), expectedRestaurants, 'Fetched restaurants equal');
+    QUnit.deepEqual(restaurants.serialize(), expectedRestaurants, 'Fetched restaurants equal to expected');
     QUnit.deepEqual(restaurants.length, 1, 'Got expected number of restaurants');
     QUnit.start();
   });
