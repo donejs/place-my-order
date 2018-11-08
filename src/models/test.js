@@ -1,10 +1,9 @@
 import './fixtures/';
 
+import '~/models/restaurant-test';
 
-import 'place-my-order/models/restaurant_test';
+import '~/models/state-test';
 
-import 'place-my-order/models/state_test';
+import '~/models/city-test';
 
-import 'place-my-order/models/city_test';
-
-import 'place-my-order/models/order_test';
+import '~/models/order-test';
