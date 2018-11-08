@@ -11,7 +11,6 @@ before_deploy:
   - node build
   - git add dist/ --force
   - git commit -m "Updating build."
-  - node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
   - 'npm run deploy:ci'
 deploy:
   skip_cleanup: true
