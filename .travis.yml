@@ -3,23 +3,21 @@ node_js: node
 addons:
   firefox: latest
 before_install:
-  - 'export DISPLAY=:99.0'
-  - sh -e /etc/init.d/xvfb start
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 before_deploy:
-  - git config --global user.email "me@example.com"
-  - git config --global user.name "PMO deploy bot"
-  - node build
-  - git add dist/ --force
-  - git commit -m "Updating build."
-  - 'npm run deploy:ci'
+- git config --global user.email "me@example.com"
+- git config --global user.name "PMO deploy bot"
+- node build
+- git add dist/ --force
+- git commit -m "Updating build."
+- npm run deploy:ci
 deploy:
   skip_cleanup: true
   provider: heroku
   app: place-my-order
   api_key:
-    - secure: >-
-        KPr/1zV03FEFMclP/3ZMFQV7J5By3Qzv9JIq/NnhfbEylfcT8ck3zNotzK61TYOrJzSr4/nZlih4DKX1LgRV4YwN4YDz8HF+1atDsPUOhrNNs/1IPhikXjUPOjmCHwuockjC1sxYQh1SVgmknKTRwbYBDA4d/fN/JS7QfALxcgE=
+  - secure: KPr/1zV03FEFMclP/3ZMFQV7J5By3Qzv9JIq/NnhfbEylfcT8ck3zNotzK61TYOrJzSr4/nZlih4DKX1LgRV4YwN4YDz8HF+1atDsPUOhrNNs/1IPhikXjUPOjmCHwuockjC1sxYQh1SVgmknKTRwbYBDA4d/fN/JS7QfALxcgE=
 env:
   global:
-    - secure: >-
-        GDejlD7v7s7bh0JHe05krPozrOMPDcZfhHRCyn6EoyvXCMb7iLSpibEnYGPwGYOtgfpxrh6lxseYkVnK6IvcNLPj8WTKnUaR2kQxwsVW8DvH2VeSYgKfbqqhYFQ86+t2rqHtHaWwyJcRZJezNW5MKHN8wXFLMQmBltsUAvCfJa8=
+    secure: CYDngy324rRRktlRSxX/i8RrWTcyD4zLabX9YcvBZh6E2tCE47alXVUh97OV/7LVGNTsPQnEQfZ6vHlD2vt5tPVCBioW/eyUL5o7P2Z8qXoWXxMGqiOo+1lO4pwRS4N+1VgTok1DfEIK+XgBkUQaz9zEBU45BkgX0Dt1tdyMEus=
