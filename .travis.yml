@@ -20,4 +20,4 @@ deploy:
   - secure: KPr/1zV03FEFMclP/3ZMFQV7J5By3Qzv9JIq/NnhfbEylfcT8ck3zNotzK61TYOrJzSr4/nZlih4DKX1LgRV4YwN4YDz8HF+1atDsPUOhrNNs/1IPhikXjUPOjmCHwuockjC1sxYQh1SVgmknKTRwbYBDA4d/fN/JS7QfALxcgE=
 env:
   global:
-    secure: CYDngy324rRRktlRSxX/i8RrWTcyD4zLabX9YcvBZh6E2tCE47alXVUh97OV/7LVGNTsPQnEQfZ6vHlD2vt5tPVCBioW/eyUL5o7P2Z8qXoWXxMGqiOo+1lO4pwRS4N+1VgTok1DfEIK+XgBkUQaz9zEBU45BkgX0Dt1tdyMEus=
+    secure: O6vRO7vyAEVFqUvaHITZlT6skKApaoOQQBWg/fbxbEbmvlNfSzxsuGCT8YPQe3NcxlSPf+pE62cA+eSDzLkH9XVUfPMRiIb7g9njZnEtbi04JbpDqPfQf6GdP/C/HC1coHgguSjuT/0QDNgkszfq6vIVgwwhVNpg1fy67SRsnaY=
