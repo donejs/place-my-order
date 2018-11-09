@@ -1,19 +1,10 @@
 var api = require('place-my-order-api');
 var server = require('done-serve');
 
-var app = server({
-  path: __dirname,
-  configure: function(app) {
-    app.use('/api', api);
-    app.api = api;
+var port = process.env.PORT || 3030;
 
-    var oldListen = app.listen;
-    app.listen = function() {
-      var server = oldListen.apply(this, arguments);
-      api.setup(server);
-      return server;
-    };
-  }
+var app = server(port, {
+  path: __dirname
 });
 
-app.listen(process.env.PORT || 3030);
+api.setup(app);
