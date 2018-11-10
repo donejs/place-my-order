@@ -1,59 +1,26 @@
 <html>
   <head>
-    <title>{{title}}</title>
+    <title>{{this.title}}</title>
     <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
   <body>
     <can-import from="place-my-order-assets" />
-    <can-import from="place-my-order/styles.less" />
-    <can-import from="place-my-order/app" export-as="viewModel" />
+    <can-import from="~/styles.less" />
+    <can-import from="~/app" export-as="viewModel" route-data="routeData" />
 
-    <can-import from="place-my-order/loading.component" />
-    <can-import from="place-my-order/header.component" />
-    <pmo-header page:from="page"/>
+    <can-import from="~/components/header.component" />
+    <pmo-header page:from="this.routeData.page"/>
 
-    {{#switch(page)}}
-      {{#case("home")}}
-        <can-import from="place-my-order/home.component" can-tag="pmo-loading">
-          <pmo-home/>
-        </can-import>
-      {{/case}}
-      {{#case("restaurants")}}
-        {{#if(slug)}}
-          {{#switch(action)}}
-            {{#case('order')}}
-              <can-import from="place-my-order/order/new/" can-tag="pmo-loading">
-                <pmo-order-new slug:from="scope.vm.slug"/>
-              </can-import>
-            {{/case}}
+    {{#if(this.pageComponent.isResolved)}}
+      {{this.pageComponent.value}}
+    {{else}}
+      <div class="loading"></div>
+    {{/if}}
 
-            {{#default}}
-              <can-import from="place-my-order/restaurant/details.component"
-                  can-tag="pmo-loading">
-                <pmo-restaurant-details slug:from="scope.vm.slug"/>
-              </can-import>
-            {{/default}}
-          {{/switch}}
-        {{else}}
-          <can-import from="place-my-order/restaurant/list/" can-tag="pmo-loading">
-            <pmo-restaurant-list/>
-          </can-import>
-        {{/if}}
-      {{/case}}
-      {{#case("order-history")}}
-        <can-import from="place-my-order/order/history.component" can-tag="pmo-loading">
-          <pmo-order-history/>
-        </can-import>
-      {{/case}}
-    {{/switch}}
-
-    {{#switch(env.NODE_ENV)}}
-      {{#case("production")}}
-        <script src="{{joinBase('steal.production.js')}}"></script>
-      {{/case}}
-      {{#default}}
-        <script src="/node_modules/steal/steal.js" main></script>
-      {{/default}}
-    {{/switch}}
+    {{#eq(this.env.NODE_ENV, "production")}}
+      <script src="{{joinBase('steal.production.js')}}"></script>
+    {{else}}
+      <script src="/node_modules/steal/steal.js" main></script>
+    {{/eq}}
   </body>
 </html>

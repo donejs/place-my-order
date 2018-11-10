@@ -1,12 +1,12 @@
-import { DefineMap, DefineList, realtimeRestModel } from 'can';
+import { DefineMap, DefineList, superModel } from 'can';
 import loader from '@loader';
 
-const City = DefineMap.extend('City', {
+const City = DefineMap.extend({
   seal: false
 }, {
   'name': {
-    identity: true,
-    type: 'any'
+    type: 'any',
+    identity: true
   }
 });
 
@@ -14,7 +14,7 @@ City.List = DefineList.extend({
   '#': City
 });
 
-City.connection = realtimeRestModel({
+City.connection = superModel({
   url: loader.serviceBaseURL + '/api/cities',
   Map: City,
   List: City.List,

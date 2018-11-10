@@ -1,10 +1,9 @@
+import '~/models/fixtures/restaurants';
+
+import '~/models/fixtures/states';
+
+import '~/models/fixtures/cities';
+
+import '~/models/fixtures/orders';
+
 // Main file that loads all model fixtures
-
-
-import 'place-my-order/models/fixtures/restaurants';
-
-import 'place-my-order/models/fixtures/states';
-
-import 'place-my-order/models/fixtures/cities';
-
-import 'place-my-order/models/fixtures/orders';
