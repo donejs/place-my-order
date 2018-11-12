@@ -11,7 +11,7 @@ before_deploy:
   - node build
   - git add dist/ --force
   - git commit -m "Updating build."
-  - npm run deploy:ci
+  - 'npm run deploy:ci'
 deploy:
   skip_cleanup: true
   provider: heroku
@@ -22,4 +22,4 @@ deploy:
 env:
   global:
     - secure: >-
-        d4qCvdtpg/oKBg78t2oDeG9D4yZQcj5Ma1Jm/aC5zlXNYyVeD8yT2yooSgo6F0D7lfwHPTF8AwaYeTm/fE5jRuVFG4arEn2T96XLxleGgS74Gp5g3sNnwU9IyQuIJnnn7MXTZlef9cTtvGCTCWHgJKSBMcos55W+bq/8OZLpzo0=
+        gQKJuyze19k5d6Cz3jwC/UX4Qk39CKuGg9gI6dHTl+hnitKTUcXa2jsMoiSBtYqoBK0n2cNtXqhsWP2xHh0Zz9VE6OGaTW6CAxnMbhNU17Jw+u3z6SckRNioSJfcdZ+A9c2Cv1icfGkIRr2MFWniBvrtJqIi5EEvS9xofm3qAWI=
