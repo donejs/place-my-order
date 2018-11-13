@@ -64,6 +64,7 @@
     "done-css": "^3.0.2",
     "done-serve": "^3.0.0-pre.4",
     "donejs-travis-deploy-to-firebase": "^1.0.2",
+    "donejs-travis-to-heroku": "0.0.2",
     "place-my-order-api": "^1.0.1",
     "place-my-order-assets": "^0.1.7",
     "steal": "^2.1.6",
