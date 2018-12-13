@@ -1,12 +1,12 @@
 {
   "name": "place-my-order",
   "version": "0.10.0",
-  "description": "",
-  "homepage": "",
+  "description": "Place My Order example app",
+  "homepage": "http://www.place-my-order.com/",
   "author": {
-    "name": "",
-    "email": "",
-    "url": ""
+    "name": "DoneJS Contributors",
+    "email": "core@donejs.com",
+    "url": "https://donejs.com"
   },
   "scripts": {
     "api": "place-my-order-api --port 7070",
@@ -62,7 +62,7 @@
     "done-autorender": "^2.4.3",
     "done-component": "^2.2.0",
     "done-css": "^3.0.2",
-    "done-serve": "^3.0.0",
+    "done-serve": "^3.1.0",
     "donejs-travis-deploy-to-firebase": "^1.0.2",
     "donejs-travis-to-heroku": "0.0.2",
     "place-my-order-api": "^1.0.1",
