@@ -1,4 +1,4 @@
-import fixture from 'can-fixture';
+import { fixture } from 'can';
 import Order from '../order';
 
 const store = fixture.store([{
