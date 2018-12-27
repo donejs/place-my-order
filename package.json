@@ -45,7 +45,7 @@
       "done-css",
       "done-component",
       "steal-less",
-      "steal-stache"
+      "can"
     ],
     "bundle": [
       "~/pages/**/",
@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "bit-tabs": "^2.0.1",
-    "can": "^5.16.0",
+    "can": "^5.21.0",
     "can-route-pushstate": "^5.0.7",
     "can-stache-route-helpers": "^1.1.1",
     "can-zone": "^1.0.0",
@@ -70,8 +70,7 @@
     "steal": "^2.1.6",
     "steal-conditional": "^1.0.0",
     "steal-less": "^1.2.2",
-    "steal-socket.io": "^4.1.0",
-    "steal-stache": "^4.1.2"
+    "steal-socket.io": "^4.1.0"
   },
   "devDependencies": {
     "can-debug": "^2.0.1",
