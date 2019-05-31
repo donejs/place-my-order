@@ -66,7 +66,7 @@
     "donejs-travis-deploy-to-firebase": "^1.0.2",
     "donejs-travis-to-heroku": "0.0.2",
     "place-my-order-api": "^1.4.0",
-    "place-my-order-assets": "^0.2.0",
+    "place-my-order-assets": "^0.1.7",
     "steal": "^2.1.6",
     "steal-conditional": "^1.0.0",
     "steal-less": "^1.2.2",
