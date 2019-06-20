@@ -1,5 +1,7 @@
 # place-my-order
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/donejs/place-my-order.svg)](https://greenkeeper.io/)
+
 A restaurant menu ordering application. Built in ES6 with DoneJS.
 
 ## Getting started
