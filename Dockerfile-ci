@@ -1,0 +1,14 @@
+FROM node:10.0
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# get files
+COPY . .
+
+# install dependencies
+RUN npm install donejs -g
+RUN npm install
+
+# run the tests
+RUN donejs test
