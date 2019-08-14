@@ -118,3 +118,10 @@ Run both the api (`Dockerfile-api`) and the ui (`Dockerfile`) containers:
 ```
 ./scripts-docker/run
 ```
+
+## Stopping the app
+
+Stop both the api (`Dockerfile-api`) and the ui (`Dockerfile`) containers:
+```
+./scripts-docker/stop
+```

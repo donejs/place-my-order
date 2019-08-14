@@ -3,11 +3,13 @@
 echo "Running pmo-api ..."
 docker run \
 -p 7070:7070 \
+--name donejs-api \
 -d donejs/place-my-order-api
 echo "Running pmo-api ... Done"
 
 echo "Running pmo ..."
 docker run \
 -p 8080:8080 \
+--name donejs-app \
 -d donejs/place-my-order
 echo "Running pmo ... Done"

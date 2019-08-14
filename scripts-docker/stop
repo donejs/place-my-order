@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Stopping pmo-api ..."
+docker stop donejs-api
+echo "Stopping pmo-api ... Done"
+
+echo "Stopping pmo ..."
+docker stop donejs-app
+echo "Stopping pmo ... Done"
+
