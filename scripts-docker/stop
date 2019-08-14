@@ -8,3 +8,6 @@ echo "Stopping pmo ..."
 docker stop place-my-order
 echo "Stopping pmo ... Done"
 
+echo "Removing pmo network ..."
+docker network rm place-my-order
+echo "Removing pmo network ... Done"

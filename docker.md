@@ -12,9 +12,6 @@ Sections:
 
 - Docker
 
-> **Note:** This guide so far assumes running on a Mac due to Docker cross-container communication.
-> Non-Mac executions will be covered in a future guide.
-
 ## Dockerfiles
 
 We'll specify 3 `Dockerfile`s:
@@ -53,9 +50,6 @@ CMD [ "donejs", "develop-docker-mac" ]
 # ENV NODE_ENV production
 # CMD [ "npm", "start" ]
 ```
-
-> **Note:** Notice the `develop-docker-mac` instead of `develop`.  This is because the UI container needs to know how to communicate with the API container.
-> With a Mac, there is a `http://docker.for.mac.localhost` which allows access to another container.  See `scripts["develop-docker-mac"]` in `package.json` for more details.
 
 ### Dockerfile-api
 

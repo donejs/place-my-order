@@ -1,8 +1,14 @@
 #!/bin/bash
 
+echo "Creating pmo network ..."
+docker network create place-my-order
+echo "Creating pmo network ... Done"
+
+
 echo "Running pmo-api ..."
 docker run \
 -p 7070:7070 \
+--network place-my-order \
 --name place-my-order-api \
 -d donejs/place-my-order-api
 echo "Running pmo-api ... Done"
@@ -10,6 +16,7 @@ echo "Running pmo-api ... Done"
 echo "Running pmo ..."
 docker run \
 -p 8080:8080 \
+--network place-my-order \
 --name place-my-order \
 -d donejs/place-my-order
 echo "Running pmo ... Done"
