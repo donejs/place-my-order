@@ -45,7 +45,7 @@ RUN npm install
 EXPOSE 8080
 
 # start it up
-CMD [ "donejs", "develop-docker-mac" ]
+CMD [ "donejs", "develop-docker" ]
 # If you are running production, use
 # ENV NODE_ENV production
 # CMD [ "npm", "start" ]
