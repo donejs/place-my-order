@@ -1,5 +1,6 @@
 import { DefineMap, DefineList, superModel } from 'can';
 import loader from '@loader';
+import { ItemsList } from "./item";
 
 const Restaurant = DefineMap.extend({
   seal: false
@@ -7,6 +8,16 @@ const Restaurant = DefineMap.extend({
   '_id': {
     type: 'any',
     identity: true
+  },
+  menu:{
+    type: {
+      lunch: {
+        Type: ItemsList
+      },
+      dinner: {
+        Type: ItemsList
+      }
+    }
   }
 });
 
