@@ -2,10 +2,12 @@
 
 echo "Stopping pmo-api ..."
 docker stop place-my-order-api
+docker container rm place-my-order-api
 echo "Stopping pmo-api ... Done"
 
 echo "Stopping pmo ..."
 docker stop place-my-order
+docker container rm place-my-order
 echo "Stopping pmo ... Done"
 
 echo "Removing pmo network ..."
