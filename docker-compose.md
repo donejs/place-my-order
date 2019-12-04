@@ -3,6 +3,7 @@
 Wrapping PMO in Docker with docker-compose
 
 Sections:
+- [Benefits](#benefits)
 - [Prerequisites](#prerequisites)
 - [Dockerfiles](#dockerfiles)
 - [Building Docker](#building-docker)
@@ -10,9 +11,39 @@ Sections:
 - [Developing the app](#developing-the-app)
 - [References](#references)
 
+## Benefits
+
+### Environment Parity
+If you're using microservices deployed with a container orchestrator like Kubernetes, docker-compose is a great way of locally emulating the communiction between microservices.
+
+### No host dependencies
+No need to install various dependencies on your host machine (node, databases, etc).
+
+In fact, maintaining the mindset of "I don't have anything on my machine except for a text editor and docker", it'll be very helpful in ensuring that your microservices are easily deployable.
+
+### Onboarding
+New developers can get started more easily than following a set of steps to get their local environment set up.  It should be as simple as:
+```
+git clone https://github.com/donejs/place-my-order.git
+cd place-my-order
+docker-compose up
+```
+Visit http://localhost:8080
+
+
+
 ## Prerequisites
 
 - [Docker](https://www.docker.com/products/docker-desktop)
+
+
+## Quick Start
+```
+git clone https://github.com/donejs/place-my-order.git
+cd place-my-order
+docker-compose up
+```
+Visit http://localhost:8080
 
 ## Dockerfiles
 
