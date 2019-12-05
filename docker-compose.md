@@ -126,6 +126,8 @@ docker-compose build
 docker-compose up
 ```
 
+> **Note:** You can also rebuild the app prior to running via `docker-compose up --build`
+
 ## Stopping the app
 
 ```
@@ -145,7 +147,7 @@ services:
       - /usr/src/app/node_modules
 ```
 
-- `.:/usr/src/app` binds the current working directory on the host (where `docker-compose` is executed) to `/usr/src/app` in the container.  
+- `.:/usr/src/app` shares the current working directory on the host (where `docker-compose` is executed) to `/usr/src/app` in the container.  
     - `/usr/src/app` is defined in the Dockerfile via the `WORKDIR` directive
 - `/usr/src/app/node_modules` - This will mount the node_modules directory to the host machine using the buildtime directory.
     - [More info](https://jdlm.info/articles/2016/03/06/lessons-building-node-app-docker.html#the-node_modules-volume-trick)
