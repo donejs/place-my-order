@@ -11,6 +11,10 @@ npm install donejs -g
 npm install
 ```
 
+### Docker
+
+To develop with Docker, see the [Docker guide](./docker.md)
+
 ## Running tests
 
 Tests can be run with
