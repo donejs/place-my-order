@@ -47,11 +47,10 @@ Visit http://localhost:8080
 
 ## Dockerfiles
 
-We'll specify 3 `Dockerfile`s:
+We'll specify 2 `Dockerfile`s:
 
 - `Dockerfile` - UI
 - `Dockerfile-api` - API
-- `Dockerfile-ci` - CI (tests, etc) - TODO
 
 ### Dockerfile
 
@@ -109,10 +108,6 @@ EXPOSE 7070
 CMD [ "donejs", "api" ]
 ```
 
-### Dockerfile-ci
-
-TODO
-
 ## Building Docker
 
 Build both the api (`Dockerfile-api`) and the ui (`Dockerfile`) containers:
@@ -147,7 +142,7 @@ services:
       - /usr/src/app/node_modules
 ```
 
-- `.:/usr/src/app` shares the current working directory on the host (where `docker-compose` is executed) to `/usr/src/app` in the container.  
+- `.:/usr/src/app` shares the current working directory on the host (where `docker-compose` is executed) to `/usr/src/app` in the container.
     - `/usr/src/app` is defined in the Dockerfile via the `WORKDIR` directive
 - `/usr/src/app/node_modules` - This will mount the node_modules directory to the host machine using the buildtime directory.
     - [More info](https://jdlm.info/articles/2016/03/06/lessons-building-node-app-docker.html#the-node_modules-volume-trick)

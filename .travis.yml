@@ -6,19 +6,32 @@ addons:
 env:
   global:
     - secure: gQKJuyze19k5d6Cz3jwC/UX4Qk39CKuGg9gI6dHTl+hnitKTUcXa2jsMoiSBtYqoBK0n2cNtXqhsWP2xHh0Zz9VE6OGaTW6CAxnMbhNU17Jw+u3z6SckRNioSJfcdZ+A9c2Cv1icfGkIRr2MFWniBvrtJqIi5EEvS9xofm3qAWI=
-deploy:
-  skip_cleanup: true
-  provider: heroku
-  app: place-my-order
-  api_key:
-    secure: bgH/0ilteUySwuhQXbtmJyYF4NddMiQnnikMXLPav3ClNI2izOl91bVovOe9VTsOM7nYg9nLyOYdLcq/4VEjFwyiFitKPg143t36iDvMJeQTQcSMWcQDLwO7s/chT+l7Fs5KsREKcvrgA/qS9o099D19WxSLz5/oDJHqkhCfn40=
-before_deploy:
-  - git config --global user.email "me@example.com"
-  - git config --global user.name "deploy bot"
-  - node build
-  - git add dist/ --force
-  - git commit -m "Updating build."
-  - 'npm run deploy:ci'
+jobs:
+  include:
+    - stage: "Test"
+      name: "Unit Tests"
+      script: ./docker-tests.sh
+    - stage: "Publish"
+      name: "Publish Docker"
+      script: ./docker-publish.sh
+    - stage: "Deploy Heroku"
+      name: "Publish Heroku"
+      script: skip
+      if: branch = master
+      deploy:
+        skip_cleanup: true
+        provider: heroku
+        app: place-my-order
+        api_key:
+          secure: bgH/0ilteUySwuhQXbtmJyYF4NddMiQnnikMXLPav3ClNI2izOl91bVovOe9VTsOM7nYg9nLyOYdLcq/4VEjFwyiFitKPg143t36iDvMJeQTQcSMWcQDLwO7s/chT+l7Fs5KsREKcvrgA/qS9o099D19WxSLz5/oDJHqkhCfn40=
+      before_deploy:
+        - git config --global user.email "me@example.com"
+        - git config --global user.name "deploy bot"
+        - node build
+        - git add dist/ --force
+        - git commit -m "Updating build."
+        - 'npm run deploy:ci'
 dist: xenial
 services:
   - xvfb
+  - docker
