@@ -1,30 +1,7 @@
 import { DefineMap, DefineList, superModel, QueryLogic } from 'can';
 import loader from '@loader';
 import io from 'steal-socket.io';
-
-const Item = DefineMap.extend({
-  seal: false
-}, {
-  price: 'number'
-});
-
-const ItemsList = DefineList.extend({
-  '#': Item
-}, {
-  has: function(item) {
-    return this.indexOf(item) !== -1;
-  },
-
-  toggle: function(item) {
-    var index = this.indexOf(item);
-
-    if (index !== -1) {
-      this.splice(index, 1);
-    } else {
-      this.push(item);
-    }
-  }
-});
+import { ItemsList } from "./item";
 
 const Status = QueryLogic.makeEnum(["new", "preparing", "delivery", "delivered"]);
 

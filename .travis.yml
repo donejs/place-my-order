@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - '10'
+- '10'
 addons:
   firefox: latest
 env:
@@ -11,9 +11,11 @@ jobs:
     - stage: "Test"
       name: "Unit Tests"
       script: ./docker-tests.sh
+
     - stage: "Publish"
       name: "Publish Docker"
       script: ./docker-publish.sh
+
     - stage: "Deploy Heroku"
       name: "Publish Heroku"
       script: skip
@@ -23,7 +25,7 @@ jobs:
         provider: heroku
         app: place-my-order
         api_key:
-          secure: bgH/0ilteUySwuhQXbtmJyYF4NddMiQnnikMXLPav3ClNI2izOl91bVovOe9VTsOM7nYg9nLyOYdLcq/4VEjFwyiFitKPg143t36iDvMJeQTQcSMWcQDLwO7s/chT+l7Fs5KsREKcvrgA/qS9o099D19WxSLz5/oDJHqkhCfn40=
+          secure: HtBk3eDh8jFnPHR1wm77CtkEi/qUTiOqc+Tg3WISX3V7LtnbGvRXyezVQyuucEi9Q58a2YsjBl2pbpifecJT2ln29BwxnC15OYxY6D6shNnBQkbGhOq4I2u3SdJKaJkmzzGD7BaqCT1w563Pm3AT0TLlPqadLrYZSAJnsA1DvpY=
       before_deploy:
         - git config --global user.email "me@example.com"
         - git config --global user.name "deploy bot"
@@ -31,6 +33,7 @@ jobs:
         - git add dist/ --force
         - git commit -m "Updating build."
         - 'npm run deploy:ci'
+
 dist: xenial
 services:
   - xvfb
