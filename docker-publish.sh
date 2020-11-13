@@ -4,8 +4,7 @@ if [ $TRAVIS_BRANCH == 'introduce-docker' ] && [ "$TRAVIS_PULL_REQUEST" == 'fals
   echo "Publishing Docker Image"
 
   # log into docker
-  docker login -u $DOCKER_USER -p $DOCKER_PASS
-
+  docker login ghcr.io -u $DOCKER_USER -p $GITHUB_PERSONAL_ACCESS_TOKEN
   # These can be paramaterized or set up via the pipeline runner
   DOCKER_HOST="ghcr.io"
   DOCKER_ORG="donejs"
