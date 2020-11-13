@@ -15,7 +15,7 @@ if [ $TRAVIS_BRANCH == 'introduce-docker' ] && [ "$TRAVIS_PULL_REQUEST" == 'fals
   echo "Building the container with the: $DOCKER_PATH:$DOCKER_TAG"
 
   # Build Docker Container
-  docker build -t "$DOCKER_PATH:$DOCKER_TAG" -f Dockerfile-prod .
+  docker build -t "$DOCKER_PATH:$DOCKER_TAG" -t "$DOCKER_PATH:latest" -f Dockerfile-prod .
   docker push $DOCKER_PATH
 else
   echo "Skipping: Publishing Docker Image"
