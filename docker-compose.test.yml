@@ -1,0 +1,22 @@
+version: '3.2'
+services:
+  place-my-order-api:
+    build:
+      context: .
+      dockerfile: Dockerfile-api
+    ports:
+      - "7070:7070"
+    expose:
+      - 7070
+
+  place-my-order:
+    build:
+      context: .
+      dockerfile: Dockerfile-ci
+    ports:
+      - "8080:8080"
+    expose:
+      - 8080
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules

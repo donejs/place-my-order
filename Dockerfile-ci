@@ -1,0 +1,22 @@
+FROM markadams/chromium-xvfb
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# install node and such
+RUN apt-get update \
+    && apt-get install -y gpg build-essential libssl-dev \
+    && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+    && apt-get install -y nodejs gpg \
+    && rm -rf /var/lib/apt/lists
+
+
+# get files
+COPY . .
+
+# install dependencies
+RUN npm install donejs -g
+RUN npm install
+
+# run the tests
+RUN npm run test-chrome

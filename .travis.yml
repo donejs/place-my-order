@@ -5,20 +5,36 @@ addons:
   firefox: latest
 env:
   global:
-  - secure: gQKJuyze19k5d6Cz3jwC/UX4Qk39CKuGg9gI6dHTl+hnitKTUcXa2jsMoiSBtYqoBK0n2cNtXqhsWP2xHh0Zz9VE6OGaTW6CAxnMbhNU17Jw+u3z6SckRNioSJfcdZ+A9c2Cv1icfGkIRr2MFWniBvrtJqIi5EEvS9xofm3qAWI=
-deploy:
-  skip_cleanup: true
-  provider: heroku
-  app: place-my-order
-  api_key:
-    secure: HtBk3eDh8jFnPHR1wm77CtkEi/qUTiOqc+Tg3WISX3V7LtnbGvRXyezVQyuucEi9Q58a2YsjBl2pbpifecJT2ln29BwxnC15OYxY6D6shNnBQkbGhOq4I2u3SdJKaJkmzzGD7BaqCT1w563Pm3AT0TLlPqadLrYZSAJnsA1DvpY=
-before_deploy:
-- git config --global user.email "me@example.com"
-- git config --global user.name "deploy bot"
-- node build
-- git add dist/ --force
-- git commit -m "Updating build."
-- npm run deploy:ci
+    - secure: gQKJuyze19k5d6Cz3jwC/UX4Qk39CKuGg9gI6dHTl+hnitKTUcXa2jsMoiSBtYqoBK0n2cNtXqhsWP2xHh0Zz9VE6OGaTW6CAxnMbhNU17Jw+u3z6SckRNioSJfcdZ+A9c2Cv1icfGkIRr2MFWniBvrtJqIi5EEvS9xofm3qAWI=
+jobs:
+  include:
+    - stage: "Test"
+      name: "Unit Tests"
+      script: ./docker-tests.sh
+
+    - stage: "Publish"
+      name: "Publish Docker"
+      script: ./docker-publish.sh
+
+    - stage: "Deploy Heroku"
+      name: "Publish Heroku"
+      script: skip
+      if: branch = master
+      deploy:
+        skip_cleanup: true
+        provider: heroku
+        app: place-my-order
+        api_key:
+          secure: HtBk3eDh8jFnPHR1wm77CtkEi/qUTiOqc+Tg3WISX3V7LtnbGvRXyezVQyuucEi9Q58a2YsjBl2pbpifecJT2ln29BwxnC15OYxY6D6shNnBQkbGhOq4I2u3SdJKaJkmzzGD7BaqCT1w563Pm3AT0TLlPqadLrYZSAJnsA1DvpY=
+      before_deploy:
+        - git config --global user.email "me@example.com"
+        - git config --global user.name "deploy bot"
+        - node build
+        - git add dist/ --force
+        - git commit -m "Updating build."
+        - 'npm run deploy:ci'
+
 dist: xenial
 services:
-- xvfb
+  - xvfb
+  - docker
