@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $TRAVIS_BRANCH == 'introduce-docker' ] && [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
+if [ $TRAVIS_BRANCH == 'master' ] && [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
   echo "Publishing Docker Image"
 
   # log into docker
